@@ -1,0 +1,432 @@
+[07:41:18.262] python train.py --dataset MNMS --lb_domain 1 --lb_num 40 --save_name MNMS_dm1_lb40_full --gpu 3 --AdamW --warmup --model MedSAM --overwrite --save_model
+[07:41:18.262] Namespace(dataset='MNMS', save_name='MNMS_dm1_lb40_full', overwrite=True, model='MedSAM', max_iterations=60000, num_eval_iter=500, deterministic=1, base_lr=0.03, seed=1337, gpu='3', threshold=0.95, eval=False, amp=1, label_bs=4, unlabel_bs=4, test_bs=1, domain_num=4, lb_domain=1, lb_num=40, lb_ratio=0, ema_decay=0.99, consistency_type='mse', consistency=1.0, consistency_rampup=200.0, depth=28, widen_factor=2, leaky_slope=0.1, bn_momentum=0.1, dropout=0.0, save_img=False, save_model=True, rank=4, warmup=True, warmup_period=250, AdamW=True, module='sam_lora_image_encoder', img_size=512, vit_name='vit_b', ckpt='../checkpoints/medsam_vit_b.pth')
+[07:41:18.264] load from ../checkpoints/medsam_vit_b.pth
+[07:41:19.532] load from ../checkpoints/medsam_vit_b.pth
+[07:41:20.945] 500 iterations per epoch
+[08:05:04.724] iteration 500 : loss : 0.241760, sam_sup_loss : 0.118396, sam_unsup_loss : 0.352771, unet_sup_loss : 0.118754, unet_unsup_loss : 0.273025, cons_w : 0.007083, mask_ratio : 0.915916, sd:0.442828,0.296694,0.289706,ud:0.377714,0.254158,0.249694,d:0.455000,0.316620,0.310492,s_m_r:0.521221,0.339649,0.207804
+[08:05:04.724] sam_ulb_lv_dice:0.442828, sam_ulb_myo_dice:0.296694, sam_ulb_rv_dice:0.289706, unet_ulb_lv_dice:0.377714, unet_ulb_myo_dice:0.254158, unet_ulb_rv_dice:0.249694, ulb_lv_dice:0.455000, ulb_myo_dice:0.316620, ulb_rv_dice:0.310492
+[08:05:04.724] test unet model
+[08:06:16.122] domain1 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.703517, val_myo_dice: 0.544420, val_rv_dice: 0.484142, 
+	val_lv_dc: 0.703110, val_myo_dc: 0.544243, val_rv_dc: 0.483504, 	val_lv_jc: 0.618568, val_myo_jc: 0.407959, val_rv_jc: 0.399741, 
+	val_lv_hd: 33.076475, val_myo_hd: 40.745766, val_rv_hd: 44.010944, 	val_lv_asd: 19.740911, val_myo_asd: 18.089556, val_rv_asd: 30.169161, 
+[08:07:40.073] domain2 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.522827, val_myo_dice: 0.376843, val_rv_dice: 0.250055, 
+	val_lv_dc: 0.521651, val_myo_dc: 0.376367, val_rv_dc: 0.245993, 	val_lv_jc: 0.429560, val_myo_jc: 0.264701, val_rv_jc: 0.190816, 
+	val_lv_hd: 48.616205, val_myo_hd: 57.404041, val_rv_hd: 62.987899, 	val_lv_asd: 31.088969, val_myo_asd: 28.028921, val_rv_asd: 46.573648, 
+[08:08:13.696] domain3 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.332994, val_myo_dice: 0.241550, val_rv_dice: 0.153800, 
+	val_lv_dc: 0.332192, val_myo_dc: 0.241087, val_rv_dc: 0.151865, 	val_lv_jc: 0.255901, val_myo_jc: 0.158074, val_rv_jc: 0.113485, 
+	val_lv_hd: 63.648967, val_myo_hd: 74.979431, val_rv_hd: 74.736836, 	val_lv_asd: 40.305545, val_myo_asd: 38.457551, val_rv_asd: 54.227109, 
+[08:08:48.618] domain4 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.572692, val_myo_dice: 0.464164, val_rv_dice: 0.273700, 
+	val_lv_dc: 0.571766, val_myo_dc: 0.463508, val_rv_dc: 0.271145, 	val_lv_jc: 0.492216, val_myo_jc: 0.356000, val_rv_jc: 0.209323, 
+	val_lv_hd: 42.030389, val_myo_hd: 48.204754, val_rv_hd: 56.046224, 	val_lv_asd: 28.406326, val_myo_asd: 27.635820, val_rv_asd: 44.749228, 
+[08:08:48.621] epoch 1 : loss : 0.000000
+	val_lv_dice: 0.533008, val_myo_dice: 0.406744, val_rv_dice: 0.290424, 
+	val_lv_dc: 0.532180, val_myo_dc: 0.406301, val_rv_dc: 0.288127, 	val_lv_jc: 0.449061, val_myo_jc: 0.296683, val_rv_jc: 0.228341, 
+	val_lv_hd: 46.843009, val_myo_hd: 55.333498, val_rv_hd: 59.445476, 	val_lv_asd: 29.885438, val_myo_asd: 28.052962, val_rv_asd: 43.929786, 
+[08:08:48.621] save cur best avg unet model to ../model/MNMS/train/MNMS_dm1_lb40_full/unet_avg_dice_best_model.pth
+[08:08:48.847] val_lv_best_dice: 0.533008 at 500 iter, val_myo_best_dice: 0.406744 at 500 iter, val_rv_best_dice: 0.290424 at 500 iter, val_best_avg_dice: 0.410059 at 500 iter, lv_dice: 0.533008, myo_dice: 0.406744, rv_dice: 0.290424
+[08:08:48.848] test sam model
+[08:10:14.337] domain1 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.813019, val_myo_dice: 0.649789, val_rv_dice: 0.598522, 
+	val_lv_dc: 0.812874, val_myo_dc: 0.649613, val_rv_dc: 0.598113, 	val_lv_jc: 0.736845, val_myo_jc: 0.508130, val_rv_jc: 0.508920, 
+	val_lv_hd: 15.793450, val_myo_hd: 14.589832, val_rv_hd: 33.035648, 	val_lv_asd: 8.131802, val_myo_asd: 5.762374, val_rv_asd: 17.444792, 
+[08:11:55.396] domain2 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.648830, val_myo_dice: 0.516623, val_rv_dice: 0.503077, 
+	val_lv_dc: 0.648478, val_myo_dc: 0.516271, val_rv_dc: 0.502080, 	val_lv_jc: 0.531602, val_myo_jc: 0.380391, val_rv_jc: 0.402539, 
+	val_lv_hd: 30.804060, val_myo_hd: 24.140947, val_rv_hd: 29.781595, 	val_lv_asd: 13.918599, val_myo_asd: 9.509049, val_rv_asd: 15.980894, 
+[08:12:35.738] domain3 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.650280, val_myo_dice: 0.533765, val_rv_dice: 0.316009, 
+	val_lv_dc: 0.650044, val_myo_dc: 0.533447, val_rv_dc: 0.314862, 	val_lv_jc: 0.512157, val_myo_jc: 0.387136, val_rv_jc: 0.226730, 
+	val_lv_hd: 28.488341, val_myo_hd: 22.945339, val_rv_hd: 42.423535, 	val_lv_asd: 11.730647, val_myo_asd: 8.141312, val_rv_asd: 23.446169, 
+[08:13:18.209] domain4 epoch 1 : loss : 0.000000
+	val_lv_dice: 0.728006, val_myo_dice: 0.533972, val_rv_dice: 0.476421, 
+	val_lv_dc: 0.727729, val_myo_dc: 0.533606, val_rv_dc: 0.475320, 	val_lv_jc: 0.623430, val_myo_jc: 0.401597, val_rv_jc: 0.382161, 
+	val_lv_hd: 24.242590, val_myo_hd: 18.161398, val_rv_hd: 30.886029, 	val_lv_asd: 10.512590, val_myo_asd: 6.707637, val_rv_asd: 15.259196, 
+[08:13:18.211] epoch 1 : loss : 0.000000
+	val_lv_dice: 0.710034, val_myo_dice: 0.558537, val_rv_dice: 0.473507, 
+	val_lv_dc: 0.709781, val_myo_dc: 0.558234, val_rv_dc: 0.472594, 	val_lv_jc: 0.601008, val_myo_jc: 0.419314, val_rv_jc: 0.380087, 
+	val_lv_hd: 24.832110, val_myo_hd: 19.959379, val_rv_hd: 34.031702, 	val_lv_asd: 11.073409, val_myo_asd: 7.530093, val_rv_asd: 18.032763, 
+[08:13:18.212] save cur best avg SAM model to ../model/MNMS/train/MNMS_dm1_lb40_full/SAM_avg_dice_best_model.pth
+[08:13:18.251] stu_val_lv_best_dice: 0.710034 at 500 iter, stu_val_myo_best_dice: 0.558537 at 500 iter, stu_val_rv_best_dice: 0.473507 at 500 iter, val_best_avg_dice: 0.580693 at 500 iter, lv_dice: 0.710034, myo_dice: 0.558537, rv_dice: 0.473507
+[08:36:59.406] iteration 1000 : loss : 0.219703, sam_sup_loss : 0.109454, sam_unsup_loss : 0.457907, unet_sup_loss : 0.103361, unet_unsup_loss : 0.402085, cons_w : 0.007820, mask_ratio : 0.963659, sd:0.722732,0.580640,0.535823,ud:0.624443,0.436952,0.451006,d:0.736787,0.585729,0.555188,s_m_r:0.742869,0.480383,0.386398
+[08:36:59.407] sam_ulb_lv_dice:0.722732, sam_ulb_myo_dice:0.580640, sam_ulb_rv_dice:0.535823, unet_ulb_lv_dice:0.624443, unet_ulb_myo_dice:0.436952, unet_ulb_rv_dice:0.451006, ulb_lv_dice:0.736787, ulb_myo_dice:0.585729, ulb_rv_dice:0.555188
+[08:36:59.407] test unet model
+[08:38:09.711] domain1 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.781121, val_myo_dice: 0.648462, val_rv_dice: 0.562937, 
+	val_lv_dc: 0.780673, val_myo_dc: 0.648247, val_rv_dc: 0.562429, 	val_lv_jc: 0.718851, val_myo_jc: 0.525964, val_rv_jc: 0.484749, 
+	val_lv_hd: 19.360670, val_myo_hd: 26.703134, val_rv_hd: 41.399247, 	val_lv_asd: 13.563604, val_myo_asd: 14.474150, val_rv_asd: 27.666462, 
+[08:39:31.509] domain2 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.579324, val_myo_dice: 0.419262, val_rv_dice: 0.406916, 
+	val_lv_dc: 0.577755, val_myo_dc: 0.418491, val_rv_dc: 0.404432, 	val_lv_jc: 0.506687, val_myo_jc: 0.317974, val_rv_jc: 0.333248, 
+	val_lv_hd: 35.638538, val_myo_hd: 39.644121, val_rv_hd: 48.613197, 	val_lv_asd: 29.614147, val_myo_asd: 27.716309, val_rv_asd: 39.097246, 
+[08:40:03.909] domain3 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.501819, val_myo_dice: 0.337414, val_rv_dice: 0.243974, 
+	val_lv_dc: 0.500670, val_myo_dc: 0.336603, val_rv_dc: 0.241993, 	val_lv_jc: 0.420240, val_myo_jc: 0.249832, val_rv_jc: 0.190850, 
+	val_lv_hd: 50.365956, val_myo_hd: 54.456342, val_rv_hd: 63.585161, 	val_lv_asd: 35.938945, val_myo_asd: 34.012343, val_rv_asd: 52.199918, 
+[08:40:38.090] domain4 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.633268, val_myo_dice: 0.428626, val_rv_dice: 0.363026, 
+	val_lv_dc: 0.632401, val_myo_dc: 0.427835, val_rv_dc: 0.360683, 	val_lv_jc: 0.554432, val_myo_jc: 0.322315, val_rv_jc: 0.292646, 
+	val_lv_hd: 33.503557, val_myo_hd: 38.873514, val_rv_hd: 54.236376, 	val_lv_asd: 26.066440, val_myo_asd: 26.728556, val_rv_asd: 44.063330, 
+[08:40:38.092] epoch 2 : loss : 0.000000
+	val_lv_dice: 0.623883, val_myo_dice: 0.458441, val_rv_dice: 0.394213, 
+	val_lv_dc: 0.622875, val_myo_dc: 0.457794, val_rv_dc: 0.392384, 	val_lv_jc: 0.550053, val_myo_jc: 0.354021, val_rv_jc: 0.325373, 
+	val_lv_hd: 34.717180, val_myo_hd: 39.919278, val_rv_hd: 51.958495, 	val_lv_asd: 26.295784, val_myo_asd: 25.732839, val_rv_asd: 40.756739, 
+[08:40:38.093] save cur best avg unet model to ../model/MNMS/train/MNMS_dm1_lb40_full/unet_avg_dice_best_model.pth
+[08:40:38.534] val_lv_best_dice: 0.623883 at 1000 iter, val_myo_best_dice: 0.458441 at 1000 iter, val_rv_best_dice: 0.394213 at 1000 iter, val_best_avg_dice: 0.492179 at 1000 iter, lv_dice: 0.623883, myo_dice: 0.458441, rv_dice: 0.394213
+[08:40:38.535] test sam model
+[08:42:04.053] domain1 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.817008, val_myo_dice: 0.692441, val_rv_dice: 0.648767, 
+	val_lv_dc: 0.816829, val_myo_dc: 0.692286, val_rv_dc: 0.648413, 	val_lv_jc: 0.744673, val_myo_jc: 0.557699, val_rv_jc: 0.560921, 
+	val_lv_hd: 15.395110, val_myo_hd: 13.900317, val_rv_hd: 31.664656, 	val_lv_asd: 8.169325, val_myo_asd: 6.368676, val_rv_asd: 16.811233, 
+[08:43:45.226] domain2 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.681573, val_myo_dice: 0.560805, val_rv_dice: 0.546897, 
+	val_lv_dc: 0.681158, val_myo_dc: 0.560477, val_rv_dc: 0.545822, 	val_lv_jc: 0.574740, val_myo_jc: 0.423514, val_rv_jc: 0.451304, 
+	val_lv_hd: 28.117157, val_myo_hd: 21.547465, val_rv_hd: 29.940933, 	val_lv_asd: 13.561335, val_myo_asd: 8.896627, val_rv_asd: 16.187014, 
+[08:44:25.522] domain3 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.677831, val_myo_dice: 0.569190, val_rv_dice: 0.353294, 
+	val_lv_dc: 0.677278, val_myo_dc: 0.568892, val_rv_dc: 0.352327, 	val_lv_jc: 0.547532, val_myo_jc: 0.423561, val_rv_jc: 0.259222, 
+	val_lv_hd: 26.234248, val_myo_hd: 21.094412, val_rv_hd: 43.700553, 	val_lv_asd: 11.530139, val_myo_asd: 7.573006, val_rv_asd: 24.792089, 
+[08:45:07.816] domain4 epoch 2 : loss : 0.000000
+	val_lv_dice: 0.758824, val_myo_dice: 0.606160, val_rv_dice: 0.521267, 
+	val_lv_dc: 0.758480, val_myo_dc: 0.605856, val_rv_dc: 0.520005, 	val_lv_jc: 0.666674, val_myo_jc: 0.467560, val_rv_jc: 0.431767, 
+	val_lv_hd: 19.620006, val_myo_hd: 16.504381, val_rv_hd: 30.253673, 	val_lv_asd: 10.842557, val_myo_asd: 6.445317, val_rv_asd: 16.779733, 
+[08:45:07.819] epoch 2 : loss : 0.000000
+	val_lv_dice: 0.733809, val_myo_dice: 0.607149, val_rv_dice: 0.517556, 
+	val_lv_dc: 0.733436, val_myo_dc: 0.606878, val_rv_dc: 0.516642, 	val_lv_jc: 0.633405, val_myo_jc: 0.468084, val_rv_jc: 0.425804, 
+	val_lv_hd: 22.341631, val_myo_hd: 18.261644, val_rv_hd: 33.889954, 	val_lv_asd: 11.025839, val_myo_asd: 7.320907, val_rv_asd: 18.642517, 
+[08:45:07.820] save cur best avg SAM model to ../model/MNMS/train/MNMS_dm1_lb40_full/SAM_avg_dice_best_model.pth
+[08:45:07.958] stu_val_lv_best_dice: 0.733809 at 1000 iter, stu_val_myo_best_dice: 0.607149 at 1000 iter, stu_val_rv_best_dice: 0.517556 at 1000 iter, val_best_avg_dice: 0.619505 at 1000 iter, lv_dice: 0.733809, myo_dice: 0.607149, rv_dice: 0.517556
+[09:08:50.715] iteration 1500 : loss : 0.167680, sam_sup_loss : 0.094488, sam_unsup_loss : 0.426489, unet_sup_loss : 0.066000, unet_unsup_loss : 0.415935, cons_w : 0.008213, mask_ratio : 0.969259, sd:0.750120,0.615396,0.565443,ud:0.682634,0.516109,0.487647,d:0.760390,0.622937,0.578745,s_m_r:0.804863,0.534390,0.457309
+[09:08:50.715] sam_ulb_lv_dice:0.750120, sam_ulb_myo_dice:0.615396, sam_ulb_rv_dice:0.565443, unet_ulb_lv_dice:0.682634, unet_ulb_myo_dice:0.516109, unet_ulb_rv_dice:0.487647, ulb_lv_dice:0.760390, ulb_myo_dice:0.622937, ulb_rv_dice:0.578745
+[09:08:50.715] test unet model
+[09:10:01.248] domain1 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.796835, val_myo_dice: 0.664440, val_rv_dice: 0.548713, 
+	val_lv_dc: 0.796583, val_myo_dc: 0.664278, val_rv_dc: 0.548105, 	val_lv_jc: 0.722453, val_myo_jc: 0.529808, val_rv_jc: 0.461938, 
+	val_lv_hd: 26.225398, val_myo_hd: 28.559401, val_rv_hd: 38.006726, 	val_lv_asd: 13.523073, val_myo_asd: 11.315908, val_rv_asd: 26.132069, 
+[09:11:23.627] domain2 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.650292, val_myo_dice: 0.492376, val_rv_dice: 0.401209, 
+	val_lv_dc: 0.649050, val_myo_dc: 0.491776, val_rv_dc: 0.398552, 	val_lv_jc: 0.562084, val_myo_jc: 0.373833, val_rv_jc: 0.330341, 
+	val_lv_hd: 32.575238, val_myo_hd: 35.570530, val_rv_hd: 46.912234, 	val_lv_asd: 23.361322, val_myo_asd: 22.200549, val_rv_asd: 34.634553, 
+[09:11:56.056] domain3 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.584137, val_myo_dice: 0.367134, val_rv_dice: 0.244719, 
+	val_lv_dc: 0.583294, val_myo_dc: 0.366486, val_rv_dc: 0.242698, 	val_lv_jc: 0.485334, val_myo_jc: 0.262157, val_rv_jc: 0.190608, 
+	val_lv_hd: 46.573247, val_myo_hd: 54.480112, val_rv_hd: 66.010201, 	val_lv_asd: 28.642826, val_myo_asd: 30.701412, val_rv_asd: 55.762365, 
+[09:12:30.349] domain4 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.670944, val_myo_dice: 0.493904, val_rv_dice: 0.372491, 
+	val_lv_dc: 0.670180, val_myo_dc: 0.493232, val_rv_dc: 0.369759, 	val_lv_jc: 0.593099, val_myo_jc: 0.374226, val_rv_jc: 0.299585, 
+	val_lv_hd: 37.056670, val_myo_hd: 34.888155, val_rv_hd: 47.708710, 	val_lv_asd: 23.508357, val_myo_asd: 20.443175, val_rv_asd: 38.743913, 
+[09:12:30.351] epoch 3 : loss : 0.000000
+	val_lv_dice: 0.675552, val_myo_dice: 0.504464, val_rv_dice: 0.391783, 
+	val_lv_dc: 0.674777, val_myo_dc: 0.503943, val_rv_dc: 0.389779, 	val_lv_jc: 0.590743, val_myo_jc: 0.385006, val_rv_jc: 0.320618, 
+	val_lv_hd: 35.607638, val_myo_hd: 38.374549, val_rv_hd: 49.659468, 	val_lv_asd: 22.258894, val_myo_asd: 21.165261, val_rv_asd: 38.818225, 
+[09:12:30.352] save cur best avg unet model to ../model/MNMS/train/MNMS_dm1_lb40_full/unet_avg_dice_best_model.pth
+[09:12:30.791] val_lv_best_dice: 0.675552 at 1500 iter, val_myo_best_dice: 0.504464 at 1500 iter, val_rv_best_dice: 0.394213 at 1000 iter, val_best_avg_dice: 0.523933 at 1500 iter, lv_dice: 0.675552, myo_dice: 0.504464, rv_dice: 0.391783
+[09:12:30.791] test sam model
+[09:13:56.223] domain1 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.818933, val_myo_dice: 0.710746, val_rv_dice: 0.653247, 
+	val_lv_dc: 0.818777, val_myo_dc: 0.710616, val_rv_dc: 0.652883, 	val_lv_jc: 0.746297, val_myo_jc: 0.580686, val_rv_jc: 0.567492, 
+	val_lv_hd: 16.476054, val_myo_hd: 16.600076, val_rv_hd: 35.211150, 	val_lv_asd: 8.637420, val_myo_asd: 7.255174, val_rv_asd: 18.369205, 
+[09:15:37.394] domain2 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.664932, val_myo_dice: 0.550509, val_rv_dice: 0.499087, 
+	val_lv_dc: 0.664538, val_myo_dc: 0.550210, val_rv_dc: 0.497500, 	val_lv_jc: 0.553656, val_myo_jc: 0.412762, val_rv_jc: 0.405277, 
+	val_lv_hd: 28.776361, val_myo_hd: 24.500219, val_rv_hd: 34.493370, 	val_lv_asd: 13.551702, val_myo_asd: 10.123534, val_rv_asd: 18.685789, 
+[09:16:17.718] domain3 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.658397, val_myo_dice: 0.537926, val_rv_dice: 0.278172, 
+	val_lv_dc: 0.658035, val_myo_dc: 0.537623, val_rv_dc: 0.277014, 	val_lv_jc: 0.527050, val_myo_jc: 0.396706, val_rv_jc: 0.200649, 
+	val_lv_hd: 26.099231, val_myo_hd: 23.332739, val_rv_hd: 48.652067, 	val_lv_asd: 11.806159, val_myo_asd: 9.418996, val_rv_asd: 27.011364, 
+[09:17:00.025] domain4 epoch 3 : loss : 0.000000
+	val_lv_dice: 0.778453, val_myo_dice: 0.631695, val_rv_dice: 0.518480, 
+	val_lv_dc: 0.778211, val_myo_dc: 0.631440, val_rv_dc: 0.517159, 	val_lv_jc: 0.686732, val_myo_jc: 0.493390, val_rv_jc: 0.435708, 
+	val_lv_hd: 18.399618, val_myo_hd: 16.688446, val_rv_hd: 35.551108, 	val_lv_asd: 9.376483, val_myo_asd: 6.807363, val_rv_asd: 19.644337, 
+[09:17:00.027] epoch 3 : loss : 0.000000
+	val_lv_dice: 0.730179, val_myo_dice: 0.607719, val_rv_dice: 0.487247, 
+	val_lv_dc: 0.729891, val_myo_dc: 0.607472, val_rv_dc: 0.486139, 	val_lv_jc: 0.628434, val_myo_jc: 0.470886, val_rv_jc: 0.402281, 
+	val_lv_hd: 22.437816, val_myo_hd: 20.280370, val_rv_hd: 38.476924, 	val_lv_asd: 10.842941, val_myo_asd: 8.401267, val_rv_asd: 20.927673, 
+[09:17:00.028] stu_val_lv_best_dice: 0.733809 at 1000 iter, stu_val_myo_best_dice: 0.607719 at 1500 iter, stu_val_rv_best_dice: 0.517556 at 1000 iter, val_best_avg_dice: 0.619505 at 1000 iter, lv_dice: 0.733809, myo_dice: 0.607149, rv_dice: 0.517556
+[09:40:44.119] iteration 2000 : loss : 0.171391, sam_sup_loss : 0.083339, sam_unsup_loss : 0.464399, unet_sup_loss : 0.078753, unet_unsup_loss : 0.535235, cons_w : 0.009054, mask_ratio : 0.957444, sd:0.751288,0.626843,0.567930,ud:0.710004,0.554063,0.537407,d:0.764921,0.640301,0.592473,s_m_r:0.812671,0.565239,0.488657
+[09:40:44.120] sam_ulb_lv_dice:0.751288, sam_ulb_myo_dice:0.626843, sam_ulb_rv_dice:0.567930, unet_ulb_lv_dice:0.710004, unet_ulb_myo_dice:0.554063, unet_ulb_rv_dice:0.537407, ulb_lv_dice:0.764921, ulb_myo_dice:0.640301, ulb_rv_dice:0.592473
+[09:40:44.120] test unet model
+[09:41:53.957] domain1 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.760477, val_myo_dice: 0.627579, val_rv_dice: 0.569548, 
+	val_lv_dc: 0.759982, val_myo_dc: 0.627306, val_rv_dc: 0.569020, 	val_lv_jc: 0.702245, val_myo_jc: 0.518115, val_rv_jc: 0.483819, 
+	val_lv_hd: 22.340338, val_myo_hd: 23.639907, val_rv_hd: 40.700606, 	val_lv_asd: 16.513780, val_myo_asd: 15.436461, val_rv_asd: 25.947643, 
+[09:43:16.156] domain2 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.635309, val_myo_dice: 0.474611, val_rv_dice: 0.532413, 
+	val_lv_dc: 0.633723, val_myo_dc: 0.473844, val_rv_dc: 0.531141, 	val_lv_jc: 0.563258, val_myo_jc: 0.369730, val_rv_jc: 0.437636, 
+	val_lv_hd: 28.639005, val_myo_hd: 32.028736, val_rv_hd: 44.410261, 	val_lv_asd: 24.625050, val_myo_asd: 24.595072, val_rv_asd: 28.113988, 
+[09:43:48.215] domain3 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.472929, val_myo_dice: 0.313911, val_rv_dice: 0.287981, 
+	val_lv_dc: 0.471672, val_myo_dc: 0.312868, val_rv_dc: 0.286169, 	val_lv_jc: 0.404414, val_myo_jc: 0.236026, val_rv_jc: 0.218252, 
+	val_lv_hd: 48.789898, val_myo_hd: 56.960166, val_rv_hd: 63.601288, 	val_lv_asd: 39.399064, val_myo_asd: 40.657196, val_rv_asd: 49.696070, 
+[09:44:22.437] domain4 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.606864, val_myo_dice: 0.431228, val_rv_dice: 0.460549, 
+	val_lv_dc: 0.605872, val_myo_dc: 0.430329, val_rv_dc: 0.458579, 	val_lv_jc: 0.538396, val_myo_jc: 0.329547, val_rv_jc: 0.378873, 
+	val_lv_hd: 29.181575, val_myo_hd: 34.063095, val_rv_hd: 44.352103, 	val_lv_asd: 25.733999, val_myo_asd: 27.301722, val_rv_asd: 34.536067, 
+[09:44:22.440] epoch 4 : loss : 0.000000
+	val_lv_dice: 0.618895, val_myo_dice: 0.461832, val_rv_dice: 0.462623, 
+	val_lv_dc: 0.617812, val_myo_dc: 0.461087, val_rv_dc: 0.461227, 	val_lv_jc: 0.552078, val_myo_jc: 0.363354, val_rv_jc: 0.379645, 
+	val_lv_hd: 32.237704, val_myo_hd: 36.672976, val_rv_hd: 48.266064, 	val_lv_asd: 26.567973, val_myo_asd: 26.997613, val_rv_asd: 34.573442, 
+[09:44:22.440] val_lv_best_dice: 0.675552 at 1500 iter, val_myo_best_dice: 0.504464 at 1500 iter, val_rv_best_dice: 0.462623 at 2000 iter, val_best_avg_dice: 0.523933 at 1500 iter, lv_dice: 0.675552, myo_dice: 0.504464, rv_dice: 0.391783
+[09:44:22.440] test sam model
+[09:45:47.762] domain1 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.824314, val_myo_dice: 0.707376, val_rv_dice: 0.665699, 
+	val_lv_dc: 0.824106, val_myo_dc: 0.707234, val_rv_dc: 0.665311, 	val_lv_jc: 0.758700, val_myo_jc: 0.580197, val_rv_jc: 0.582160, 
+	val_lv_hd: 13.992507, val_myo_hd: 15.423558, val_rv_hd: 31.482651, 	val_lv_asd: 8.261345, val_myo_asd: 7.095035, val_rv_asd: 17.216980, 
+[09:47:28.855] domain2 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.693642, val_myo_dice: 0.596760, val_rv_dice: 0.533751, 
+	val_lv_dc: 0.693201, val_myo_dc: 0.596461, val_rv_dc: 0.532103, 	val_lv_jc: 0.591663, val_myo_jc: 0.460675, val_rv_jc: 0.441271, 
+	val_lv_hd: 25.149428, val_myo_hd: 20.808743, val_rv_hd: 27.790163, 	val_lv_asd: 12.966993, val_myo_asd: 9.480532, val_rv_asd: 15.878009, 
+[09:48:08.923] domain3 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.686437, val_myo_dice: 0.567318, val_rv_dice: 0.325781, 
+	val_lv_dc: 0.685893, val_myo_dc: 0.566966, val_rv_dc: 0.324556, 	val_lv_jc: 0.560755, val_myo_jc: 0.425082, val_rv_jc: 0.245189, 
+	val_lv_hd: 23.802015, val_myo_hd: 20.428051, val_rv_hd: 43.946612, 	val_lv_asd: 11.227490, val_myo_asd: 8.719437, val_rv_asd: 25.063396, 
+[09:48:53.525] domain4 epoch 4 : loss : 0.000000
+	val_lv_dice: 0.785900, val_myo_dice: 0.660484, val_rv_dice: 0.528050, 
+	val_lv_dc: 0.785571, val_myo_dc: 0.660220, val_rv_dc: 0.526692, 	val_lv_jc: 0.700571, val_myo_jc: 0.523610, val_rv_jc: 0.444079, 
+	val_lv_hd: 17.116261, val_myo_hd: 14.974272, val_rv_hd: 34.854490, 	val_lv_asd: 9.342076, val_myo_asd: 6.609510, val_rv_asd: 21.705371, 
+[09:48:53.528] epoch 4 : loss : 0.000000
+	val_lv_dice: 0.747573, val_myo_dice: 0.632985, val_rv_dice: 0.513320, 
+	val_lv_dc: 0.747193, val_myo_dc: 0.632720, val_rv_dc: 0.512166, 	val_lv_jc: 0.652922, val_myo_jc: 0.497391, val_rv_jc: 0.428175, 
+	val_lv_hd: 20.015053, val_myo_hd: 17.908656, val_rv_hd: 34.518479, 	val_lv_asd: 10.449476, val_myo_asd: 7.976128, val_rv_asd: 19.965939, 
+[09:48:53.529] save cur best avg SAM model to ../model/MNMS/train/MNMS_dm1_lb40_full/SAM_avg_dice_best_model.pth
+[09:48:53.682] stu_val_lv_best_dice: 0.747573 at 2000 iter, stu_val_myo_best_dice: 0.632985 at 2000 iter, stu_val_rv_best_dice: 0.517556 at 1000 iter, val_best_avg_dice: 0.631293 at 2000 iter, lv_dice: 0.747573, myo_dice: 0.632985, rv_dice: 0.513320
+[10:12:33.667] iteration 2500 : loss : 0.135711, sam_sup_loss : 0.070200, sam_unsup_loss : 0.121611, unet_sup_loss : 0.062428, unet_unsup_loss : 0.174943, cons_w : 0.009972, mask_ratio : 0.972985, sd:0.758676,0.638652,0.588967,ud:0.732577,0.578351,0.573076,d:0.772674,0.646301,0.617845,s_m_r:0.846962,0.592049,0.527668
+[10:12:33.667] sam_ulb_lv_dice:0.758676, sam_ulb_myo_dice:0.638652, sam_ulb_rv_dice:0.588967, unet_ulb_lv_dice:0.732577, unet_ulb_myo_dice:0.578351, unet_ulb_rv_dice:0.573076, ulb_lv_dice:0.772674, ulb_myo_dice:0.646301, ulb_rv_dice:0.617845
+[10:12:33.667] test unet model
+[10:13:44.114] domain1 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.798455, val_myo_dice: 0.685849, val_rv_dice: 0.628690, 
+	val_lv_dc: 0.798121, val_myo_dc: 0.685659, val_rv_dc: 0.628198, 	val_lv_jc: 0.736276, val_myo_jc: 0.567005, val_rv_jc: 0.540338, 
+	val_lv_hd: 17.867510, val_myo_hd: 19.773864, val_rv_hd: 30.698626, 	val_lv_asd: 12.209565, val_myo_asd: 10.546505, val_rv_asd: 19.329031, 
+[10:15:06.869] domain2 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.668072, val_myo_dice: 0.519704, val_rv_dice: 0.555340, 
+	val_lv_dc: 0.666509, val_myo_dc: 0.519012, val_rv_dc: 0.553995, 	val_lv_jc: 0.594219, val_myo_jc: 0.406001, val_rv_jc: 0.463402, 
+	val_lv_hd: 24.324570, val_myo_hd: 25.707636, val_rv_hd: 35.273420, 	val_lv_asd: 20.827017, val_myo_asd: 18.460589, val_rv_asd: 20.439960, 
+[10:15:39.568] domain3 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.577115, val_myo_dice: 0.373291, val_rv_dice: 0.394579, 
+	val_lv_dc: 0.575982, val_myo_dc: 0.372400, val_rv_dc: 0.393204, 	val_lv_jc: 0.497644, val_myo_jc: 0.277422, val_rv_jc: 0.318103, 
+	val_lv_hd: 40.741403, val_myo_hd: 55.148829, val_rv_hd: 50.468747, 	val_lv_asd: 29.779740, val_myo_asd: 33.880631, val_rv_asd: 35.061884, 
+[10:16:13.706] domain4 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.620503, val_myo_dice: 0.426170, val_rv_dice: 0.447153, 
+	val_lv_dc: 0.619536, val_myo_dc: 0.425290, val_rv_dc: 0.445396, 	val_lv_jc: 0.547498, val_myo_jc: 0.321660, val_rv_jc: 0.365526, 
+	val_lv_hd: 33.011678, val_myo_hd: 36.379836, val_rv_hd: 41.367172, 	val_lv_asd: 26.535790, val_myo_asd: 27.589417, val_rv_asd: 31.962661, 
+[10:16:13.709] epoch 5 : loss : 0.000000
+	val_lv_dice: 0.666037, val_myo_dice: 0.501253, val_rv_dice: 0.506441, 
+	val_lv_dc: 0.665037, val_myo_dc: 0.500590, val_rv_dc: 0.505198, 	val_lv_jc: 0.593909, val_myo_jc: 0.393022, val_rv_jc: 0.421842, 
+	val_lv_hd: 28.986290, val_myo_hd: 34.252541, val_rv_hd: 39.451991, 	val_lv_asd: 22.338028, val_myo_asd: 22.619286, val_rv_asd: 26.698384, 
+[10:16:13.710] save cur best avg unet model to ../model/MNMS/train/MNMS_dm1_lb40_full/unet_avg_dice_best_model.pth
+[10:16:13.920] val_lv_best_dice: 0.675552 at 1500 iter, val_myo_best_dice: 0.504464 at 1500 iter, val_rv_best_dice: 0.506441 at 2500 iter, val_best_avg_dice: 0.557910 at 2500 iter, lv_dice: 0.666037, myo_dice: 0.501253, rv_dice: 0.506441
+[10:16:13.921] test sam model
+[10:17:38.877] domain1 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.830885, val_myo_dice: 0.708761, val_rv_dice: 0.694857, 
+	val_lv_dc: 0.830692, val_myo_dc: 0.708613, val_rv_dc: 0.694497, 	val_lv_jc: 0.766638, val_myo_jc: 0.581303, val_rv_jc: 0.610955, 
+	val_lv_hd: 12.720679, val_myo_hd: 14.332531, val_rv_hd: 27.692401, 	val_lv_asd: 6.933639, val_myo_asd: 6.344912, val_rv_asd: 14.567764, 
+[10:19:24.169] domain2 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.703354, val_myo_dice: 0.589958, val_rv_dice: 0.589107, 
+	val_lv_dc: 0.702941, val_myo_dc: 0.589644, val_rv_dc: 0.587602, 	val_lv_jc: 0.602224, val_myo_jc: 0.453083, val_rv_jc: 0.494738, 
+	val_lv_hd: 23.049476, val_myo_hd: 19.058127, val_rv_hd: 25.908106, 	val_lv_asd: 11.967645, val_myo_asd: 8.584603, val_rv_asd: 14.827860, 
+[10:20:10.077] domain3 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.704878, val_myo_dice: 0.568706, val_rv_dice: 0.420055, 
+	val_lv_dc: 0.704334, val_myo_dc: 0.568327, val_rv_dc: 0.419020, 	val_lv_jc: 0.584265, val_myo_jc: 0.426783, val_rv_jc: 0.327455, 
+	val_lv_hd: 21.192447, val_myo_hd: 18.717306, val_rv_hd: 38.181398, 	val_lv_asd: 10.179889, val_myo_asd: 7.938387, val_rv_asd: 20.814644, 
+[10:20:57.934] domain4 epoch 5 : loss : 0.000000
+	val_lv_dice: 0.795501, val_myo_dice: 0.665139, val_rv_dice: 0.568302, 
+	val_lv_dc: 0.795194, val_myo_dc: 0.664872, val_rv_dc: 0.566972, 	val_lv_jc: 0.711862, val_myo_jc: 0.529366, val_rv_jc: 0.482177, 
+	val_lv_hd: 15.777196, val_myo_hd: 14.305136, val_rv_hd: 29.812727, 	val_lv_asd: 8.194953, val_myo_asd: 5.987420, val_rv_asd: 17.014728, 
+[10:20:57.935] epoch 5 : loss : 0.000000
+	val_lv_dice: 0.758654, val_myo_dice: 0.633141, val_rv_dice: 0.568080, 
+	val_lv_dc: 0.758290, val_myo_dc: 0.632864, val_rv_dc: 0.567023, 	val_lv_jc: 0.666247, val_myo_jc: 0.497634, val_rv_jc: 0.478831, 
+	val_lv_hd: 18.184949, val_myo_hd: 16.603275, val_rv_hd: 30.398658, 	val_lv_asd: 9.319031, val_myo_asd: 7.213831, val_rv_asd: 16.806249, 
+[10:20:57.936] save cur best avg SAM model to ../model/MNMS/train/MNMS_dm1_lb40_full/SAM_avg_dice_best_model.pth
+[10:20:57.991] stu_val_lv_best_dice: 0.758654 at 2500 iter, stu_val_myo_best_dice: 0.633141 at 2500 iter, stu_val_rv_best_dice: 0.568080 at 2500 iter, val_best_avg_dice: 0.653292 at 2500 iter, lv_dice: 0.758654, myo_dice: 0.633141, rv_dice: 0.568080
+[10:44:36.502] iteration 3000 : loss : 0.124554, sam_sup_loss : 0.069212, sam_unsup_loss : 0.382523, unet_sup_loss : 0.048195, unet_unsup_loss : 0.286361, cons_w : 0.010461, mask_ratio : 0.960347, sd:0.763159,0.643344,0.609294,ud:0.741928,0.595830,0.599054,d:0.776976,0.653037,0.630478,s_m_r:0.866960,0.613558,0.555490
+[10:44:36.502] sam_ulb_lv_dice:0.763159, sam_ulb_myo_dice:0.643344, sam_ulb_rv_dice:0.609294, unet_ulb_lv_dice:0.741928, unet_ulb_myo_dice:0.595830, unet_ulb_rv_dice:0.599054, ulb_lv_dice:0.776976, ulb_myo_dice:0.653037, ulb_rv_dice:0.630478
+[10:44:36.503] test unet model
+[10:45:46.682] domain1 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.814539, val_myo_dice: 0.679098, val_rv_dice: 0.598351, 
+	val_lv_dc: 0.814272, val_myo_dc: 0.678895, val_rv_dc: 0.597712, 	val_lv_jc: 0.751152, val_myo_jc: 0.555793, val_rv_jc: 0.514821, 
+	val_lv_hd: 18.750096, val_myo_hd: 20.735925, val_rv_hd: 32.700894, 	val_lv_asd: 11.587242, val_myo_asd: 11.488747, val_rv_asd: 24.167635, 
+[10:47:09.805] domain2 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.696120, val_myo_dice: 0.562331, val_rv_dice: 0.593766, 
+	val_lv_dc: 0.694961, val_myo_dc: 0.561763, val_rv_dc: 0.592382, 	val_lv_jc: 0.615420, val_myo_jc: 0.439959, val_rv_jc: 0.510166, 
+	val_lv_hd: 26.653664, val_myo_hd: 23.665869, val_rv_hd: 32.035147, 	val_lv_asd: 18.649156, val_myo_asd: 15.933169, val_rv_asd: 19.848531, 
+[10:47:42.651] domain3 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.639498, val_myo_dice: 0.416031, val_rv_dice: 0.410584, 
+	val_lv_dc: 0.638537, val_myo_dc: 0.415241, val_rv_dc: 0.409054, 	val_lv_jc: 0.554381, val_myo_jc: 0.312932, val_rv_jc: 0.336157, 
+	val_lv_hd: 43.634698, val_myo_hd: 47.507056, val_rv_hd: 45.610257, 	val_lv_asd: 28.591935, val_myo_asd: 29.276643, val_rv_asd: 32.841600, 
+[10:48:17.247] domain4 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.711924, val_myo_dice: 0.542726, val_rv_dice: 0.494329, 
+	val_lv_dc: 0.711273, val_myo_dc: 0.542050, val_rv_dc: 0.492578, 	val_lv_jc: 0.629493, val_myo_jc: 0.423194, val_rv_jc: 0.416234, 
+	val_lv_hd: 29.460633, val_myo_hd: 23.172445, val_rv_hd: 41.561104, 	val_lv_asd: 19.502432, val_myo_asd: 16.211373, val_rv_asd: 30.072264, 
+[10:48:17.250] epoch 6 : loss : 0.000000
+	val_lv_dice: 0.715520, val_myo_dice: 0.550047, val_rv_dice: 0.524257, 
+	val_lv_dc: 0.714761, val_myo_dc: 0.549487, val_rv_dc: 0.522931, 	val_lv_jc: 0.637612, val_myo_jc: 0.432970, val_rv_jc: 0.444344, 
+	val_lv_hd: 29.624773, val_myo_hd: 28.770324, val_rv_hd: 37.976850, 	val_lv_asd: 19.582691, val_myo_asd: 18.227483, val_rv_asd: 26.732507, 
+[10:48:17.250] save cur best avg unet model to ../model/MNMS/train/MNMS_dm1_lb40_full/unet_avg_dice_best_model.pth
+[10:48:17.715] val_lv_best_dice: 0.715520 at 3000 iter, val_myo_best_dice: 0.550047 at 3000 iter, val_rv_best_dice: 0.524257 at 3000 iter, val_best_avg_dice: 0.596608 at 3000 iter, lv_dice: 0.715520, myo_dice: 0.550047, rv_dice: 0.524257
+[10:48:17.715] test sam model
+[10:49:45.629] domain1 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.833892, val_myo_dice: 0.703759, val_rv_dice: 0.672784, 
+	val_lv_dc: 0.833731, val_myo_dc: 0.703605, val_rv_dc: 0.672274, 	val_lv_jc: 0.768118, val_myo_jc: 0.574736, val_rv_jc: 0.591835, 
+	val_lv_hd: 11.848425, val_myo_hd: 13.513012, val_rv_hd: 23.461598, 	val_lv_asd: 6.486428, val_myo_asd: 6.275413, val_rv_asd: 13.968327, 
+[10:51:40.807] domain2 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.703148, val_myo_dice: 0.616044, val_rv_dice: 0.566355, 
+	val_lv_dc: 0.702730, val_myo_dc: 0.615723, val_rv_dc: 0.563913, 	val_lv_jc: 0.601968, val_myo_jc: 0.480080, val_rv_jc: 0.473017, 
+	val_lv_hd: 22.816983, val_myo_hd: 17.789572, val_rv_hd: 25.490056, 	val_lv_asd: 11.863074, val_myo_asd: 8.599892, val_rv_asd: 16.129857, 
+[10:52:22.598] domain3 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.704158, val_myo_dice: 0.583813, val_rv_dice: 0.381877, 
+	val_lv_dc: 0.703603, val_myo_dc: 0.583402, val_rv_dc: 0.380568, 	val_lv_jc: 0.582632, val_myo_jc: 0.442151, val_rv_jc: 0.295053, 
+	val_lv_hd: 21.241559, val_myo_hd: 16.564582, val_rv_hd: 41.024799, 	val_lv_asd: 9.988048, val_myo_asd: 7.320234, val_rv_asd: 24.128527, 
+[10:53:04.888] domain4 epoch 6 : loss : 0.000000
+	val_lv_dice: 0.805453, val_myo_dice: 0.673114, val_rv_dice: 0.540146, 
+	val_lv_dc: 0.805195, val_myo_dc: 0.672831, val_rv_dc: 0.538439, 	val_lv_jc: 0.718432, val_myo_jc: 0.534012, val_rv_jc: 0.458918, 
+	val_lv_hd: 15.203633, val_myo_hd: 12.984488, val_rv_hd: 28.764740, 	val_lv_asd: 8.071395, val_myo_asd: 5.659661, val_rv_asd: 19.274391, 
+[10:53:04.892] epoch 6 : loss : 0.000000
+	val_lv_dice: 0.761663, val_myo_dice: 0.644183, val_rv_dice: 0.540291, 
+	val_lv_dc: 0.761315, val_myo_dc: 0.643890, val_rv_dc: 0.538798, 	val_lv_jc: 0.667787, val_myo_jc: 0.507745, val_rv_jc: 0.454706, 
+	val_lv_hd: 17.777650, val_myo_hd: 15.212914, val_rv_hd: 29.685298, 	val_lv_asd: 9.102236, val_myo_asd: 6.963800, val_rv_asd: 18.375275, 
+[10:53:04.892] stu_val_lv_best_dice: 0.761663 at 3000 iter, stu_val_myo_best_dice: 0.644183 at 3000 iter, stu_val_rv_best_dice: 0.568080 at 2500 iter, val_best_avg_dice: 0.653292 at 2500 iter, lv_dice: 0.758654, myo_dice: 0.633141, rv_dice: 0.568080
+[11:16:46.185] iteration 3500 : loss : 0.132380, sam_sup_loss : 0.072996, sam_unsup_loss : 0.383273, unet_sup_loss : 0.052959, unet_unsup_loss : 0.159875, cons_w : 0.011503, mask_ratio : 0.984116, sd:0.771391,0.653443,0.605176,ud:0.756937,0.617390,0.621014,d:0.788630,0.663450,0.640292,s_m_r:0.865179,0.624857,0.564437
+[11:16:46.186] sam_ulb_lv_dice:0.771391, sam_ulb_myo_dice:0.653443, sam_ulb_rv_dice:0.605176, unet_ulb_lv_dice:0.756937, unet_ulb_myo_dice:0.617390, unet_ulb_rv_dice:0.621014, ulb_lv_dice:0.788630, ulb_myo_dice:0.663450, ulb_rv_dice:0.640292
+[11:16:46.186] test unet model
+[11:17:56.436] domain1 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.794658, val_myo_dice: 0.668285, val_rv_dice: 0.635618, 
+	val_lv_dc: 0.794295, val_myo_dc: 0.668072, val_rv_dc: 0.635113, 	val_lv_jc: 0.733110, val_myo_jc: 0.551256, val_rv_jc: 0.551345, 
+	val_lv_hd: 19.702641, val_myo_hd: 25.054192, val_rv_hd: 33.240097, 	val_lv_asd: 12.261217, val_myo_asd: 12.014197, val_rv_asd: 19.411427, 
+[11:19:19.568] domain2 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.687192, val_myo_dice: 0.545340, val_rv_dice: 0.588946, 
+	val_lv_dc: 0.685939, val_myo_dc: 0.544744, val_rv_dc: 0.587083, 	val_lv_jc: 0.618210, val_myo_jc: 0.430789, val_rv_jc: 0.500708, 
+	val_lv_hd: 27.292776, val_myo_hd: 25.343600, val_rv_hd: 34.554748, 	val_lv_asd: 20.836294, val_myo_asd: 16.018437, val_rv_asd: 20.630669, 
+[11:19:52.233] domain3 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.625416, val_myo_dice: 0.385367, val_rv_dice: 0.401314, 
+	val_lv_dc: 0.624320, val_myo_dc: 0.384499, val_rv_dc: 0.399671, 	val_lv_jc: 0.546894, val_myo_jc: 0.285803, val_rv_jc: 0.331209, 
+	val_lv_hd: 41.358591, val_myo_hd: 54.890756, val_rv_hd: 52.086600, 	val_lv_asd: 27.162465, val_myo_asd: 31.855059, val_rv_asd: 39.137341, 
+[11:20:31.968] domain4 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.673313, val_myo_dice: 0.467575, val_rv_dice: 0.482815, 
+	val_lv_dc: 0.672559, val_myo_dc: 0.466813, val_rv_dc: 0.480915, 	val_lv_jc: 0.594720, val_myo_jc: 0.354893, val_rv_jc: 0.407159, 
+	val_lv_hd: 31.500445, val_myo_hd: 33.265688, val_rv_hd: 36.251587, 	val_lv_asd: 23.239389, val_myo_asd: 22.915151, val_rv_asd: 28.942611, 
+[11:20:31.972] epoch 7 : loss : 0.000000
+	val_lv_dice: 0.695145, val_myo_dice: 0.516642, val_rv_dice: 0.527173, 
+	val_lv_dc: 0.694278, val_myo_dc: 0.516032, val_rv_dc: 0.525696, 	val_lv_jc: 0.623233, val_myo_jc: 0.405685, val_rv_jc: 0.447605, 
+	val_lv_hd: 29.963613, val_myo_hd: 34.638559, val_rv_hd: 39.033258, 	val_lv_asd: 20.874841, val_myo_asd: 20.700711, val_rv_asd: 27.030512, 
+[11:20:31.973] val_lv_best_dice: 0.715520 at 3000 iter, val_myo_best_dice: 0.550047 at 3000 iter, val_rv_best_dice: 0.527173 at 3500 iter, val_best_avg_dice: 0.596608 at 3000 iter, lv_dice: 0.715520, myo_dice: 0.550047, rv_dice: 0.524257
+[11:20:31.973] test sam model
+[11:22:08.818] domain1 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.834474, val_myo_dice: 0.709646, val_rv_dice: 0.693391, 
+	val_lv_dc: 0.834335, val_myo_dc: 0.709503, val_rv_dc: 0.692947, 	val_lv_jc: 0.765742, val_myo_jc: 0.581708, val_rv_jc: 0.607064, 
+	val_lv_hd: 13.637664, val_myo_hd: 15.611386, val_rv_hd: 21.361532, 	val_lv_asd: 6.920308, val_myo_asd: 6.961555, val_rv_asd: 11.483288, 
+[11:23:52.799] domain2 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.697123, val_myo_dice: 0.615612, val_rv_dice: 0.569052, 
+	val_lv_dc: 0.696743, val_myo_dc: 0.615303, val_rv_dc: 0.565871, 	val_lv_jc: 0.592392, val_myo_jc: 0.480018, val_rv_jc: 0.471741, 
+	val_lv_hd: 24.000772, val_myo_hd: 17.556128, val_rv_hd: 24.931233, 	val_lv_asd: 11.545829, val_myo_asd: 8.237885, val_rv_asd: 14.471146, 
+[11:24:33.006] domain3 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.701881, val_myo_dice: 0.591262, val_rv_dice: 0.406398, 
+	val_lv_dc: 0.701342, val_myo_dc: 0.590873, val_rv_dc: 0.405495, 	val_lv_jc: 0.579845, val_myo_jc: 0.451545, val_rv_jc: 0.310906, 
+	val_lv_hd: 22.279519, val_myo_hd: 16.859746, val_rv_hd: 37.654375, 	val_lv_asd: 10.795167, val_myo_asd: 7.004522, val_rv_asd: 19.494947, 
+[11:25:15.171] domain4 epoch 7 : loss : 0.000000
+	val_lv_dice: 0.798709, val_myo_dice: 0.670832, val_rv_dice: 0.567930, 
+	val_lv_dc: 0.798493, val_myo_dc: 0.670562, val_rv_dc: 0.566498, 	val_lv_jc: 0.710632, val_myo_jc: 0.533259, val_rv_jc: 0.484100, 
+	val_lv_hd: 16.723330, val_myo_hd: 13.684093, val_rv_hd: 27.841209, 	val_lv_asd: 8.392837, val_myo_asd: 5.864020, val_rv_asd: 17.170969, 
+[11:25:15.173] epoch 7 : loss : 0.000000
+	val_lv_dice: 0.758047, val_myo_dice: 0.646838, val_rv_dice: 0.559193, 
+	val_lv_dc: 0.757728, val_myo_dc: 0.646560, val_rv_dc: 0.557703, 	val_lv_jc: 0.662153, val_myo_jc: 0.511632, val_rv_jc: 0.468453, 
+	val_lv_hd: 19.160321, val_myo_hd: 15.927838, val_rv_hd: 27.947087, 	val_lv_asd: 9.413535, val_myo_asd: 7.016995, val_rv_asd: 15.655087, 
+[11:25:15.174] save cur best avg SAM model to ../model/MNMS/train/MNMS_dm1_lb40_full/SAM_avg_dice_best_model.pth
+[11:25:15.265] stu_val_lv_best_dice: 0.761663 at 3000 iter, stu_val_myo_best_dice: 0.646838 at 3500 iter, stu_val_rv_best_dice: 0.568080 at 2500 iter, val_best_avg_dice: 0.654693 at 3500 iter, lv_dice: 0.758047, myo_dice: 0.646838, rv_dice: 0.559193
+[11:48:53.949] iteration 4000 : loss : 0.109465, sam_sup_loss : 0.059402, sam_unsup_loss : 0.190326, unet_sup_loss : 0.045282, unet_unsup_loss : 0.176930, cons_w : 0.012637, mask_ratio : 0.972692, sd:0.781350,0.660260,0.627960,ud:0.760133,0.621808,0.638437,d:0.792816,0.664987,0.656030,s_m_r:0.879242,0.641358,0.585655
+[11:48:53.949] sam_ulb_lv_dice:0.781350, sam_ulb_myo_dice:0.660260, sam_ulb_rv_dice:0.627960, unet_ulb_lv_dice:0.760133, unet_ulb_myo_dice:0.621808, unet_ulb_rv_dice:0.638437, ulb_lv_dice:0.792816, ulb_myo_dice:0.664987, ulb_rv_dice:0.656030
+[11:48:53.949] test unet model
+[11:50:04.567] domain1 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.831523, val_myo_dice: 0.707216, val_rv_dice: 0.683329, 
+	val_lv_dc: 0.831306, val_myo_dc: 0.707075, val_rv_dc: 0.682848, 	val_lv_jc: 0.761605, val_myo_jc: 0.577877, val_rv_jc: 0.589907, 
+	val_lv_hd: 20.326031, val_myo_hd: 28.419381, val_rv_hd: 24.565406, 	val_lv_asd: 10.372336, val_myo_asd: 10.430688, val_rv_asd: 14.389517, 
+[11:51:37.004] domain2 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.724546, val_myo_dice: 0.576482, val_rv_dice: 0.629814, 
+	val_lv_dc: 0.723449, val_myo_dc: 0.575911, val_rv_dc: 0.628618, 	val_lv_jc: 0.648638, val_myo_jc: 0.453518, val_rv_jc: 0.539792, 
+	val_lv_hd: 21.005201, val_myo_hd: 24.708170, val_rv_hd: 27.895519, 	val_lv_asd: 16.164527, val_myo_asd: 15.681243, val_rv_asd: 16.929316, 
+[11:52:15.928] domain3 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.702079, val_myo_dice: 0.465800, val_rv_dice: 0.509085, 
+	val_lv_dc: 0.701208, val_myo_dc: 0.465118, val_rv_dc: 0.507830, 	val_lv_jc: 0.617476, val_myo_jc: 0.345005, val_rv_jc: 0.413412, 
+	val_lv_hd: 35.159246, val_myo_hd: 49.582487, val_rv_hd: 39.732583, 	val_lv_asd: 21.141194, val_myo_asd: 23.522134, val_rv_asd: 27.276156, 
+[11:52:55.801] domain4 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.706112, val_myo_dice: 0.542665, val_rv_dice: 0.520860, 
+	val_lv_dc: 0.705302, val_myo_dc: 0.541994, val_rv_dc: 0.519064, 	val_lv_jc: 0.639661, val_myo_jc: 0.425364, val_rv_jc: 0.435013, 
+	val_lv_hd: 27.087061, val_myo_hd: 28.534033, val_rv_hd: 39.502362, 	val_lv_asd: 21.914535, val_myo_asd: 19.168785, val_rv_asd: 26.103802, 
+[11:52:55.803] epoch 8 : loss : 0.000000
+	val_lv_dice: 0.741065, val_myo_dice: 0.573041, val_rv_dice: 0.585772, 
+	val_lv_dc: 0.740316, val_myo_dc: 0.572524, val_rv_dc: 0.584590, 	val_lv_jc: 0.666845, val_myo_jc: 0.450441, val_rv_jc: 0.494531, 
+	val_lv_hd: 25.894385, val_myo_hd: 32.811018, val_rv_hd: 32.923968, 	val_lv_asd: 17.398148, val_myo_asd: 17.200712, val_rv_asd: 21.174698, 
+[11:52:55.803] save cur best avg unet model to ../model/MNMS/train/MNMS_dm1_lb40_full/unet_avg_dice_best_model.pth
+[11:52:56.230] val_lv_best_dice: 0.741065 at 4000 iter, val_myo_best_dice: 0.573041 at 4000 iter, val_rv_best_dice: 0.585772 at 4000 iter, val_best_avg_dice: 0.633293 at 4000 iter, lv_dice: 0.741065, myo_dice: 0.573041, rv_dice: 0.585772
+[11:52:56.230] test sam model
+[11:54:25.661] domain1 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.842918, val_myo_dice: 0.714438, val_rv_dice: 0.722892, 
+	val_lv_dc: 0.842802, val_myo_dc: 0.714294, val_rv_dc: 0.722495, 	val_lv_jc: 0.774747, val_myo_jc: 0.586249, val_rv_jc: 0.637182, 
+	val_lv_hd: 12.163966, val_myo_hd: 14.174667, val_rv_hd: 19.837291, 	val_lv_asd: 6.294519, val_myo_asd: 6.124959, val_rv_asd: 10.853203, 
+[11:56:06.784] domain2 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.706414, val_myo_dice: 0.606813, val_rv_dice: 0.610999, 
+	val_lv_dc: 0.706087, val_myo_dc: 0.606487, val_rv_dc: 0.607945, 	val_lv_jc: 0.602111, val_myo_jc: 0.469073, val_rv_jc: 0.513761, 
+	val_lv_hd: 22.525522, val_myo_hd: 16.687246, val_rv_hd: 24.900592, 	val_lv_asd: 11.130732, val_myo_asd: 7.755888, val_rv_asd: 14.057909, 
+[11:56:47.211] domain3 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.722061, val_myo_dice: 0.593826, val_rv_dice: 0.470909, 
+	val_lv_dc: 0.721548, val_myo_dc: 0.593412, val_rv_dc: 0.470096, 	val_lv_jc: 0.606915, val_myo_jc: 0.454616, val_rv_jc: 0.373364, 
+	val_lv_hd: 20.252787, val_myo_hd: 15.315784, val_rv_hd: 35.889564, 	val_lv_asd: 9.754675, val_myo_asd: 6.171355, val_rv_asd: 17.969126, 
+[11:57:29.466] domain4 epoch 8 : loss : 0.000000
+	val_lv_dice: 0.811391, val_myo_dice: 0.671905, val_rv_dice: 0.619016, 
+	val_lv_dc: 0.811195, val_myo_dc: 0.671620, val_rv_dc: 0.617913, 	val_lv_jc: 0.724657, val_myo_jc: 0.535486, val_rv_jc: 0.529759, 
+	val_lv_hd: 15.416104, val_myo_hd: 12.114624, val_rv_hd: 23.872725, 	val_lv_asd: 7.650270, val_myo_asd: 5.067509, val_rv_asd: 14.042101, 
+[11:57:29.468] epoch 8 : loss : 0.000000
+	val_lv_dice: 0.770696, val_myo_dice: 0.646746, val_rv_dice: 0.605954, 
+	val_lv_dc: 0.770408, val_myo_dc: 0.646453, val_rv_dc: 0.604612, 	val_lv_jc: 0.677107, val_myo_jc: 0.511356, val_rv_jc: 0.513517, 
+	val_lv_hd: 17.589595, val_myo_hd: 14.573080, val_rv_hd: 26.125043, 	val_lv_asd: 8.707549, val_myo_asd: 6.279928, val_rv_asd: 14.230585, 
+[11:57:29.469] save cur best avg SAM model to ../model/MNMS/train/MNMS_dm1_lb40_full/SAM_avg_dice_best_model.pth
+[11:57:29.546] stu_val_lv_best_dice: 0.770696 at 4000 iter, stu_val_myo_best_dice: 0.646838 at 3500 iter, stu_val_rv_best_dice: 0.605954 at 4000 iter, val_best_avg_dice: 0.674465 at 4000 iter, lv_dice: 0.770696, myo_dice: 0.646746, rv_dice: 0.605954
+[12:21:10.293] iteration 4500 : loss : 0.097799, sam_sup_loss : 0.055496, sam_unsup_loss : 0.204744, unet_sup_loss : 0.038258, unet_unsup_loss : 0.093875, cons_w : 0.013240, mask_ratio : 0.988613, sd:0.797790,0.676348,0.655696,ud:0.780557,0.648110,0.646734,d:0.813184,0.686778,0.678818,s_m_r:0.874447,0.661805,0.602892
+[12:21:10.293] sam_ulb_lv_dice:0.797790, sam_ulb_myo_dice:0.676348, sam_ulb_rv_dice:0.655696, unet_ulb_lv_dice:0.780557, unet_ulb_myo_dice:0.648110, unet_ulb_rv_dice:0.646734, ulb_lv_dice:0.813184, ulb_myo_dice:0.686778, ulb_rv_dice:0.678818
+[12:21:10.293] test unet model
+[12:22:31.328] domain1 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.803753, val_myo_dice: 0.693918, val_rv_dice: 0.644815, 
+	val_lv_dc: 0.803366, val_myo_dc: 0.693708, val_rv_dc: 0.644263, 	val_lv_jc: 0.747934, val_myo_jc: 0.581725, val_rv_jc: 0.556829, 
+	val_lv_hd: 15.208566, val_myo_hd: 15.925238, val_rv_hd: 28.962262, 	val_lv_asd: 12.032209, val_myo_asd: 10.472664, val_rv_asd: 18.447833, 
+[12:24:05.882] domain2 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.664951, val_myo_dice: 0.524154, val_rv_dice: 0.596357, 
+	val_lv_dc: 0.663380, val_myo_dc: 0.523441, val_rv_dc: 0.595052, 	val_lv_jc: 0.600134, val_myo_jc: 0.415861, val_rv_jc: 0.509220, 
+	val_lv_hd: 26.012884, val_myo_hd: 27.245722, val_rv_hd: 25.549266, 	val_lv_asd: 23.468458, val_myo_asd: 21.633896, val_rv_asd: 16.221004, 
+[12:24:38.800] domain3 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.629833, val_myo_dice: 0.418463, val_rv_dice: 0.452201, 
+	val_lv_dc: 0.628743, val_myo_dc: 0.417576, val_rv_dc: 0.450861, 	val_lv_jc: 0.565597, val_myo_jc: 0.318557, val_rv_jc: 0.372433, 
+	val_lv_hd: 35.003100, val_myo_hd: 49.409701, val_rv_hd: 44.044892, 	val_lv_asd: 28.547116, val_myo_asd: 31.215477, val_rv_asd: 32.415279, 
+[12:25:13.250] domain4 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.640493, val_myo_dice: 0.437388, val_rv_dice: 0.509339, 
+	val_lv_dc: 0.639511, val_myo_dc: 0.436510, val_rv_dc: 0.507632, 	val_lv_jc: 0.565708, val_myo_jc: 0.330110, val_rv_jc: 0.431047, 
+	val_lv_hd: 29.993067, val_myo_hd: 33.998009, val_rv_hd: 31.994674, 	val_lv_asd: 24.994123, val_myo_asd: 25.279088, val_rv_asd: 21.569820, 
+[12:25:13.252] epoch 9 : loss : 0.000000
+	val_lv_dice: 0.684758, val_myo_dice: 0.518481, val_rv_dice: 0.550678, 
+	val_lv_dc: 0.683750, val_myo_dc: 0.517809, val_rv_dc: 0.549452, 	val_lv_jc: 0.619843, val_myo_jc: 0.411563, val_rv_jc: 0.467382, 
+	val_lv_hd: 26.554404, val_myo_hd: 31.644667, val_rv_hd: 32.637773, 	val_lv_asd: 22.260477, val_myo_asd: 22.150281, val_rv_asd: 22.163484, 
+[12:25:13.253] val_lv_best_dice: 0.741065 at 4000 iter, val_myo_best_dice: 0.573041 at 4000 iter, val_rv_best_dice: 0.585772 at 4000 iter, val_best_avg_dice: 0.633293 at 4000 iter, lv_dice: 0.741065, myo_dice: 0.573041, rv_dice: 0.585772
+[12:25:13.253] test sam model
+[12:26:38.679] domain1 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.856897, val_myo_dice: 0.729855, val_rv_dice: 0.721653, 
+	val_lv_dc: 0.856722, val_myo_dc: 0.729723, val_rv_dc: 0.721188, 	val_lv_jc: 0.794108, val_myo_jc: 0.603495, val_rv_jc: 0.638630, 
+	val_lv_hd: 10.330562, val_myo_hd: 13.148822, val_rv_hd: 17.846667, 	val_lv_asd: 5.627053, val_myo_asd: 5.657707, val_rv_asd: 10.289706, 
+[12:28:19.738] domain2 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.760805, val_myo_dice: 0.667258, val_rv_dice: 0.662653, 
+	val_lv_dc: 0.760467, val_myo_dc: 0.666972, val_rv_dc: 0.659701, 	val_lv_jc: 0.672129, val_myo_jc: 0.534200, val_rv_jc: 0.570362, 
+	val_lv_hd: 17.675244, val_myo_hd: 14.735339, val_rv_hd: 21.845110, 	val_lv_asd: 9.160540, val_myo_asd: 6.946154, val_rv_asd: 12.418211, 
+[12:29:00.007] domain3 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.771027, val_myo_dice: 0.645835, val_rv_dice: 0.564837, 
+	val_lv_dc: 0.770437, val_myo_dc: 0.645471, val_rv_dc: 0.563962, 	val_lv_jc: 0.668767, val_myo_jc: 0.508757, val_rv_jc: 0.470014, 
+	val_lv_hd: 16.655259, val_myo_hd: 12.062297, val_rv_hd: 29.521605, 	val_lv_asd: 8.328019, val_myo_asd: 5.105248, val_rv_asd: 16.082337, 
+[12:29:42.312] domain4 epoch 9 : loss : 0.000000
+	val_lv_dice: 0.827106, val_myo_dice: 0.684006, val_rv_dice: 0.625538, 
+	val_lv_dc: 0.826865, val_myo_dc: 0.683732, val_rv_dc: 0.624373, 	val_lv_jc: 0.741073, val_myo_jc: 0.543607, val_rv_jc: 0.536668, 
+	val_lv_hd: 11.392705, val_myo_hd: 9.679756, val_rv_hd: 20.732439, 	val_lv_asd: 5.981423, val_myo_asd: 4.392814, val_rv_asd: 12.908830, 
+[12:29:42.315] epoch 9 : loss : 0.000000
+	val_lv_dice: 0.803959, val_myo_dice: 0.681739, val_rv_dice: 0.643671, 
+	val_lv_dc: 0.803623, val_myo_dc: 0.681475, val_rv_dc: 0.642306, 	val_lv_jc: 0.719019, val_myo_jc: 0.547515, val_rv_jc: 0.553919, 
+	val_lv_hd: 14.013442, val_myo_hd: 12.406553, val_rv_hd: 22.486455, 	val_lv_asd: 7.274259, val_myo_asd: 5.525481, val_rv_asd: 12.924771, 
+[12:29:42.315] save cur best avg SAM model to ../model/MNMS/train/MNMS_dm1_lb40_full/SAM_avg_dice_best_model.pth
+[12:29:42.429] stu_val_lv_best_dice: 0.803959 at 4500 iter, stu_val_myo_best_dice: 0.681739 at 4500 iter, stu_val_rv_best_dice: 0.643671 at 4500 iter, val_best_avg_dice: 0.709789 at 4500 iter, lv_dice: 0.803959, myo_dice: 0.681739, rv_dice: 0.643671
