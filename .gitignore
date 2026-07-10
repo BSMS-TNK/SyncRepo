@@ -1,6 +1,4 @@
 data/*
 checkpoints/*
-model/MNMS/train/MNMS_dm1_lb40_full/unet_avg_dice_best_model.pth
-model/prostate/train/prostate_dm1_lb40_full/unet_avg_dice_best_model.pth
-model/fundus/train/fundus_dm1_lb40_full/unet_avg_dice_best_model.pth*.pth
 *.pth
+__psycache__/*
