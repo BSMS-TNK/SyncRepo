@@ -43,7 +43,26 @@ then simply run:
 python test.py --dataset ... --save_name ... --gpu 0
 ```
 
-### 5. DataSets
+### 5. Summarize Logs
+
+Use `code/summarize_logs.py` to summarize all `log.txt` files under `model/` into one output file.
+
+Run from the `code/` directory:
+
+```bash
+python summarize_logs.py --model-dir ../model --format json --output summary.json
+```
+
+Other supported output formats:
+
+```bash
+python summarize_logs.py --model-dir ../model --format csv --output summary.csv
+python summarize_logs.py --model-dir ../model --format markdown --output summary.md
+```
+
+The summary includes experiment metadata, last iteration/epoch, best UNet/SAM average Dice, final average Dice, last loss, and last mask ratio for each discovered log.
+
+### 6. DataSets
 
 [Prostate](https://drive.google.com/file/d/1xjDB9qKi4vxIhXXvxLhq5-9Il23Tgmbj/view?usp=sharing)
 [Fundus](https://drive.google.com/file/d/1p33nsWQaiZMAgsruDoJLyatoq5XAH-TH/view)
@@ -52,7 +71,7 @@ python test.py --dataset ... --save_name ... --gpu 0
 
 The Prostate and M&Ms datasets have undergone preprocessing in our work, with the original data sourced from [prostate](https://liuquande.github.io/SAML/) and [M&Ms](https://www.ub.edu/mnms/) 
 
-### 6. Acknowledgement
+### 7. Acknowledgement
 
 This project is based on the code from the [SSL4MIS](https://github.com/HiLab-git/SSL4MIS) and [SAMed](https://github.com/hitachinsk/SAMed) project.
 
