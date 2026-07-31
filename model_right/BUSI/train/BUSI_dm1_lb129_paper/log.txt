@@ -1,0 +1,1821 @@
+[21:56:01.417] python train.py --dataset BUSI --lb_domain 1 --lb_num 129 --save_name BUSI_dm1_lb129_paper --gpu 3 --AdamW --warmup --model MedSAM --overwrite --save_model
+[21:56:01.418] Namespace(dataset='BUSI', save_name='BUSI_dm1_lb129_paper', overwrite=True, model='MedSAM', max_iterations=30000, num_eval_iter=500, deterministic=1, base_lr=0.03, seed=1337, gpu='3', threshold=0.95, eval=False, amp=1, label_bs=4, unlabel_bs=4, test_bs=1, domain_num=2, lb_domain=1, lb_num=129, lb_ratio=0, ema_decay=0.99, consistency_type='mse', consistency=1.0, consistency_rampup=200.0, depth=28, widen_factor=2, leaky_slope=0.1, bn_momentum=0.1, dropout=0.0, save_img=False, save_model=True, rank=4, warmup=True, warmup_period=250, AdamW=True, module='sam_lora_image_encoder', img_size=512, vit_name='vit_b', ckpt='../checkpoints/medsam_vit_b.pth')
+[21:56:01.419] load from ../checkpoints/medsam_vit_b.pth
+[21:56:02.697] load from ../checkpoints/medsam_vit_b.pth
+[21:56:04.199] 500 iterations per epoch
+[22:17:51.929] iteration 500 : loss : 0.714962, sam_sup_loss : 0.334698, sam_unsup_loss : 0.419742, unet_sup_loss : 0.372736, unet_unsup_loss : 0.448817, cons_w : 0.007820, mask_ratio : 0.798363, sd:0.494994,ud:0.277916,d:0.495188,s_m_r:0.596891,0.274434,0.203242
+[22:17:51.929] sam_ulb_base_dice:0.494994, unet_ulb_base_dice:0.277916, ulb_base_dice:0.495188
+[22:17:51.930] test unet model
+[22:18:02.799] domain1 epoch 1 : loss : 0.000000
+	val_base_dice: 0.554904, 
+	val_base_dc: 0.554777, 	val_base_jc: 0.428757, 
+	val_base_hd: 84.668403, 	val_base_asd: 37.713304, 
+[22:18:08.040] domain2 epoch 1 : loss : 0.000000
+	val_base_dice: 0.270998, 
+	val_base_dc: 0.270895, 	val_base_jc: 0.186407, 
+	val_base_hd: 83.724956, 	val_base_asd: 33.136349, 
+[22:18:08.041] epoch 1 : loss : 0.000000
+	val_base_dice: 0.412951, 
+	val_base_dc: 0.412836, 	val_base_jc: 0.307582, 
+	val_base_hd: 84.196679, 	val_base_asd: 35.424827, 
+[22:18:08.042] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[22:18:08.245] val_base_best_dice: 0.412951 at 500 iter, val_best_avg_dice: 0.412951 at 500 iter
+[22:18:08.246] test sam model
+[22:18:25.383] domain1 epoch 1 : loss : 0.000000
+	val_base_dice: 0.802421, 
+	val_base_dc: 0.802348, 	val_base_jc: 0.715302, 
+	val_base_hd: 20.283011, 	val_base_asd: 7.741467, 
+[22:18:33.571] domain2 epoch 1 : loss : 0.000000
+	val_base_dice: 0.497443, 
+	val_base_dc: 0.497379, 	val_base_jc: 0.375432, 
+	val_base_hd: 49.610554, 	val_base_asd: 11.578278, 
+[22:18:33.573] epoch 1 : loss : 0.000000
+	val_base_dice: 0.649932, 
+	val_base_dc: 0.649864, 	val_base_jc: 0.545367, 
+	val_base_hd: 34.946782, 	val_base_asd: 9.659873, 
+[22:18:33.574] save cur best avg SAM model to ../model/BUSI/train/BUSI_dm1_lb129_paper/SAM_avg_dice_best_model.pth
+[22:18:33.609] stu_val_base_best_dice: 0.649932 at 500 iter, val_best_avg_dice: 0.649932 at 500 iter
+[22:40:20.961] iteration 1000 : loss : 0.244525, sam_sup_loss : 0.066690, sam_unsup_loss : 0.153138, unet_sup_loss : 0.171543, unet_unsup_loss : 0.455544, cons_w : 0.009054, mask_ratio : 0.903156, sd:0.603618,ud:0.393863,d:0.586128,s_m_r:0.682727,0.447942,0.355525
+[22:40:20.962] sam_ulb_base_dice:0.603618, unet_ulb_base_dice:0.393863, ulb_base_dice:0.586128
+[22:40:20.962] test unet model
+[22:40:31.517] domain1 epoch 2 : loss : 0.000000
+	val_base_dice: 0.691231, 
+	val_base_dc: 0.691110, 	val_base_jc: 0.606000, 
+	val_base_hd: 38.532749, 	val_base_asd: 17.455347, 
+[22:40:36.477] domain2 epoch 2 : loss : 0.000000
+	val_base_dice: 0.155315, 
+	val_base_dc: 0.155181, 	val_base_jc: 0.111936, 
+	val_base_hd: 80.884395, 	val_base_asd: 60.313428, 
+[22:40:36.480] epoch 2 : loss : 0.000000
+	val_base_dice: 0.423273, 
+	val_base_dc: 0.423145, 	val_base_jc: 0.358968, 
+	val_base_hd: 59.708572, 	val_base_asd: 38.884387, 
+[22:40:36.481] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[22:40:37.027] val_base_best_dice: 0.423273 at 1000 iter, val_best_avg_dice: 0.423273 at 1000 iter
+[22:40:37.027] test sam model
+[22:40:53.908] domain1 epoch 2 : loss : 0.000000
+	val_base_dice: 0.817370, 
+	val_base_dc: 0.817282, 	val_base_jc: 0.735948, 
+	val_base_hd: 18.758017, 	val_base_asd: 8.585787, 
+[22:41:02.030] domain2 epoch 2 : loss : 0.000000
+	val_base_dice: 0.490992, 
+	val_base_dc: 0.490924, 	val_base_jc: 0.378285, 
+	val_base_hd: 50.798983, 	val_base_asd: 19.950440, 
+[22:41:02.031] epoch 2 : loss : 0.000000
+	val_base_dice: 0.654181, 
+	val_base_dc: 0.654103, 	val_base_jc: 0.557117, 
+	val_base_hd: 34.778500, 	val_base_asd: 14.268114, 
+[22:41:02.032] save cur best avg SAM model to ../model/BUSI/train/BUSI_dm1_lb129_paper/SAM_avg_dice_best_model.pth
+[22:41:02.070] stu_val_base_best_dice: 0.654181 at 1000 iter, val_best_avg_dice: 0.654181 at 1000 iter
+[23:02:46.447] iteration 1500 : loss : 1.076117, sam_sup_loss : 0.322585, sam_unsup_loss : 0.366719, unet_sup_loss : 0.741760, unet_unsup_loss : 0.673702, cons_w : 0.010461, mask_ratio : 0.783955, sd:0.625878,ud:0.421877,d:0.607279,s_m_r:0.696579,0.486809,0.397188
+[23:02:46.447] sam_ulb_base_dice:0.625878, unet_ulb_base_dice:0.421877, ulb_base_dice:0.607279
+[23:02:46.448] test unet model
+[23:02:57.432] domain1 epoch 3 : loss : 0.000000
+	val_base_dice: 0.635407, 
+	val_base_dc: 0.635215, 	val_base_jc: 0.537253, 
+	val_base_hd: 49.163104, 	val_base_asd: 23.742956, 
+[23:03:02.681] domain2 epoch 3 : loss : 0.000000
+	val_base_dice: 0.229792, 
+	val_base_dc: 0.229669, 	val_base_jc: 0.166920, 
+	val_base_hd: 84.081495, 	val_base_asd: 45.450344, 
+[23:03:02.682] epoch 3 : loss : 0.000000
+	val_base_dice: 0.432599, 
+	val_base_dc: 0.432442, 	val_base_jc: 0.352086, 
+	val_base_hd: 66.622300, 	val_base_asd: 34.596650, 
+[23:03:02.683] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[23:03:03.094] val_base_best_dice: 0.432599 at 1500 iter, val_best_avg_dice: 0.432599 at 1500 iter
+[23:03:03.095] test sam model
+[23:03:20.356] domain1 epoch 3 : loss : 0.000000
+	val_base_dice: 0.836731, 
+	val_base_dc: 0.836665, 	val_base_jc: 0.758519, 
+	val_base_hd: 17.879341, 	val_base_asd: 6.419278, 
+[23:03:28.461] domain2 epoch 3 : loss : 0.000000
+	val_base_dice: 0.578139, 
+	val_base_dc: 0.578086, 	val_base_jc: 0.456192, 
+	val_base_hd: 43.877608, 	val_base_asd: 14.732138, 
+[23:03:28.462] epoch 3 : loss : 0.000000
+	val_base_dice: 0.707435, 
+	val_base_dc: 0.707375, 	val_base_jc: 0.607355, 
+	val_base_hd: 30.878475, 	val_base_asd: 10.575708, 
+[23:03:28.463] save cur best avg SAM model to ../model/BUSI/train/BUSI_dm1_lb129_paper/SAM_avg_dice_best_model.pth
+[23:03:28.580] stu_val_base_best_dice: 0.707435 at 1500 iter, val_best_avg_dice: 0.707435 at 1500 iter
+[23:25:17.397] iteration 2000 : loss : 1.081051, sam_sup_loss : 0.194369, sam_unsup_loss : 0.222823, unet_sup_loss : 0.876286, unet_unsup_loss : 0.482401, cons_w : 0.012637, mask_ratio : 0.931160, sd:0.642723,ud:0.443666,d:0.626624,s_m_r:0.677375,0.502772,0.408619
+[23:25:17.397] sam_ulb_base_dice:0.642723, unet_ulb_base_dice:0.443666, ulb_base_dice:0.626624
+[23:25:17.397] test unet model
+[23:25:27.974] domain1 epoch 4 : loss : 0.000000
+	val_base_dice: 0.711687, 
+	val_base_dc: 0.711541, 	val_base_jc: 0.629478, 
+	val_base_hd: 34.211177, 	val_base_asd: 18.565245, 
+[23:25:32.915] domain2 epoch 4 : loss : 0.000000
+	val_base_dice: 0.168971, 
+	val_base_dc: 0.168831, 	val_base_jc: 0.120407, 
+	val_base_hd: 79.500293, 	val_base_asd: 49.407540, 
+[23:25:32.916] epoch 4 : loss : 0.000000
+	val_base_dice: 0.440329, 
+	val_base_dc: 0.440186, 	val_base_jc: 0.374943, 
+	val_base_hd: 56.855735, 	val_base_asd: 33.986392, 
+[23:25:32.916] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[23:25:33.683] val_base_best_dice: 0.440329 at 2000 iter, val_best_avg_dice: 0.440329 at 2000 iter
+[23:25:33.683] test sam model
+[23:25:50.400] domain1 epoch 4 : loss : 0.000000
+	val_base_dice: 0.840649, 
+	val_base_dc: 0.840589, 	val_base_jc: 0.764437, 
+	val_base_hd: 17.247455, 	val_base_asd: 7.964355, 
+[23:25:58.668] domain2 epoch 4 : loss : 0.000000
+	val_base_dice: 0.599531, 
+	val_base_dc: 0.599483, 	val_base_jc: 0.484274, 
+	val_base_hd: 42.259172, 	val_base_asd: 16.997976, 
+[23:25:58.669] epoch 4 : loss : 0.000000
+	val_base_dice: 0.720090, 
+	val_base_dc: 0.720036, 	val_base_jc: 0.624356, 
+	val_base_hd: 29.753314, 	val_base_asd: 12.481166, 
+[23:25:58.670] save cur best avg SAM model to ../model/BUSI/train/BUSI_dm1_lb129_paper/SAM_avg_dice_best_model.pth
+[23:25:58.706] stu_val_base_best_dice: 0.720090 at 2000 iter, val_best_avg_dice: 0.720090 at 2000 iter
+[23:48:00.315] iteration 2500 : loss : 0.763137, sam_sup_loss : 0.126962, sam_unsup_loss : 0.433769, unet_sup_loss : 0.621215, unet_unsup_loss : 0.532790, cons_w : 0.014523, mask_ratio : 0.894878, sd:0.651413,ud:0.446239,d:0.638160,s_m_r:0.694993,0.495325,0.407563
+[23:48:00.316] sam_ulb_base_dice:0.651413, unet_ulb_base_dice:0.446239, ulb_base_dice:0.638160
+[23:48:00.316] test unet model
+[23:48:11.125] domain1 epoch 5 : loss : 0.000000
+	val_base_dice: 0.696594, 
+	val_base_dc: 0.696428, 	val_base_jc: 0.614254, 
+	val_base_hd: 32.831631, 	val_base_asd: 16.094574, 
+[23:48:16.083] domain2 epoch 5 : loss : 0.000000
+	val_base_dice: 0.142963, 
+	val_base_dc: 0.142814, 	val_base_jc: 0.101109, 
+	val_base_hd: 90.584755, 	val_base_asd: 57.710435, 
+[23:48:16.085] epoch 5 : loss : 0.000000
+	val_base_dice: 0.419778, 
+	val_base_dc: 0.419621, 	val_base_jc: 0.357682, 
+	val_base_hd: 61.708193, 	val_base_asd: 36.902504, 
+[23:48:16.085] val_base_best_dice: 0.440329 at 2000 iter, val_best_avg_dice: 0.440329 at 2000 iter
+[23:48:16.085] test sam model
+[23:48:33.170] domain1 epoch 5 : loss : 0.000000
+	val_base_dice: 0.843351, 
+	val_base_dc: 0.843301, 	val_base_jc: 0.764268, 
+	val_base_hd: 17.415787, 	val_base_asd: 6.808495, 
+[23:48:41.524] domain2 epoch 5 : loss : 0.000000
+	val_base_dice: 0.600245, 
+	val_base_dc: 0.600196, 	val_base_jc: 0.484468, 
+	val_base_hd: 42.622241, 	val_base_asd: 15.662070, 
+[23:48:41.525] epoch 5 : loss : 0.000000
+	val_base_dice: 0.721798, 
+	val_base_dc: 0.721749, 	val_base_jc: 0.624368, 
+	val_base_hd: 30.019014, 	val_base_asd: 11.235283, 
+[23:48:41.526] save cur best avg SAM model to ../model/BUSI/train/BUSI_dm1_lb129_paper/SAM_avg_dice_best_model.pth
+[23:48:42.137] stu_val_base_best_dice: 0.721798 at 2500 iter, val_best_avg_dice: 0.721798 at 2500 iter
+[00:10:33.884] iteration 3000 : loss : 0.110101, sam_sup_loss : 0.038239, sam_unsup_loss : 0.219669, unet_sup_loss : 0.057905, unet_unsup_loss : 0.545121, cons_w : 0.016654, mask_ratio : 0.845497, sd:0.630545,ud:0.451359,d:0.619357,s_m_r:0.693646,0.505183,0.422529
+[00:10:33.885] sam_ulb_base_dice:0.630545, unet_ulb_base_dice:0.451359, ulb_base_dice:0.619357
+[00:10:33.885] test unet model
+[00:10:44.560] domain1 epoch 6 : loss : 0.000000
+	val_base_dice: 0.740752, 
+	val_base_dc: 0.740631, 	val_base_jc: 0.650239, 
+	val_base_hd: 32.710169, 	val_base_asd: 17.384424, 
+[00:10:49.690] domain2 epoch 6 : loss : 0.000000
+	val_base_dice: 0.252900, 
+	val_base_dc: 0.252781, 	val_base_jc: 0.183431, 
+	val_base_hd: 71.912623, 	val_base_asd: 42.079309, 
+[00:10:49.692] epoch 6 : loss : 0.000000
+	val_base_dice: 0.496826, 
+	val_base_dc: 0.496706, 	val_base_jc: 0.416835, 
+	val_base_hd: 52.311396, 	val_base_asd: 29.731867, 
+[00:10:49.692] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[00:10:50.326] val_base_best_dice: 0.496826 at 3000 iter, val_best_avg_dice: 0.496826 at 3000 iter
+[00:10:50.326] test sam model
+[00:11:07.003] domain1 epoch 6 : loss : 0.000000
+	val_base_dice: 0.839465, 
+	val_base_dc: 0.839414, 	val_base_jc: 0.761331, 
+	val_base_hd: 17.808880, 	val_base_asd: 6.616306, 
+[00:11:14.990] domain2 epoch 6 : loss : 0.000000
+	val_base_dice: 0.576280, 
+	val_base_dc: 0.576225, 	val_base_jc: 0.462438, 
+	val_base_hd: 43.659627, 	val_base_asd: 15.880231, 
+[00:11:14.992] epoch 6 : loss : 0.000000
+	val_base_dice: 0.707873, 
+	val_base_dc: 0.707820, 	val_base_jc: 0.611884, 
+	val_base_hd: 30.734254, 	val_base_asd: 11.248269, 
+[00:11:14.992] stu_val_base_best_dice: 0.721798 at 2500 iter, val_best_avg_dice: 0.721798 at 2500 iter
+[00:33:00.297] iteration 3500 : loss : 0.109525, sam_sup_loss : 0.037577, sam_unsup_loss : 0.316326, unet_sup_loss : 0.062517, unet_unsup_loss : 0.127158, cons_w : 0.019918, mask_ratio : 0.920826, sd:0.624683,ud:0.469298,d:0.617350,s_m_r:0.680131,0.517421,0.429278
+[00:33:00.298] sam_ulb_base_dice:0.624683, unet_ulb_base_dice:0.469298, ulb_base_dice:0.617350
+[00:33:00.298] test unet model
+[00:33:10.910] domain1 epoch 7 : loss : 0.000000
+	val_base_dice: 0.754333, 
+	val_base_dc: 0.754213, 	val_base_jc: 0.673183, 
+	val_base_hd: 28.254370, 	val_base_asd: 14.015193, 
+[00:33:15.890] domain2 epoch 7 : loss : 0.000000
+	val_base_dice: 0.145901, 
+	val_base_dc: 0.145755, 	val_base_jc: 0.112750, 
+	val_base_hd: 85.343844, 	val_base_asd: 63.389452, 
+[00:33:15.892] epoch 7 : loss : 0.000000
+	val_base_dice: 0.450117, 
+	val_base_dc: 0.449984, 	val_base_jc: 0.392967, 
+	val_base_hd: 56.799107, 	val_base_asd: 38.702322, 
+[00:33:15.893] val_base_best_dice: 0.496826 at 3000 iter, val_best_avg_dice: 0.496826 at 3000 iter
+[00:33:15.893] test sam model
+[00:33:32.608] domain1 epoch 7 : loss : 0.000000
+	val_base_dice: 0.847150, 
+	val_base_dc: 0.847100, 	val_base_jc: 0.771277, 
+	val_base_hd: 16.989702, 	val_base_asd: 6.413193, 
+[00:33:40.728] domain2 epoch 7 : loss : 0.000000
+	val_base_dice: 0.571353, 
+	val_base_dc: 0.571298, 	val_base_jc: 0.465272, 
+	val_base_hd: 45.244687, 	val_base_asd: 13.805385, 
+[00:33:40.729] epoch 7 : loss : 0.000000
+	val_base_dice: 0.709252, 
+	val_base_dc: 0.709199, 	val_base_jc: 0.618274, 
+	val_base_hd: 31.117194, 	val_base_asd: 10.109289, 
+[00:33:40.730] stu_val_base_best_dice: 0.721798 at 2500 iter, val_best_avg_dice: 0.721798 at 2500 iter
+[00:55:27.192] iteration 4000 : loss : 0.171925, sam_sup_loss : 0.056133, sam_unsup_loss : 0.318370, unet_sup_loss : 0.098679, unet_unsup_loss : 0.347560, cons_w : 0.022720, mask_ratio : 0.803764, sd:0.638528,ud:0.475656,d:0.627242,s_m_r:0.683287,0.524990,0.431698
+[00:55:27.192] sam_ulb_base_dice:0.638528, unet_ulb_base_dice:0.475656, ulb_base_dice:0.627242
+[00:55:27.193] test unet model
+[00:55:37.811] domain1 epoch 8 : loss : 0.000000
+	val_base_dice: 0.705183, 
+	val_base_dc: 0.704952, 	val_base_jc: 0.624909, 
+	val_base_hd: 31.366623, 	val_base_asd: 19.508585, 
+[00:55:42.877] domain2 epoch 8 : loss : 0.000000
+	val_base_dice: 0.199957, 
+	val_base_dc: 0.199825, 	val_base_jc: 0.144814, 
+	val_base_hd: 81.974259, 	val_base_asd: 42.067492, 
+[00:55:42.879] epoch 8 : loss : 0.000000
+	val_base_dice: 0.452570, 
+	val_base_dc: 0.452389, 	val_base_jc: 0.384862, 
+	val_base_hd: 56.670441, 	val_base_asd: 30.788039, 
+[00:55:42.880] val_base_best_dice: 0.496826 at 3000 iter, val_best_avg_dice: 0.496826 at 3000 iter
+[00:55:42.880] test sam model
+[00:55:59.688] domain1 epoch 8 : loss : 0.000000
+	val_base_dice: 0.840494, 
+	val_base_dc: 0.840444, 	val_base_jc: 0.766763, 
+	val_base_hd: 18.279078, 	val_base_asd: 6.049823, 
+[00:56:07.701] domain2 epoch 8 : loss : 0.000000
+	val_base_dice: 0.541193, 
+	val_base_dc: 0.541131, 	val_base_jc: 0.433757, 
+	val_base_hd: 46.909838, 	val_base_asd: 15.879464, 
+[00:56:07.703] epoch 8 : loss : 0.000000
+	val_base_dice: 0.690844, 
+	val_base_dc: 0.690788, 	val_base_jc: 0.600260, 
+	val_base_hd: 32.594458, 	val_base_asd: 10.964644, 
+[00:56:07.708] stu_val_base_best_dice: 0.721798 at 2500 iter, val_best_avg_dice: 0.721798 at 2500 iter
+[01:17:56.187] iteration 4500 : loss : 0.111294, sam_sup_loss : 0.024491, sam_unsup_loss : 0.034403, unet_sup_loss : 0.082270, unet_unsup_loss : 0.105485, cons_w : 0.025858, mask_ratio : 0.919788, sd:0.636273,ud:0.488129,d:0.627892,s_m_r:0.677146,0.539671,0.436289
+[01:17:56.188] sam_ulb_base_dice:0.636273, unet_ulb_base_dice:0.488129, ulb_base_dice:0.627892
+[01:17:56.188] test unet model
+[01:18:06.918] domain1 epoch 9 : loss : 0.000000
+	val_base_dice: 0.755344, 
+	val_base_dc: 0.755253, 	val_base_jc: 0.666976, 
+	val_base_hd: 33.927632, 	val_base_asd: 15.981739, 
+[01:18:11.979] domain2 epoch 9 : loss : 0.000000
+	val_base_dice: 0.228316, 
+	val_base_dc: 0.228192, 	val_base_jc: 0.168873, 
+	val_base_hd: 86.617724, 	val_base_asd: 38.328140, 
+[01:18:11.980] epoch 9 : loss : 0.000000
+	val_base_dice: 0.491830, 
+	val_base_dc: 0.491722, 	val_base_jc: 0.417924, 
+	val_base_hd: 60.272678, 	val_base_asd: 27.154940, 
+[01:18:11.981] val_base_best_dice: 0.496826 at 3000 iter, val_best_avg_dice: 0.496826 at 3000 iter
+[01:18:11.981] test sam model
+[01:18:28.700] domain1 epoch 9 : loss : 0.000000
+	val_base_dice: 0.851277, 
+	val_base_dc: 0.851228, 	val_base_jc: 0.773771, 
+	val_base_hd: 17.089756, 	val_base_asd: 5.891630, 
+[01:18:36.786] domain2 epoch 9 : loss : 0.000000
+	val_base_dice: 0.566138, 
+	val_base_dc: 0.566083, 	val_base_jc: 0.451438, 
+	val_base_hd: 45.689403, 	val_base_asd: 11.720094, 
+[01:18:36.788] epoch 9 : loss : 0.000000
+	val_base_dice: 0.708708, 
+	val_base_dc: 0.708656, 	val_base_jc: 0.612605, 
+	val_base_hd: 31.389580, 	val_base_asd: 8.805862, 
+[01:18:36.789] stu_val_base_best_dice: 0.721798 at 2500 iter, val_best_avg_dice: 0.721798 at 2500 iter
+[01:40:21.549] iteration 5000 : loss : 0.333783, sam_sup_loss : 0.173468, sam_unsup_loss : 0.044387, unet_sup_loss : 0.152915, unet_unsup_loss : 0.149673, cons_w : 0.030619, mask_ratio : 0.932686, sd:0.636862,ud:0.484303,d:0.625987,s_m_r:0.697681,0.533318,0.446342
+[01:40:21.549] sam_ulb_base_dice:0.636862, unet_ulb_base_dice:0.484303, ulb_base_dice:0.625987
+[01:40:21.549] test unet model
+[01:40:34.315] domain1 epoch 10 : loss : 0.000000
+	val_base_dice: 0.769392, 
+	val_base_dc: 0.769314, 	val_base_jc: 0.674222, 
+	val_base_hd: 36.274604, 	val_base_asd: 15.833712, 
+[01:40:40.401] domain2 epoch 10 : loss : 0.000000
+	val_base_dice: 0.342699, 
+	val_base_dc: 0.342610, 	val_base_jc: 0.257922, 
+	val_base_hd: 68.751361, 	val_base_asd: 32.059245, 
+[01:40:40.402] epoch 10 : loss : 0.000000
+	val_base_dice: 0.556046, 
+	val_base_dc: 0.555962, 	val_base_jc: 0.466072, 
+	val_base_hd: 52.512983, 	val_base_asd: 23.946479, 
+[01:40:40.403] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[01:40:40.929] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[01:40:40.930] test sam model
+[01:40:59.214] domain1 epoch 10 : loss : 0.000000
+	val_base_dice: 0.843192, 
+	val_base_dc: 0.843141, 	val_base_jc: 0.767869, 
+	val_base_hd: 18.364526, 	val_base_asd: 6.379569, 
+[01:41:08.037] domain2 epoch 10 : loss : 0.000000
+	val_base_dice: 0.546021, 
+	val_base_dc: 0.545961, 	val_base_jc: 0.442069, 
+	val_base_hd: 45.154476, 	val_base_asd: 20.791201, 
+[01:41:08.038] epoch 10 : loss : 0.000000
+	val_base_dice: 0.694607, 
+	val_base_dc: 0.694551, 	val_base_jc: 0.604969, 
+	val_base_hd: 31.759501, 	val_base_asd: 13.585385, 
+[01:41:08.039] stu_val_base_best_dice: 0.721798 at 2500 iter, val_best_avg_dice: 0.721798 at 2500 iter
+[02:02:54.420] iteration 5500 : loss : 0.337006, sam_sup_loss : 0.094565, sam_unsup_loss : 0.571945, unet_sup_loss : 0.206275, unet_unsup_loss : 0.428550, cons_w : 0.034666, mask_ratio : 0.867149, sd:0.607885,ud:0.474851,d:0.597833,s_m_r:0.667049,0.540655,0.438583
+[02:02:54.420] sam_ulb_base_dice:0.607885, unet_ulb_base_dice:0.474851, ulb_base_dice:0.597833
+[02:02:54.421] test unet model
+[02:03:05.055] domain1 epoch 11 : loss : 0.000000
+	val_base_dice: 0.722573, 
+	val_base_dc: 0.722412, 	val_base_jc: 0.643904, 
+	val_base_hd: 34.103621, 	val_base_asd: 17.582568, 
+[02:03:09.916] domain2 epoch 11 : loss : 0.000000
+	val_base_dice: 0.055651, 
+	val_base_dc: 0.055477, 	val_base_jc: 0.040999, 
+	val_base_hd: 98.857552, 	val_base_asd: 66.141215, 
+[02:03:09.919] epoch 11 : loss : 0.000000
+	val_base_dice: 0.389112, 
+	val_base_dc: 0.388944, 	val_base_jc: 0.342451, 
+	val_base_hd: 66.480587, 	val_base_asd: 41.861891, 
+[02:03:09.920] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[02:03:09.920] test sam model
+[02:03:26.518] domain1 epoch 11 : loss : 0.000000
+	val_base_dice: 0.845235, 
+	val_base_dc: 0.845182, 	val_base_jc: 0.768857, 
+	val_base_hd: 18.410831, 	val_base_asd: 6.237265, 
+[02:03:34.739] domain2 epoch 11 : loss : 0.000000
+	val_base_dice: 0.536790, 
+	val_base_dc: 0.536730, 	val_base_jc: 0.432136, 
+	val_base_hd: 48.606346, 	val_base_asd: 13.921289, 
+[02:03:34.740] epoch 11 : loss : 0.000000
+	val_base_dice: 0.691013, 
+	val_base_dc: 0.690956, 	val_base_jc: 0.600496, 
+	val_base_hd: 33.508589, 	val_base_asd: 10.079277, 
+[02:03:34.741] stu_val_base_best_dice: 0.721798 at 2500 iter, val_best_avg_dice: 0.721798 at 2500 iter
+[02:25:21.808] iteration 6000 : loss : 0.136360, sam_sup_loss : 0.046963, sam_unsup_loss : 0.143828, unet_sup_loss : 0.062545, unet_unsup_loss : 0.480618, cons_w : 0.039159, mask_ratio : 0.918385, sd:0.622798,ud:0.484823,d:0.616088,s_m_r:0.682940,0.544262,0.448787
+[02:25:21.808] sam_ulb_base_dice:0.622798, unet_ulb_base_dice:0.484823, ulb_base_dice:0.616088
+[02:25:21.809] test unet model
+[02:25:32.542] domain1 epoch 12 : loss : 0.000000
+	val_base_dice: 0.772862, 
+	val_base_dc: 0.772766, 	val_base_jc: 0.689200, 
+	val_base_hd: 29.645549, 	val_base_asd: 14.707777, 
+[02:25:37.547] domain2 epoch 12 : loss : 0.000000
+	val_base_dice: 0.261546, 
+	val_base_dc: 0.261427, 	val_base_jc: 0.206593, 
+	val_base_hd: 83.396020, 	val_base_asd: 57.057870, 
+[02:25:37.549] epoch 12 : loss : 0.000000
+	val_base_dice: 0.517204, 
+	val_base_dc: 0.517096, 	val_base_jc: 0.447896, 
+	val_base_hd: 56.520785, 	val_base_asd: 35.882824, 
+[02:25:37.550] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[02:25:37.550] test sam model
+[02:25:54.149] domain1 epoch 12 : loss : 0.000000
+	val_base_dice: 0.852265, 
+	val_base_dc: 0.852218, 	val_base_jc: 0.773844, 
+	val_base_hd: 18.007898, 	val_base_asd: 6.948248, 
+[02:26:02.234] domain2 epoch 12 : loss : 0.000000
+	val_base_dice: 0.613237, 
+	val_base_dc: 0.613189, 	val_base_jc: 0.499767, 
+	val_base_hd: 42.516961, 	val_base_asd: 13.829894, 
+[02:26:02.238] epoch 12 : loss : 0.000000
+	val_base_dice: 0.732751, 
+	val_base_dc: 0.732704, 	val_base_jc: 0.636805, 
+	val_base_hd: 30.262430, 	val_base_asd: 10.389071, 
+[02:26:02.239] save cur best avg SAM model to ../model/BUSI/train/BUSI_dm1_lb129_paper/SAM_avg_dice_best_model.pth
+[02:26:02.284] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[02:47:58.706] iteration 6500 : loss : 0.163004, sam_sup_loss : 0.047096, sam_unsup_loss : 0.346245, unet_sup_loss : 0.089243, unet_unsup_loss : 0.175211, cons_w : 0.045908, mask_ratio : 0.823986, sd:0.622511,ud:0.497128,d:0.614725,s_m_r:0.708956,0.561286,0.471442
+[02:47:58.706] sam_ulb_base_dice:0.622511, unet_ulb_base_dice:0.497128, ulb_base_dice:0.614725
+[02:47:58.706] test unet model
+[02:48:09.440] domain1 epoch 13 : loss : 0.000000
+	val_base_dice: 0.782905, 
+	val_base_dc: 0.782824, 	val_base_jc: 0.696326, 
+	val_base_hd: 26.104757, 	val_base_asd: 13.660489, 
+[02:48:14.556] domain2 epoch 13 : loss : 0.000000
+	val_base_dice: 0.267448, 
+	val_base_dc: 0.267332, 	val_base_jc: 0.208708, 
+	val_base_hd: 79.306482, 	val_base_asd: 42.631706, 
+[02:48:14.559] epoch 13 : loss : 0.000000
+	val_base_dice: 0.525176, 
+	val_base_dc: 0.525078, 	val_base_jc: 0.452517, 
+	val_base_hd: 52.705620, 	val_base_asd: 28.146097, 
+[02:48:14.560] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[02:48:14.560] test sam model
+[02:48:31.474] domain1 epoch 13 : loss : 0.000000
+	val_base_dice: 0.845618, 
+	val_base_dc: 0.845566, 	val_base_jc: 0.767718, 
+	val_base_hd: 17.428811, 	val_base_asd: 6.378565, 
+[02:48:39.607] domain2 epoch 13 : loss : 0.000000
+	val_base_dice: 0.536773, 
+	val_base_dc: 0.536715, 	val_base_jc: 0.431548, 
+	val_base_hd: 48.036425, 	val_base_asd: 17.311201, 
+[02:48:39.608] epoch 13 : loss : 0.000000
+	val_base_dice: 0.691195, 
+	val_base_dc: 0.691141, 	val_base_jc: 0.599633, 
+	val_base_hd: 32.732618, 	val_base_asd: 11.844883, 
+[02:48:39.609] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[03:10:32.364] iteration 7000 : loss : 0.166960, sam_sup_loss : 0.071799, sam_unsup_loss : 0.388782, unet_sup_loss : 0.059063, unet_unsup_loss : 0.247133, cons_w : 0.051586, mask_ratio : 0.934505, sd:0.630687,ud:0.510781,d:0.622681,s_m_r:0.731900,0.576448,0.493884
+[03:10:32.365] sam_ulb_base_dice:0.630687, unet_ulb_base_dice:0.510781, ulb_base_dice:0.622681
+[03:10:32.365] test unet model
+[03:10:43.229] domain1 epoch 14 : loss : 0.000000
+	val_base_dice: 0.789763, 
+	val_base_dc: 0.789683, 	val_base_jc: 0.706571, 
+	val_base_hd: 23.831117, 	val_base_asd: 12.194165, 
+[03:10:48.400] domain2 epoch 14 : loss : 0.000000
+	val_base_dice: 0.307274, 
+	val_base_dc: 0.307164, 	val_base_jc: 0.237409, 
+	val_base_hd: 77.341967, 	val_base_asd: 31.730771, 
+[03:10:48.402] epoch 14 : loss : 0.000000
+	val_base_dice: 0.548518, 
+	val_base_dc: 0.548424, 	val_base_jc: 0.471990, 
+	val_base_hd: 50.586542, 	val_base_asd: 21.962468, 
+[03:10:48.403] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[03:10:48.403] test sam model
+[03:11:05.362] domain1 epoch 14 : loss : 0.000000
+	val_base_dice: 0.830360, 
+	val_base_dc: 0.830306, 	val_base_jc: 0.754004, 
+	val_base_hd: 18.965874, 	val_base_asd: 7.633412, 
+[03:11:13.448] domain2 epoch 14 : loss : 0.000000
+	val_base_dice: 0.537122, 
+	val_base_dc: 0.537065, 	val_base_jc: 0.430520, 
+	val_base_hd: 50.965004, 	val_base_asd: 15.494731, 
+[03:11:13.450] epoch 14 : loss : 0.000000
+	val_base_dice: 0.683741, 
+	val_base_dc: 0.683686, 	val_base_jc: 0.592262, 
+	val_base_hd: 34.965439, 	val_base_asd: 11.564072, 
+[03:11:13.451] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[03:34:13.247] iteration 7500 : loss : 0.335683, sam_sup_loss : 0.125998, sam_unsup_loss : 0.476044, unet_sup_loss : 0.152354, unet_unsup_loss : 0.425175, cons_w : 0.057837, mask_ratio : 0.968700, sd:0.619624,ud:0.507170,d:0.612300,s_m_r:0.701204,0.572625,0.474297
+[03:34:13.247] sam_ulb_base_dice:0.619624, unet_ulb_base_dice:0.507170, ulb_base_dice:0.612300
+[03:34:13.248] test unet model
+[03:34:23.988] domain1 epoch 15 : loss : 0.000000
+	val_base_dice: 0.722309, 
+	val_base_dc: 0.722162, 	val_base_jc: 0.632231, 
+	val_base_hd: 38.473990, 	val_base_asd: 18.883394, 
+[03:34:29.076] domain2 epoch 15 : loss : 0.000000
+	val_base_dice: 0.247645, 
+	val_base_dc: 0.247524, 	val_base_jc: 0.186314, 
+	val_base_hd: 84.340712, 	val_base_asd: 44.642671, 
+[03:34:29.078] epoch 15 : loss : 0.000000
+	val_base_dice: 0.484977, 
+	val_base_dc: 0.484843, 	val_base_jc: 0.409273, 
+	val_base_hd: 61.407351, 	val_base_asd: 31.763033, 
+[03:34:29.079] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[03:34:29.079] test sam model
+[03:34:45.716] domain1 epoch 15 : loss : 0.000000
+	val_base_dice: 0.822096, 
+	val_base_dc: 0.822039, 	val_base_jc: 0.746459, 
+	val_base_hd: 19.849604, 	val_base_asd: 9.070485, 
+[03:34:53.660] domain2 epoch 15 : loss : 0.000000
+	val_base_dice: 0.526165, 
+	val_base_dc: 0.526105, 	val_base_jc: 0.418383, 
+	val_base_hd: 52.730334, 	val_base_asd: 20.749322, 
+[03:34:53.661] epoch 15 : loss : 0.000000
+	val_base_dice: 0.674130, 
+	val_base_dc: 0.674072, 	val_base_jc: 0.582421, 
+	val_base_hd: 36.289969, 	val_base_asd: 14.909903, 
+[03:34:53.662] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[03:56:40.882] iteration 8000 : loss : 0.335838, sam_sup_loss : 0.110127, sam_unsup_loss : 0.333907, unet_sup_loss : 0.175503, unet_unsup_loss : 0.384318, cons_w : 0.067130, mask_ratio : 0.959648, sd:0.622335,ud:0.504696,d:0.615236,s_m_r:0.722781,0.577246,0.489633
+[03:56:40.884] sam_ulb_base_dice:0.622335, unet_ulb_base_dice:0.504696, ulb_base_dice:0.615236
+[03:56:40.884] test unet model
+[03:56:51.590] domain1 epoch 16 : loss : 0.000000
+	val_base_dice: 0.792356, 
+	val_base_dc: 0.792285, 	val_base_jc: 0.712381, 
+	val_base_hd: 25.906871, 	val_base_asd: 12.111301, 
+[03:56:56.572] domain2 epoch 16 : loss : 0.000000
+	val_base_dice: 0.276521, 
+	val_base_dc: 0.276409, 	val_base_jc: 0.209542, 
+	val_base_hd: 76.478821, 	val_base_asd: 36.700656, 
+[03:56:56.576] epoch 16 : loss : 0.000000
+	val_base_dice: 0.534438, 
+	val_base_dc: 0.534347, 	val_base_jc: 0.460962, 
+	val_base_hd: 51.192846, 	val_base_asd: 24.405979, 
+[03:56:56.576] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[03:56:56.577] test sam model
+[03:57:13.272] domain1 epoch 16 : loss : 0.000000
+	val_base_dice: 0.840962, 
+	val_base_dc: 0.840909, 	val_base_jc: 0.762681, 
+	val_base_hd: 16.962894, 	val_base_asd: 6.561249, 
+[03:57:21.308] domain2 epoch 16 : loss : 0.000000
+	val_base_dice: 0.553120, 
+	val_base_dc: 0.553066, 	val_base_jc: 0.444148, 
+	val_base_hd: 46.871103, 	val_base_asd: 16.180215, 
+[03:57:21.310] epoch 16 : loss : 0.000000
+	val_base_dice: 0.697041, 
+	val_base_dc: 0.696987, 	val_base_jc: 0.603414, 
+	val_base_hd: 31.916998, 	val_base_asd: 11.370732, 
+[03:57:21.311] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[04:19:08.951] iteration 8500 : loss : 0.107038, sam_sup_loss : 0.034628, sam_unsup_loss : 0.174425, unet_sup_loss : 0.038445, unet_unsup_loss : 0.243797, cons_w : 0.074870, mask_ratio : 0.678333, sd:0.626939,ud:0.514992,d:0.618095,s_m_r:0.723530,0.585339,0.497665
+[04:19:08.951] sam_ulb_base_dice:0.626939, unet_ulb_base_dice:0.514992, ulb_base_dice:0.618095
+[04:19:08.951] test unet model
+[04:19:19.586] domain1 epoch 17 : loss : 0.000000
+	val_base_dice: 0.766364, 
+	val_base_dc: 0.766262, 	val_base_jc: 0.686989, 
+	val_base_hd: 23.704938, 	val_base_asd: 13.269168, 
+[04:19:24.562] domain2 epoch 17 : loss : 0.000000
+	val_base_dice: 0.221177, 
+	val_base_dc: 0.221047, 	val_base_jc: 0.164519, 
+	val_base_hd: 76.615409, 	val_base_asd: 58.541991, 
+[04:19:24.564] epoch 17 : loss : 0.000000
+	val_base_dice: 0.493770, 
+	val_base_dc: 0.493654, 	val_base_jc: 0.425754, 
+	val_base_hd: 50.160173, 	val_base_asd: 35.905580, 
+[04:19:24.565] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[04:19:24.565] test sam model
+[04:19:41.170] domain1 epoch 17 : loss : 0.000000
+	val_base_dice: 0.846466, 
+	val_base_dc: 0.846412, 	val_base_jc: 0.771061, 
+	val_base_hd: 15.750121, 	val_base_asd: 5.521437, 
+[04:19:49.207] domain2 epoch 17 : loss : 0.000000
+	val_base_dice: 0.485298, 
+	val_base_dc: 0.485229, 	val_base_jc: 0.387105, 
+	val_base_hd: 50.633295, 	val_base_asd: 20.470188, 
+[04:19:49.211] epoch 17 : loss : 0.000000
+	val_base_dice: 0.665882, 
+	val_base_dc: 0.665821, 	val_base_jc: 0.579083, 
+	val_base_hd: 33.191708, 	val_base_asd: 12.995813, 
+[04:19:49.211] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[04:41:36.568] iteration 9000 : loss : 0.119497, sam_sup_loss : 0.028785, sam_unsup_loss : 0.469204, unet_sup_loss : 0.025217, unet_unsup_loss : 0.260411, cons_w : 0.083315, mask_ratio : 0.937202, sd:0.620217,ud:0.503400,d:0.613163,s_m_r:0.710779,0.578597,0.488765
+[04:41:36.569] sam_ulb_base_dice:0.620217, unet_ulb_base_dice:0.503400, ulb_base_dice:0.613163
+[04:41:36.569] test unet model
+[04:41:47.167] domain1 epoch 18 : loss : 0.000000
+	val_base_dice: 0.792741, 
+	val_base_dc: 0.792671, 	val_base_jc: 0.715304, 
+	val_base_hd: 25.555092, 	val_base_asd: 12.199134, 
+[04:41:52.225] domain2 epoch 18 : loss : 0.000000
+	val_base_dice: 0.269604, 
+	val_base_dc: 0.269484, 	val_base_jc: 0.211122, 
+	val_base_hd: 78.644158, 	val_base_asd: 46.347761, 
+[04:41:52.227] epoch 18 : loss : 0.000000
+	val_base_dice: 0.531172, 
+	val_base_dc: 0.531077, 	val_base_jc: 0.463213, 
+	val_base_hd: 52.099625, 	val_base_asd: 29.273447, 
+[04:41:52.229] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[04:41:52.229] test sam model
+[04:42:08.882] domain1 epoch 18 : loss : 0.000000
+	val_base_dice: 0.844393, 
+	val_base_dc: 0.844342, 	val_base_jc: 0.765209, 
+	val_base_hd: 18.827297, 	val_base_asd: 7.272524, 
+[04:42:16.846] domain2 epoch 18 : loss : 0.000000
+	val_base_dice: 0.488871, 
+	val_base_dc: 0.488799, 	val_base_jc: 0.393561, 
+	val_base_hd: 49.208271, 	val_base_asd: 22.312144, 
+[04:42:16.847] epoch 18 : loss : 0.000000
+	val_base_dice: 0.666632, 
+	val_base_dc: 0.666571, 	val_base_jc: 0.579385, 
+	val_base_hd: 34.017784, 	val_base_asd: 14.792334, 
+[04:42:16.848] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[05:04:02.592] iteration 9500 : loss : 0.126470, sam_sup_loss : 0.042250, sam_unsup_loss : 0.479193, unet_sup_loss : 0.031254, unet_unsup_loss : 0.023793, cons_w : 0.095739, mask_ratio : 0.976059, sd:0.610836,ud:0.509923,d:0.604972,s_m_r:0.720078,0.588375,0.498166
+[05:04:02.592] sam_ulb_base_dice:0.610836, unet_ulb_base_dice:0.509923, ulb_base_dice:0.604972
+[05:04:02.592] test unet model
+[05:04:13.251] domain1 epoch 19 : loss : 0.000000
+	val_base_dice: 0.804050, 
+	val_base_dc: 0.803977, 	val_base_jc: 0.726837, 
+	val_base_hd: 23.387167, 	val_base_asd: 12.790073, 
+[05:04:18.339] domain2 epoch 19 : loss : 0.000000
+	val_base_dice: 0.295611, 
+	val_base_dc: 0.295499, 	val_base_jc: 0.228756, 
+	val_base_hd: 73.854360, 	val_base_asd: 42.602873, 
+[05:04:18.341] epoch 19 : loss : 0.000000
+	val_base_dice: 0.549830, 
+	val_base_dc: 0.549738, 	val_base_jc: 0.477797, 
+	val_base_hd: 48.620764, 	val_base_asd: 27.696473, 
+[05:04:18.341] val_base_best_dice: 0.556046 at 5000 iter, val_best_avg_dice: 0.556046 at 5000 iter
+[05:04:18.342] test sam model
+[05:04:35.091] domain1 epoch 19 : loss : 0.000000
+	val_base_dice: 0.842218, 
+	val_base_dc: 0.842168, 	val_base_jc: 0.762844, 
+	val_base_hd: 18.655483, 	val_base_asd: 6.375576, 
+[05:04:43.075] domain2 epoch 19 : loss : 0.000000
+	val_base_dice: 0.478679, 
+	val_base_dc: 0.478609, 	val_base_jc: 0.378831, 
+	val_base_hd: 55.275006, 	val_base_asd: 18.629891, 
+[05:04:43.077] epoch 19 : loss : 0.000000
+	val_base_dice: 0.660449, 
+	val_base_dc: 0.660389, 	val_base_jc: 0.570838, 
+	val_base_hd: 36.965245, 	val_base_asd: 12.502734, 
+[05:04:43.078] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[05:26:32.575] iteration 10000 : loss : 0.141313, sam_sup_loss : 0.022599, sam_unsup_loss : 0.374492, unet_sup_loss : 0.035366, unet_unsup_loss : 0.354513, cons_w : 0.105981, mask_ratio : 0.797359, sd:0.604011,ud:0.522624,d:0.595659,s_m_r:0.790877,0.604483,0.541493
+[05:26:32.575] sam_ulb_base_dice:0.604011, unet_ulb_base_dice:0.522624, ulb_base_dice:0.595659
+[05:26:32.575] test unet model
+[05:26:43.345] domain1 epoch 20 : loss : 0.000000
+	val_base_dice: 0.787973, 
+	val_base_dc: 0.787894, 	val_base_jc: 0.700354, 
+	val_base_hd: 34.626577, 	val_base_asd: 15.782388, 
+[05:26:48.353] domain2 epoch 20 : loss : 0.000000
+	val_base_dice: 0.350427, 
+	val_base_dc: 0.350325, 	val_base_jc: 0.278819, 
+	val_base_hd: 69.881478, 	val_base_asd: 40.375906, 
+[05:26:48.355] epoch 20 : loss : 0.000000
+	val_base_dice: 0.569200, 
+	val_base_dc: 0.569110, 	val_base_jc: 0.489587, 
+	val_base_hd: 52.254027, 	val_base_asd: 28.079147, 
+[05:26:48.355] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[05:26:48.608] val_base_best_dice: 0.569200 at 10000 iter, val_best_avg_dice: 0.569200 at 10000 iter
+[05:26:48.609] test sam model
+[05:27:05.385] domain1 epoch 20 : loss : 0.000000
+	val_base_dice: 0.843487, 
+	val_base_dc: 0.843436, 	val_base_jc: 0.764613, 
+	val_base_hd: 18.282852, 	val_base_asd: 6.451828, 
+[05:27:13.440] domain2 epoch 20 : loss : 0.000000
+	val_base_dice: 0.488161, 
+	val_base_dc: 0.488093, 	val_base_jc: 0.390430, 
+	val_base_hd: 54.546492, 	val_base_asd: 17.942280, 
+[05:27:13.441] epoch 20 : loss : 0.000000
+	val_base_dice: 0.665824, 
+	val_base_dc: 0.665764, 	val_base_jc: 0.577522, 
+	val_base_hd: 36.414672, 	val_base_asd: 12.197054, 
+[05:27:13.442] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[05:49:24.140] iteration 10500 : loss : 0.164057, sam_sup_loss : 0.095760, sam_unsup_loss : 0.069122, unet_sup_loss : 0.049321, unet_unsup_loss : 0.069216, cons_w : 0.117053, mask_ratio : 0.974014, sd:0.600161,ud:0.518841,d:0.590802,s_m_r:0.781118,0.608579,0.537139
+[05:49:24.141] sam_ulb_base_dice:0.600161, unet_ulb_base_dice:0.518841, ulb_base_dice:0.590802
+[05:49:24.142] test unet model
+[05:49:36.734] domain1 epoch 21 : loss : 0.000000
+	val_base_dice: 0.796661, 
+	val_base_dc: 0.796584, 	val_base_jc: 0.718218, 
+	val_base_hd: 26.520765, 	val_base_asd: 10.767398, 
+[05:49:42.723] domain2 epoch 21 : loss : 0.000000
+	val_base_dice: 0.262460, 
+	val_base_dc: 0.262339, 	val_base_jc: 0.197974, 
+	val_base_hd: 77.576186, 	val_base_asd: 40.468337, 
+[05:49:42.725] epoch 21 : loss : 0.000000
+	val_base_dice: 0.529561, 
+	val_base_dc: 0.529461, 	val_base_jc: 0.458096, 
+	val_base_hd: 52.048475, 	val_base_asd: 25.617868, 
+[05:49:42.725] val_base_best_dice: 0.569200 at 10000 iter, val_best_avg_dice: 0.569200 at 10000 iter
+[05:49:42.725] test sam model
+[05:50:01.179] domain1 epoch 21 : loss : 0.000000
+	val_base_dice: 0.848660, 
+	val_base_dc: 0.848613, 	val_base_jc: 0.771485, 
+	val_base_hd: 16.733219, 	val_base_asd: 6.314682, 
+[05:50:10.176] domain2 epoch 21 : loss : 0.000000
+	val_base_dice: 0.480423, 
+	val_base_dc: 0.480354, 	val_base_jc: 0.383596, 
+	val_base_hd: 51.644548, 	val_base_asd: 21.945502, 
+[05:50:10.178] epoch 21 : loss : 0.000000
+	val_base_dice: 0.664542, 
+	val_base_dc: 0.664484, 	val_base_jc: 0.577540, 
+	val_base_hd: 34.188884, 	val_base_asd: 14.130092, 
+[05:50:10.179] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[06:11:53.001] iteration 11000 : loss : 0.195340, sam_sup_loss : 0.067198, sam_unsup_loss : 0.307676, unet_sup_loss : 0.062615, unet_unsup_loss : 0.108294, cons_w : 0.133171, mask_ratio : 0.836174, sd:0.611947,ud:0.512937,d:0.604093,s_m_r:0.733060,0.601754,0.517908
+[06:11:53.001] sam_ulb_base_dice:0.611947, unet_ulb_base_dice:0.512937, ulb_base_dice:0.604093
+[06:11:53.002] test unet model
+[06:12:03.462] domain1 epoch 22 : loss : 0.000000
+	val_base_dice: 0.767105, 
+	val_base_dc: 0.767025, 	val_base_jc: 0.684292, 
+	val_base_hd: 30.312601, 	val_base_asd: 15.575950, 
+[06:12:08.419] domain2 epoch 22 : loss : 0.000000
+	val_base_dice: 0.297082, 
+	val_base_dc: 0.296969, 	val_base_jc: 0.237165, 
+	val_base_hd: 74.299450, 	val_base_asd: 47.471392, 
+[06:12:08.423] epoch 22 : loss : 0.000000
+	val_base_dice: 0.532094, 
+	val_base_dc: 0.531997, 	val_base_jc: 0.460728, 
+	val_base_hd: 52.306026, 	val_base_asd: 31.523671, 
+[06:12:08.425] val_base_best_dice: 0.569200 at 10000 iter, val_best_avg_dice: 0.569200 at 10000 iter
+[06:12:08.425] test sam model
+[06:12:25.061] domain1 epoch 22 : loss : 0.000000
+	val_base_dice: 0.831149, 
+	val_base_dc: 0.831095, 	val_base_jc: 0.753631, 
+	val_base_hd: 17.235488, 	val_base_asd: 6.665163, 
+[06:12:33.027] domain2 epoch 22 : loss : 0.000000
+	val_base_dice: 0.445368, 
+	val_base_dc: 0.445293, 	val_base_jc: 0.351784, 
+	val_base_hd: 55.953643, 	val_base_asd: 22.071819, 
+[06:12:33.028] epoch 22 : loss : 0.000000
+	val_base_dice: 0.638258, 
+	val_base_dc: 0.638194, 	val_base_jc: 0.552708, 
+	val_base_hd: 36.594565, 	val_base_asd: 14.368491, 
+[06:12:33.028] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[06:34:19.655] iteration 11500 : loss : 0.220584, sam_sup_loss : 0.063312, sam_unsup_loss : 0.116943, unet_sup_loss : 0.096386, unet_unsup_loss : 0.236812, cons_w : 0.146314, mask_ratio : 0.977654, sd:0.604816,ud:0.526849,d:0.596654,s_m_r:0.769695,0.613825,0.537980
+[06:34:19.655] sam_ulb_base_dice:0.604816, unet_ulb_base_dice:0.526849, ulb_base_dice:0.596654
+[06:34:19.655] test unet model
+[06:34:30.272] domain1 epoch 23 : loss : 0.000000
+	val_base_dice: 0.753062, 
+	val_base_dc: 0.752983, 	val_base_jc: 0.663299, 
+	val_base_hd: 41.001896, 	val_base_asd: 18.416103, 
+[06:34:35.347] domain2 epoch 23 : loss : 0.000000
+	val_base_dice: 0.351454, 
+	val_base_dc: 0.351357, 	val_base_jc: 0.286117, 
+	val_base_hd: 72.355296, 	val_base_asd: 33.714228, 
+[06:34:35.349] epoch 23 : loss : 0.000000
+	val_base_dice: 0.552258, 
+	val_base_dc: 0.552170, 	val_base_jc: 0.474708, 
+	val_base_hd: 56.678596, 	val_base_asd: 26.065165, 
+[06:34:35.350] val_base_best_dice: 0.569200 at 10000 iter, val_best_avg_dice: 0.569200 at 10000 iter
+[06:34:35.350] test sam model
+[06:34:51.827] domain1 epoch 23 : loss : 0.000000
+	val_base_dice: 0.830128, 
+	val_base_dc: 0.830074, 	val_base_jc: 0.749498, 
+	val_base_hd: 18.433163, 	val_base_asd: 5.985382, 
+[06:34:59.780] domain2 epoch 23 : loss : 0.000000
+	val_base_dice: 0.405446, 
+	val_base_dc: 0.405362, 	val_base_jc: 0.320974, 
+	val_base_hd: 62.228160, 	val_base_asd: 28.416881, 
+[06:34:59.781] epoch 23 : loss : 0.000000
+	val_base_dice: 0.617787, 
+	val_base_dc: 0.617718, 	val_base_jc: 0.535236, 
+	val_base_hd: 40.330662, 	val_base_asd: 17.201132, 
+[06:34:59.782] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[06:56:44.988] iteration 12000 : loss : 0.148154, sam_sup_loss : 0.056510, sam_unsup_loss : 0.194701, unet_sup_loss : 0.037981, unet_unsup_loss : 0.093723, cons_w : 0.160394, mask_ratio : 0.950993, sd:0.590994,ud:0.537460,d:0.585141,s_m_r:0.794675,0.628804,0.561922
+[06:56:44.988] sam_ulb_base_dice:0.590994, unet_ulb_base_dice:0.537460, ulb_base_dice:0.585141
+[06:56:44.989] test unet model
+[06:56:55.538] domain1 epoch 24 : loss : 0.000000
+	val_base_dice: 0.810307, 
+	val_base_dc: 0.810241, 	val_base_jc: 0.735547, 
+	val_base_hd: 24.158476, 	val_base_asd: 11.322114, 
+[06:57:00.533] domain2 epoch 24 : loss : 0.000000
+	val_base_dice: 0.360163, 
+	val_base_dc: 0.360067, 	val_base_jc: 0.284833, 
+	val_base_hd: 62.404683, 	val_base_asd: 35.596073, 
+[06:57:00.534] epoch 24 : loss : 0.000000
+	val_base_dice: 0.585235, 
+	val_base_dc: 0.585154, 	val_base_jc: 0.510190, 
+	val_base_hd: 43.281580, 	val_base_asd: 23.459094, 
+[06:57:00.535] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[06:57:01.444] val_base_best_dice: 0.585235 at 12000 iter, val_best_avg_dice: 0.585235 at 12000 iter
+[06:57:01.444] test sam model
+[06:57:17.912] domain1 epoch 24 : loss : 0.000000
+	val_base_dice: 0.837754, 
+	val_base_dc: 0.837703, 	val_base_jc: 0.758462, 
+	val_base_hd: 17.239536, 	val_base_asd: 7.008807, 
+[06:57:25.894] domain2 epoch 24 : loss : 0.000000
+	val_base_dice: 0.450482, 
+	val_base_dc: 0.450410, 	val_base_jc: 0.357287, 
+	val_base_hd: 61.019958, 	val_base_asd: 16.658616, 
+[06:57:25.896] epoch 24 : loss : 0.000000
+	val_base_dice: 0.644118, 
+	val_base_dc: 0.644056, 	val_base_jc: 0.557874, 
+	val_base_hd: 39.129747, 	val_base_asd: 11.833712, 
+[06:57:25.896] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[07:19:10.625] iteration 12500 : loss : 0.091874, sam_sup_loss : 0.039600, sam_unsup_loss : 0.039826, unet_sup_loss : 0.028152, unet_unsup_loss : 0.063684, cons_w : 0.180662, mask_ratio : 0.945599, sd:0.597568,ud:0.534389,d:0.591977,s_m_r:0.777697,0.631781,0.557916
+[07:19:10.625] sam_ulb_base_dice:0.597568, unet_ulb_base_dice:0.534389, ulb_base_dice:0.591977
+[07:19:10.626] test unet model
+[07:19:21.288] domain1 epoch 25 : loss : 0.000000
+	val_base_dice: 0.800035, 
+	val_base_dc: 0.799955, 	val_base_jc: 0.720801, 
+	val_base_hd: 25.472486, 	val_base_asd: 10.919656, 
+[07:19:26.167] domain2 epoch 25 : loss : 0.000000
+	val_base_dice: 0.244570, 
+	val_base_dc: 0.244439, 	val_base_jc: 0.195976, 
+	val_base_hd: 75.524244, 	val_base_asd: 56.193939, 
+[07:19:26.170] epoch 25 : loss : 0.000000
+	val_base_dice: 0.522302, 
+	val_base_dc: 0.522197, 	val_base_jc: 0.458389, 
+	val_base_hd: 50.498365, 	val_base_asd: 33.556797, 
+[07:19:26.170] val_base_best_dice: 0.585235 at 12000 iter, val_best_avg_dice: 0.585235 at 12000 iter
+[07:19:26.170] test sam model
+[07:19:42.660] domain1 epoch 25 : loss : 0.000000
+	val_base_dice: 0.823279, 
+	val_base_dc: 0.823218, 	val_base_jc: 0.740195, 
+	val_base_hd: 19.576328, 	val_base_asd: 7.612727, 
+[07:19:50.546] domain2 epoch 25 : loss : 0.000000
+	val_base_dice: 0.421057, 
+	val_base_dc: 0.420975, 	val_base_jc: 0.334852, 
+	val_base_hd: 62.053930, 	val_base_asd: 32.448097, 
+[07:19:50.548] epoch 25 : loss : 0.000000
+	val_base_dice: 0.622168, 
+	val_base_dc: 0.622097, 	val_base_jc: 0.537524, 
+	val_base_hd: 40.815129, 	val_base_asd: 20.030412, 
+[07:19:50.548] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[07:41:35.984] iteration 13000 : loss : 0.187654, sam_sup_loss : 0.079528, sam_unsup_loss : 0.058279, unet_sup_loss : 0.086391, unet_unsup_loss : 0.033337, cons_w : 0.197010, mask_ratio : 0.977043, sd:0.607821,ud:0.540846,d:0.599873,s_m_r:0.799721,0.633826,0.569661
+[07:41:35.984] sam_ulb_base_dice:0.607821, unet_ulb_base_dice:0.540846, ulb_base_dice:0.599873
+[07:41:35.985] test unet model
+[07:41:46.633] domain1 epoch 26 : loss : 0.000000
+	val_base_dice: 0.800471, 
+	val_base_dc: 0.800398, 	val_base_jc: 0.723856, 
+	val_base_hd: 24.276747, 	val_base_asd: 12.201357, 
+[07:41:51.633] domain2 epoch 26 : loss : 0.000000
+	val_base_dice: 0.240705, 
+	val_base_dc: 0.240580, 	val_base_jc: 0.182748, 
+	val_base_hd: 89.148009, 	val_base_asd: 50.224851, 
+[07:41:51.634] epoch 26 : loss : 0.000000
+	val_base_dice: 0.520588, 
+	val_base_dc: 0.520489, 	val_base_jc: 0.453302, 
+	val_base_hd: 56.712378, 	val_base_asd: 31.213104, 
+[07:41:51.635] val_base_best_dice: 0.585235 at 12000 iter, val_best_avg_dice: 0.585235 at 12000 iter
+[07:41:51.635] test sam model
+[07:42:08.191] domain1 epoch 26 : loss : 0.000000
+	val_base_dice: 0.831597, 
+	val_base_dc: 0.831541, 	val_base_jc: 0.749373, 
+	val_base_hd: 19.218163, 	val_base_asd: 8.816632, 
+[07:42:16.119] domain2 epoch 26 : loss : 0.000000
+	val_base_dice: 0.470801, 
+	val_base_dc: 0.470734, 	val_base_jc: 0.373219, 
+	val_base_hd: 58.591580, 	val_base_asd: 21.013768, 
+[07:42:16.121] epoch 26 : loss : 0.000000
+	val_base_dice: 0.651199, 
+	val_base_dc: 0.651138, 	val_base_jc: 0.561296, 
+	val_base_hd: 38.904872, 	val_base_asd: 14.915200, 
+[07:42:16.121] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[08:04:32.588] iteration 13500 : loss : 0.240018, sam_sup_loss : 0.095366, sam_unsup_loss : 0.167187, unet_sup_loss : 0.046440, unet_unsup_loss : 0.269128, cons_w : 0.214354, mask_ratio : 0.957531, sd:0.601514,ud:0.540269,d:0.593056,s_m_r:0.788301,0.640730,0.566960
+[08:04:32.588] sam_ulb_base_dice:0.601514, unet_ulb_base_dice:0.540269, ulb_base_dice:0.593056
+[08:04:32.588] test unet model
+[08:04:43.235] domain1 epoch 27 : loss : 0.000000
+	val_base_dice: 0.808007, 
+	val_base_dc: 0.807940, 	val_base_jc: 0.730465, 
+	val_base_hd: 23.371116, 	val_base_asd: 11.857890, 
+[08:04:48.243] domain2 epoch 27 : loss : 0.000000
+	val_base_dice: 0.334088, 
+	val_base_dc: 0.333987, 	val_base_jc: 0.265461, 
+	val_base_hd: 66.292174, 	val_base_asd: 44.667444, 
+[08:04:48.244] epoch 27 : loss : 0.000000
+	val_base_dice: 0.571048, 
+	val_base_dc: 0.570963, 	val_base_jc: 0.497963, 
+	val_base_hd: 44.831645, 	val_base_asd: 28.262667, 
+[08:04:48.245] val_base_best_dice: 0.585235 at 12000 iter, val_best_avg_dice: 0.585235 at 12000 iter
+[08:04:48.245] test sam model
+[08:05:05.135] domain1 epoch 27 : loss : 0.000000
+	val_base_dice: 0.838232, 
+	val_base_dc: 0.838182, 	val_base_jc: 0.758329, 
+	val_base_hd: 18.605759, 	val_base_asd: 6.961397, 
+[08:05:13.031] domain2 epoch 27 : loss : 0.000000
+	val_base_dice: 0.451641, 
+	val_base_dc: 0.451570, 	val_base_jc: 0.360249, 
+	val_base_hd: 54.262214, 	val_base_asd: 26.642499, 
+[08:05:13.032] epoch 27 : loss : 0.000000
+	val_base_dice: 0.644937, 
+	val_base_dc: 0.644876, 	val_base_jc: 0.559289, 
+	val_base_hd: 36.433986, 	val_base_asd: 16.801948, 
+[08:05:13.033] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[08:26:58.857] iteration 14000 : loss : 0.157849, sam_sup_loss : 0.038594, sam_unsup_loss : 0.120132, unet_sup_loss : 0.057994, unet_unsup_loss : 0.111178, cons_w : 0.239040, mask_ratio : 0.920872, sd:0.602206,ud:0.554024,d:0.597139,s_m_r:0.765106,0.650277,0.564900
+[08:26:58.857] sam_ulb_base_dice:0.602206, unet_ulb_base_dice:0.554024, ulb_base_dice:0.597139
+[08:26:58.858] test unet model
+[08:27:09.585] domain1 epoch 28 : loss : 0.000000
+	val_base_dice: 0.797473, 
+	val_base_dc: 0.797404, 	val_base_jc: 0.721336, 
+	val_base_hd: 23.370015, 	val_base_asd: 9.333835, 
+[08:27:14.525] domain2 epoch 28 : loss : 0.000000
+	val_base_dice: 0.245631, 
+	val_base_dc: 0.245505, 	val_base_jc: 0.192213, 
+	val_base_hd: 89.612124, 	val_base_asd: 48.837884, 
+[08:27:14.527] epoch 28 : loss : 0.000000
+	val_base_dice: 0.521552, 
+	val_base_dc: 0.521454, 	val_base_jc: 0.456775, 
+	val_base_hd: 56.491070, 	val_base_asd: 29.085859, 
+[08:27:14.528] val_base_best_dice: 0.585235 at 12000 iter, val_best_avg_dice: 0.585235 at 12000 iter
+[08:27:14.528] test sam model
+[08:27:31.111] domain1 epoch 28 : loss : 0.000000
+	val_base_dice: 0.838865, 
+	val_base_dc: 0.838812, 	val_base_jc: 0.757992, 
+	val_base_hd: 18.333194, 	val_base_asd: 6.317231, 
+[08:27:39.038] domain2 epoch 28 : loss : 0.000000
+	val_base_dice: 0.464819, 
+	val_base_dc: 0.464750, 	val_base_jc: 0.371108, 
+	val_base_hd: 53.644682, 	val_base_asd: 26.690290, 
+[08:27:39.040] epoch 28 : loss : 0.000000
+	val_base_dice: 0.651842, 
+	val_base_dc: 0.651781, 	val_base_jc: 0.564550, 
+	val_base_hd: 35.988938, 	val_base_asd: 16.503761, 
+[08:27:39.040] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[08:49:24.950] iteration 14500 : loss : 0.231997, sam_sup_loss : 0.085970, sam_unsup_loss : 0.116172, unet_sup_loss : 0.085916, unet_unsup_loss : 0.087657, cons_w : 0.258722, mask_ratio : 0.902237, sd:0.590041,ud:0.535219,d:0.587769,s_m_r:0.750058,0.654868,0.563390
+[08:49:24.950] sam_ulb_base_dice:0.590041, unet_ulb_base_dice:0.535219, ulb_base_dice:0.587769
+[08:49:24.951] test unet model
+[08:49:35.534] domain1 epoch 29 : loss : 0.000000
+	val_base_dice: 0.808748, 
+	val_base_dc: 0.808679, 	val_base_jc: 0.728674, 
+	val_base_hd: 21.234622, 	val_base_asd: 8.841224, 
+[08:49:40.448] domain2 epoch 29 : loss : 0.000000
+	val_base_dice: 0.273429, 
+	val_base_dc: 0.273309, 	val_base_jc: 0.218451, 
+	val_base_hd: 75.967417, 	val_base_asd: 56.109174, 
+[08:49:40.449] epoch 29 : loss : 0.000000
+	val_base_dice: 0.541089, 
+	val_base_dc: 0.540994, 	val_base_jc: 0.473562, 
+	val_base_hd: 48.601020, 	val_base_asd: 32.475199, 
+[08:49:40.449] val_base_best_dice: 0.585235 at 12000 iter, val_best_avg_dice: 0.585235 at 12000 iter
+[08:49:40.449] test sam model
+[08:49:57.068] domain1 epoch 29 : loss : 0.000000
+	val_base_dice: 0.817467, 
+	val_base_dc: 0.817409, 	val_base_jc: 0.737398, 
+	val_base_hd: 19.635163, 	val_base_asd: 8.680552, 
+[08:50:04.911] domain2 epoch 29 : loss : 0.000000
+	val_base_dice: 0.367323, 
+	val_base_dc: 0.367228, 	val_base_jc: 0.290892, 
+	val_base_hd: 63.267867, 	val_base_asd: 34.863940, 
+[08:50:04.913] epoch 29 : loss : 0.000000
+	val_base_dice: 0.592395, 
+	val_base_dc: 0.592319, 	val_base_jc: 0.514145, 
+	val_base_hd: 41.451515, 	val_base_asd: 21.772246, 
+[08:50:04.913] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[09:11:49.128] iteration 15000 : loss : 0.209515, sam_sup_loss : 0.032537, sam_unsup_loss : 0.054285, unet_sup_loss : 0.098569, unet_unsup_loss : 0.190791, cons_w : 0.279396, mask_ratio : 0.920486, sd:0.588740,ud:0.549163,d:0.584515,s_m_r:0.786234,0.671402,0.594158
+[09:11:49.128] sam_ulb_base_dice:0.588740, unet_ulb_base_dice:0.549163, ulb_base_dice:0.584515
+[09:11:49.129] test unet model
+[09:11:59.668] domain1 epoch 30 : loss : 0.000000
+	val_base_dice: 0.799631, 
+	val_base_dc: 0.799555, 	val_base_jc: 0.716772, 
+	val_base_hd: 30.759031, 	val_base_asd: 13.038798, 
+[09:12:04.645] domain2 epoch 30 : loss : 0.000000
+	val_base_dice: 0.384315, 
+	val_base_dc: 0.384222, 	val_base_jc: 0.298836, 
+	val_base_hd: 65.022178, 	val_base_asd: 30.704756, 
+[09:12:04.646] epoch 30 : loss : 0.000000
+	val_base_dice: 0.591973, 
+	val_base_dc: 0.591888, 	val_base_jc: 0.507804, 
+	val_base_hd: 47.890604, 	val_base_asd: 21.871777, 
+[09:12:04.647] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[09:12:05.283] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[09:12:05.283] test sam model
+[09:12:21.943] domain1 epoch 30 : loss : 0.000000
+	val_base_dice: 0.836055, 
+	val_base_dc: 0.836001, 	val_base_jc: 0.758662, 
+	val_base_hd: 22.376100, 	val_base_asd: 10.032659, 
+[09:12:29.925] domain2 epoch 30 : loss : 0.000000
+	val_base_dice: 0.579813, 
+	val_base_dc: 0.579760, 	val_base_jc: 0.471374, 
+	val_base_hd: 46.258900, 	val_base_asd: 20.840262, 
+[09:12:29.927] epoch 30 : loss : 0.000000
+	val_base_dice: 0.707934, 
+	val_base_dc: 0.707881, 	val_base_jc: 0.615018, 
+	val_base_hd: 34.317500, 	val_base_asd: 15.436460, 
+[09:12:29.928] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[09:34:16.054] iteration 15500 : loss : 0.160986, sam_sup_loss : 0.069923, sam_unsup_loss : 0.065834, unet_sup_loss : 0.034234, unet_unsup_loss : 0.101748, cons_w : 0.308472, mask_ratio : 0.944431, sd:0.586771,ud:0.534609,d:0.584574,s_m_r:0.765820,0.654866,0.569861
+[09:34:16.055] sam_ulb_base_dice:0.586771, unet_ulb_base_dice:0.534609, ulb_base_dice:0.584574
+[09:34:16.055] test unet model
+[09:34:26.589] domain1 epoch 31 : loss : 0.000000
+	val_base_dice: 0.788221, 
+	val_base_dc: 0.788139, 	val_base_jc: 0.714002, 
+	val_base_hd: 22.006577, 	val_base_asd: 10.026439, 
+[09:34:31.522] domain2 epoch 31 : loss : 0.000000
+	val_base_dice: 0.251876, 
+	val_base_dc: 0.251750, 	val_base_jc: 0.200637, 
+	val_base_hd: 78.873247, 	val_base_asd: 52.834019, 
+[09:34:31.524] epoch 31 : loss : 0.000000
+	val_base_dice: 0.520049, 
+	val_base_dc: 0.519944, 	val_base_jc: 0.457319, 
+	val_base_hd: 50.439912, 	val_base_asd: 31.430229, 
+[09:34:31.524] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[09:34:31.524] test sam model
+[09:34:48.097] domain1 epoch 31 : loss : 0.000000
+	val_base_dice: 0.801458, 
+	val_base_dc: 0.801393, 	val_base_jc: 0.725023, 
+	val_base_hd: 20.004589, 	val_base_asd: 8.392077, 
+[09:34:55.883] domain2 epoch 31 : loss : 0.000000
+	val_base_dice: 0.373348, 
+	val_base_dc: 0.373258, 	val_base_jc: 0.289812, 
+	val_base_hd: 62.810027, 	val_base_asd: 35.271288, 
+[09:34:55.884] epoch 31 : loss : 0.000000
+	val_base_dice: 0.587403, 
+	val_base_dc: 0.587325, 	val_base_jc: 0.507417, 
+	val_base_hd: 41.407308, 	val_base_asd: 21.831682, 
+[09:34:55.885] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[09:56:40.072] iteration 16000 : loss : 0.246398, sam_sup_loss : 0.097804, sam_unsup_loss : 0.048332, unet_sup_loss : 0.096281, unet_unsup_loss : 0.068758, cons_w : 0.331377, mask_ratio : 0.930828, sd:0.571673,ud:0.532184,d:0.570072,s_m_r:0.753406,0.662644,0.571131
+[09:56:40.073] sam_ulb_base_dice:0.571673, unet_ulb_base_dice:0.532184, ulb_base_dice:0.570072
+[09:56:40.073] test unet model
+[09:56:53.038] domain1 epoch 32 : loss : 0.000000
+	val_base_dice: 0.806798, 
+	val_base_dc: 0.806727, 	val_base_jc: 0.729212, 
+	val_base_hd: 25.397756, 	val_base_asd: 11.263893, 
+[09:56:59.118] domain2 epoch 32 : loss : 0.000000
+	val_base_dice: 0.253576, 
+	val_base_dc: 0.253455, 	val_base_jc: 0.196996, 
+	val_base_hd: 79.353188, 	val_base_asd: 48.733419, 
+[09:56:59.119] epoch 32 : loss : 0.000000
+	val_base_dice: 0.530187, 
+	val_base_dc: 0.530091, 	val_base_jc: 0.463104, 
+	val_base_hd: 52.375472, 	val_base_asd: 29.998656, 
+[09:56:59.120] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[09:56:59.120] test sam model
+[09:57:17.317] domain1 epoch 32 : loss : 0.000000
+	val_base_dice: 0.818096, 
+	val_base_dc: 0.818038, 	val_base_jc: 0.737286, 
+	val_base_hd: 18.771198, 	val_base_asd: 8.733688, 
+[09:57:26.022] domain2 epoch 32 : loss : 0.000000
+	val_base_dice: 0.428703, 
+	val_base_dc: 0.428626, 	val_base_jc: 0.341420, 
+	val_base_hd: 59.723899, 	val_base_asd: 28.310204, 
+[09:57:26.025] epoch 32 : loss : 0.000000
+	val_base_dice: 0.623400, 
+	val_base_dc: 0.623332, 	val_base_jc: 0.539353, 
+	val_base_hd: 39.247548, 	val_base_asd: 18.521946, 
+[09:57:26.029] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[10:19:54.950] iteration 16500 : loss : 0.177635, sam_sup_loss : 0.033443, sam_unsup_loss : 0.160186, unet_sup_loss : 0.035806, unet_unsup_loss : 0.122475, cons_w : 0.355182, mask_ratio : 0.971733, sd:0.573254,ud:0.538113,d:0.570493,s_m_r:0.761369,0.668634,0.578089
+[10:19:54.951] sam_ulb_base_dice:0.573254, unet_ulb_base_dice:0.538113, ulb_base_dice:0.570493
+[10:19:54.951] test unet model
+[10:20:05.673] domain1 epoch 33 : loss : 0.000000
+	val_base_dice: 0.789535, 
+	val_base_dc: 0.789466, 	val_base_jc: 0.714394, 
+	val_base_hd: 27.533385, 	val_base_asd: 13.369028, 
+[10:20:10.743] domain2 epoch 33 : loss : 0.000000
+	val_base_dice: 0.351599, 
+	val_base_dc: 0.351497, 	val_base_jc: 0.280752, 
+	val_base_hd: 66.437182, 	val_base_asd: 33.982123, 
+[10:20:10.744] epoch 33 : loss : 0.000000
+	val_base_dice: 0.570567, 
+	val_base_dc: 0.570481, 	val_base_jc: 0.497573, 
+	val_base_hd: 46.985284, 	val_base_asd: 23.675576, 
+[10:20:10.745] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[10:20:10.745] test sam model
+[10:20:27.277] domain1 epoch 33 : loss : 0.000000
+	val_base_dice: 0.808560, 
+	val_base_dc: 0.808498, 	val_base_jc: 0.732226, 
+	val_base_hd: 21.237077, 	val_base_asd: 7.846794, 
+[10:20:35.209] domain2 epoch 33 : loss : 0.000000
+	val_base_dice: 0.403204, 
+	val_base_dc: 0.403120, 	val_base_jc: 0.314129, 
+	val_base_hd: 60.162844, 	val_base_asd: 30.422157, 
+[10:20:35.210] epoch 33 : loss : 0.000000
+	val_base_dice: 0.605882, 
+	val_base_dc: 0.605809, 	val_base_jc: 0.523178, 
+	val_base_hd: 40.699960, 	val_base_asd: 19.134476, 
+[10:20:35.211] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[10:42:23.769] iteration 17000 : loss : 0.157040, sam_sup_loss : 0.041609, sam_unsup_loss : 0.070876, unet_sup_loss : 0.058272, unet_unsup_loss : 0.052223, cons_w : 0.388243, mask_ratio : 0.935215, sd:0.568082,ud:0.535368,d:0.565347,s_m_r:0.776995,0.686330,0.593951
+[10:42:23.769] sam_ulb_base_dice:0.568082, unet_ulb_base_dice:0.535368, ulb_base_dice:0.565347
+[10:42:23.769] test unet model
+[10:42:34.344] domain1 epoch 34 : loss : 0.000000
+	val_base_dice: 0.785121, 
+	val_base_dc: 0.785035, 	val_base_jc: 0.703746, 
+	val_base_hd: 26.714805, 	val_base_asd: 11.996042, 
+[10:42:39.308] domain2 epoch 34 : loss : 0.000000
+	val_base_dice: 0.292774, 
+	val_base_dc: 0.292658, 	val_base_jc: 0.233361, 
+	val_base_hd: 71.025648, 	val_base_asd: 49.594561, 
+[10:42:39.310] epoch 34 : loss : 0.000000
+	val_base_dice: 0.538947, 
+	val_base_dc: 0.538846, 	val_base_jc: 0.468554, 
+	val_base_hd: 48.870227, 	val_base_asd: 30.795302, 
+[10:42:39.311] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[10:42:39.311] test sam model
+[10:42:55.966] domain1 epoch 34 : loss : 0.000000
+	val_base_dice: 0.820433, 
+	val_base_dc: 0.820378, 	val_base_jc: 0.741715, 
+	val_base_hd: 19.335672, 	val_base_asd: 8.729903, 
+[10:43:03.834] domain2 epoch 34 : loss : 0.000000
+	val_base_dice: 0.399346, 
+	val_base_dc: 0.399260, 	val_base_jc: 0.315936, 
+	val_base_hd: 61.524593, 	val_base_asd: 34.684673, 
+[10:43:03.836] epoch 34 : loss : 0.000000
+	val_base_dice: 0.609890, 
+	val_base_dc: 0.609819, 	val_base_jc: 0.528825, 
+	val_base_hd: 40.430133, 	val_base_asd: 21.707288, 
+[10:43:03.837] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[11:04:50.664] iteration 17500 : loss : 0.080709, sam_sup_loss : 0.017855, sam_unsup_loss : 0.031404, unet_sup_loss : 0.023699, unet_unsup_loss : 0.030474, cons_w : 0.413954, mask_ratio : 0.910938, sd:0.588606,ud:0.547463,d:0.584667,s_m_r:0.786606,0.682635,0.597777
+[11:04:50.664] sam_ulb_base_dice:0.588606, unet_ulb_base_dice:0.547463, ulb_base_dice:0.584667
+[11:04:50.665] test unet model
+[11:05:01.343] domain1 epoch 35 : loss : 0.000000
+	val_base_dice: 0.794168, 
+	val_base_dc: 0.794084, 	val_base_jc: 0.713826, 
+	val_base_hd: 23.328630, 	val_base_asd: 13.073109, 
+[11:05:06.390] domain2 epoch 35 : loss : 0.000000
+	val_base_dice: 0.350967, 
+	val_base_dc: 0.350866, 	val_base_jc: 0.287480, 
+	val_base_hd: 63.558230, 	val_base_asd: 40.659603, 
+[11:05:06.393] epoch 35 : loss : 0.000000
+	val_base_dice: 0.572568, 
+	val_base_dc: 0.572475, 	val_base_jc: 0.500653, 
+	val_base_hd: 43.443430, 	val_base_asd: 26.866356, 
+[11:05:06.396] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[11:05:06.396] test sam model
+[11:05:23.029] domain1 epoch 35 : loss : 0.000000
+	val_base_dice: 0.816092, 
+	val_base_dc: 0.816034, 	val_base_jc: 0.737391, 
+	val_base_hd: 19.109342, 	val_base_asd: 8.824567, 
+[11:05:30.935] domain2 epoch 35 : loss : 0.000000
+	val_base_dice: 0.415594, 
+	val_base_dc: 0.415513, 	val_base_jc: 0.327997, 
+	val_base_hd: 55.373916, 	val_base_asd: 32.315594, 
+[11:05:30.937] epoch 35 : loss : 0.000000
+	val_base_dice: 0.615843, 
+	val_base_dc: 0.615774, 	val_base_jc: 0.532694, 
+	val_base_hd: 37.241629, 	val_base_asd: 20.570080, 
+[11:05:30.937] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[11:27:15.572] iteration 18000 : loss : 0.156201, sam_sup_loss : 0.023482, sam_unsup_loss : 0.114668, unet_sup_loss : 0.026442, unet_unsup_loss : 0.113407, cons_w : 0.440377, mask_ratio : 0.946171, sd:0.585641,ud:0.539647,d:0.582090,s_m_r:0.776413,0.687314,0.601198
+[11:27:15.573] sam_ulb_base_dice:0.585641, unet_ulb_base_dice:0.539647, ulb_base_dice:0.582090
+[11:27:15.573] test unet model
+[11:27:26.185] domain1 epoch 36 : loss : 0.000000
+	val_base_dice: 0.802318, 
+	val_base_dc: 0.802248, 	val_base_jc: 0.720415, 
+	val_base_hd: 23.590005, 	val_base_asd: 11.387024, 
+[11:27:31.243] domain2 epoch 36 : loss : 0.000000
+	val_base_dice: 0.364620, 
+	val_base_dc: 0.364526, 	val_base_jc: 0.290164, 
+	val_base_hd: 65.316042, 	val_base_asd: 35.752302, 
+[11:27:31.245] epoch 36 : loss : 0.000000
+	val_base_dice: 0.583469, 
+	val_base_dc: 0.583387, 	val_base_jc: 0.505289, 
+	val_base_hd: 44.453024, 	val_base_asd: 23.569663, 
+[11:27:31.245] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[11:27:31.246] test sam model
+[11:27:47.732] domain1 epoch 36 : loss : 0.000000
+	val_base_dice: 0.830913, 
+	val_base_dc: 0.830864, 	val_base_jc: 0.751890, 
+	val_base_hd: 18.326043, 	val_base_asd: 7.829156, 
+[11:27:55.730] domain2 epoch 36 : loss : 0.000000
+	val_base_dice: 0.458603, 
+	val_base_dc: 0.458535, 	val_base_jc: 0.368639, 
+	val_base_hd: 57.055435, 	val_base_asd: 27.495631, 
+[11:27:55.732] epoch 36 : loss : 0.000000
+	val_base_dice: 0.644758, 
+	val_base_dc: 0.644699, 	val_base_jc: 0.560265, 
+	val_base_hd: 37.690739, 	val_base_asd: 17.662394, 
+[11:27:55.732] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[11:49:43.398] iteration 18500 : loss : 0.082683, sam_sup_loss : 0.023069, sam_unsup_loss : 0.031756, unet_sup_loss : 0.021753, unet_unsup_loss : 0.038046, cons_w : 0.476577, mask_ratio : 0.986225, sd:0.588337,ud:0.539622,d:0.584522,s_m_r:0.773423,0.680403,0.596003
+[11:49:43.399] sam_ulb_base_dice:0.588337, unet_ulb_base_dice:0.539622, ulb_base_dice:0.584522
+[11:49:43.399] test unet model
+[11:49:53.961] domain1 epoch 37 : loss : 0.000000
+	val_base_dice: 0.782384, 
+	val_base_dc: 0.782273, 	val_base_jc: 0.709519, 
+	val_base_hd: 23.101339, 	val_base_asd: 10.963865, 
+[11:49:58.901] domain2 epoch 37 : loss : 0.000000
+	val_base_dice: 0.216041, 
+	val_base_dc: 0.215902, 	val_base_jc: 0.174710, 
+	val_base_hd: 80.134271, 	val_base_asd: 62.793090, 
+[11:49:58.903] epoch 37 : loss : 0.000000
+	val_base_dice: 0.499212, 
+	val_base_dc: 0.499088, 	val_base_jc: 0.442115, 
+	val_base_hd: 51.617805, 	val_base_asd: 36.878477, 
+[11:49:58.903] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[11:49:58.904] test sam model
+[11:50:15.458] domain1 epoch 37 : loss : 0.000000
+	val_base_dice: 0.826805, 
+	val_base_dc: 0.826753, 	val_base_jc: 0.746672, 
+	val_base_hd: 20.013994, 	val_base_asd: 6.505414, 
+[11:50:23.356] domain2 epoch 37 : loss : 0.000000
+	val_base_dice: 0.448211, 
+	val_base_dc: 0.448141, 	val_base_jc: 0.354035, 
+	val_base_hd: 55.803118, 	val_base_asd: 27.674452, 
+[11:50:23.358] epoch 37 : loss : 0.000000
+	val_base_dice: 0.637508, 
+	val_base_dc: 0.637447, 	val_base_jc: 0.550354, 
+	val_base_hd: 37.908556, 	val_base_asd: 17.089933, 
+[11:50:23.359] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[12:12:08.201] iteration 19000 : loss : 0.409988, sam_sup_loss : 0.031650, sam_unsup_loss : 0.453347, unet_sup_loss : 0.031150, unet_unsup_loss : 0.214704, cons_w : 0.504342, mask_ratio : 0.929699, sd:0.585894,ud:0.554897,d:0.586652,s_m_r:0.776164,0.691614,0.600158
+[12:12:08.202] sam_ulb_base_dice:0.585894, unet_ulb_base_dice:0.554897, ulb_base_dice:0.586652
+[12:12:08.202] test unet model
+[12:12:18.788] domain1 epoch 38 : loss : 0.000000
+	val_base_dice: 0.764423, 
+	val_base_dc: 0.764327, 	val_base_jc: 0.684883, 
+	val_base_hd: 24.575444, 	val_base_asd: 14.145498, 
+[12:12:23.700] domain2 epoch 38 : loss : 0.000000
+	val_base_dice: 0.251467, 
+	val_base_dc: 0.251341, 	val_base_jc: 0.202938, 
+	val_base_hd: 77.631823, 	val_base_asd: 58.016378, 
+[12:12:23.702] epoch 38 : loss : 0.000000
+	val_base_dice: 0.507945, 
+	val_base_dc: 0.507834, 	val_base_jc: 0.443911, 
+	val_base_hd: 51.103634, 	val_base_asd: 36.080938, 
+[12:12:23.703] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[12:12:23.703] test sam model
+[12:12:40.286] domain1 epoch 38 : loss : 0.000000
+	val_base_dice: 0.824330, 
+	val_base_dc: 0.824275, 	val_base_jc: 0.744588, 
+	val_base_hd: 17.743035, 	val_base_asd: 8.523080, 
+[12:12:48.221] domain2 epoch 38 : loss : 0.000000
+	val_base_dice: 0.448395, 
+	val_base_dc: 0.448324, 	val_base_jc: 0.362378, 
+	val_base_hd: 58.498758, 	val_base_asd: 28.135289, 
+[12:12:48.223] epoch 38 : loss : 0.000000
+	val_base_dice: 0.636363, 
+	val_base_dc: 0.636300, 	val_base_jc: 0.553483, 
+	val_base_hd: 38.120897, 	val_base_asd: 18.329185, 
+[12:12:48.223] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[12:34:33.829] iteration 19500 : loss : 0.338305, sam_sup_loss : 0.106753, sam_unsup_loss : 0.080301, unet_sup_loss : 0.054211, unet_unsup_loss : 0.230689, cons_w : 0.532525, mask_ratio : 0.992359, sd:0.580559,ud:0.544405,d:0.580205,s_m_r:0.786979,0.695580,0.609722
+[12:34:33.829] sam_ulb_base_dice:0.580559, unet_ulb_base_dice:0.544405, ulb_base_dice:0.580205
+[12:34:33.830] test unet model
+[12:34:44.419] domain1 epoch 39 : loss : 0.000000
+	val_base_dice: 0.804288, 
+	val_base_dc: 0.804222, 	val_base_jc: 0.727643, 
+	val_base_hd: 24.372030, 	val_base_asd: 13.161701, 
+[12:34:49.425] domain2 epoch 39 : loss : 0.000000
+	val_base_dice: 0.327097, 
+	val_base_dc: 0.326990, 	val_base_jc: 0.268056, 
+	val_base_hd: 68.658725, 	val_base_asd: 50.169371, 
+[12:34:49.428] epoch 39 : loss : 0.000000
+	val_base_dice: 0.565692, 
+	val_base_dc: 0.565606, 	val_base_jc: 0.497850, 
+	val_base_hd: 46.515378, 	val_base_asd: 31.665536, 
+[12:34:49.428] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[12:34:49.428] test sam model
+[12:35:06.009] domain1 epoch 39 : loss : 0.000000
+	val_base_dice: 0.812375, 
+	val_base_dc: 0.812312, 	val_base_jc: 0.731939, 
+	val_base_hd: 18.879146, 	val_base_asd: 7.895169, 
+[12:35:14.082] domain2 epoch 39 : loss : 0.000000
+	val_base_dice: 0.454756, 
+	val_base_dc: 0.454687, 	val_base_jc: 0.361088, 
+	val_base_hd: 55.305664, 	val_base_asd: 26.117888, 
+[12:35:14.085] epoch 39 : loss : 0.000000
+	val_base_dice: 0.633566, 
+	val_base_dc: 0.633500, 	val_base_jc: 0.546513, 
+	val_base_hd: 37.092405, 	val_base_asd: 17.006529, 
+[12:35:14.085] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[12:57:10.590] iteration 20000 : loss : 0.165805, sam_sup_loss : 0.035321, sam_unsup_loss : 0.059918, unet_sup_loss : 0.063896, unet_unsup_loss : 0.035682, cons_w : 0.570567, mask_ratio : 0.946266, sd:0.580431,ud:0.546662,d:0.579432,s_m_r:0.774200,0.687300,0.596928
+[12:57:10.590] sam_ulb_base_dice:0.580431, unet_ulb_base_dice:0.546662, ulb_base_dice:0.579432
+[12:57:10.591] test unet model
+[12:57:21.156] domain1 epoch 40 : loss : 0.000000
+	val_base_dice: 0.798003, 
+	val_base_dc: 0.797904, 	val_base_jc: 0.721847, 
+	val_base_hd: 25.303183, 	val_base_asd: 10.542227, 
+[12:57:26.091] domain2 epoch 40 : loss : 0.000000
+	val_base_dice: 0.302934, 
+	val_base_dc: 0.302816, 	val_base_jc: 0.246966, 
+	val_base_hd: 76.945881, 	val_base_asd: 55.710779, 
+[12:57:26.093] epoch 40 : loss : 0.000000
+	val_base_dice: 0.550469, 
+	val_base_dc: 0.550360, 	val_base_jc: 0.484406, 
+	val_base_hd: 51.124532, 	val_base_asd: 33.126503, 
+[12:57:26.094] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[12:57:26.094] test sam model
+[12:57:42.758] domain1 epoch 40 : loss : 0.000000
+	val_base_dice: 0.827625, 
+	val_base_dc: 0.827574, 	val_base_jc: 0.748457, 
+	val_base_hd: 21.159483, 	val_base_asd: 7.441387, 
+[12:57:50.664] domain2 epoch 40 : loss : 0.000000
+	val_base_dice: 0.443546, 
+	val_base_dc: 0.443472, 	val_base_jc: 0.348409, 
+	val_base_hd: 58.372137, 	val_base_asd: 24.212626, 
+[12:57:50.665] epoch 40 : loss : 0.000000
+	val_base_dice: 0.635585, 
+	val_base_dc: 0.635523, 	val_base_jc: 0.548433, 
+	val_base_hd: 39.765810, 	val_base_asd: 15.827006, 
+[12:57:50.666] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[13:19:38.927] iteration 20500 : loss : 0.324725, sam_sup_loss : 0.070667, sam_unsup_loss : 0.203253, unet_sup_loss : 0.055628, unet_unsup_loss : 0.079909, cons_w : 0.599296, mask_ratio : 0.899117, sd:0.574442,ud:0.543759,d:0.572176,s_m_r:0.778611,0.685938,0.597202
+[13:19:38.927] sam_ulb_base_dice:0.574442, unet_ulb_base_dice:0.543759, ulb_base_dice:0.572176
+[13:19:38.928] test unet model
+[13:19:49.479] domain1 epoch 41 : loss : 0.000000
+	val_base_dice: 0.802579, 
+	val_base_dc: 0.802501, 	val_base_jc: 0.727833, 
+	val_base_hd: 21.737546, 	val_base_asd: 11.274399, 
+[13:19:54.461] domain2 epoch 41 : loss : 0.000000
+	val_base_dice: 0.286663, 
+	val_base_dc: 0.286545, 	val_base_jc: 0.238321, 
+	val_base_hd: 74.047598, 	val_base_asd: 51.827785, 
+[13:19:54.463] epoch 41 : loss : 0.000000
+	val_base_dice: 0.544621, 
+	val_base_dc: 0.544523, 	val_base_jc: 0.483077, 
+	val_base_hd: 47.892572, 	val_base_asd: 31.551092, 
+[13:19:54.464] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[13:19:54.464] test sam model
+[13:20:10.923] domain1 epoch 41 : loss : 0.000000
+	val_base_dice: 0.832429, 
+	val_base_dc: 0.832380, 	val_base_jc: 0.753399, 
+	val_base_hd: 17.548830, 	val_base_asd: 7.452582, 
+[13:20:18.764] domain2 epoch 41 : loss : 0.000000
+	val_base_dice: 0.439486, 
+	val_base_dc: 0.439414, 	val_base_jc: 0.352668, 
+	val_base_hd: 54.852282, 	val_base_asd: 27.902352, 
+[13:20:18.765] epoch 41 : loss : 0.000000
+	val_base_dice: 0.635957, 
+	val_base_dc: 0.635897, 	val_base_jc: 0.553034, 
+	val_base_hd: 36.200556, 	val_base_asd: 17.677467, 
+[13:20:18.766] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[13:42:02.965] iteration 21000 : loss : 0.131214, sam_sup_loss : 0.042698, sam_unsup_loss : 0.043052, unet_sup_loss : 0.039219, unet_unsup_loss : 0.013375, cons_w : 0.628057, mask_ratio : 0.950279, sd:0.575690,ud:0.540479,d:0.573588,s_m_r:0.764478,0.703146,0.602328
+[13:42:02.965] sam_ulb_base_dice:0.575690, unet_ulb_base_dice:0.540479, ulb_base_dice:0.573588
+[13:42:02.965] test unet model
+[13:42:12.872] domain1 epoch 42 : loss : 0.000000
+	val_base_dice: 0.805982, 
+	val_base_dc: 0.805888, 	val_base_jc: 0.727608, 
+	val_base_hd: 21.706812, 	val_base_asd: 9.612875, 
+[13:42:17.554] domain2 epoch 42 : loss : 0.000000
+	val_base_dice: 0.356267, 
+	val_base_dc: 0.356164, 	val_base_jc: 0.287801, 
+	val_base_hd: 62.700024, 	val_base_asd: 38.618386, 
+[13:42:17.555] epoch 42 : loss : 0.000000
+	val_base_dice: 0.581125, 
+	val_base_dc: 0.581026, 	val_base_jc: 0.507704, 
+	val_base_hd: 42.203418, 	val_base_asd: 24.115631, 
+[13:42:17.555] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[13:42:17.555] test sam model
+[13:42:33.109] domain1 epoch 42 : loss : 0.000000
+	val_base_dice: 0.835444, 
+	val_base_dc: 0.835391, 	val_base_jc: 0.752773, 
+	val_base_hd: 19.385662, 	val_base_asd: 8.443067, 
+[13:42:40.533] domain2 epoch 42 : loss : 0.000000
+	val_base_dice: 0.491078, 
+	val_base_dc: 0.491016, 	val_base_jc: 0.398822, 
+	val_base_hd: 57.142607, 	val_base_asd: 24.627504, 
+[13:42:40.534] epoch 42 : loss : 0.000000
+	val_base_dice: 0.663261, 
+	val_base_dc: 0.663204, 	val_base_jc: 0.575798, 
+	val_base_hd: 38.264135, 	val_base_asd: 16.535285, 
+[13:42:40.535] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[14:04:17.043] iteration 21500 : loss : 0.320597, sam_sup_loss : 0.048482, sam_unsup_loss : 0.090119, unet_sup_loss : 0.111936, unet_unsup_loss : 0.097368, cons_w : 0.666227, mask_ratio : 0.942509, sd:0.576942,ud:0.545335,d:0.578230,s_m_r:0.776438,0.705705,0.611503
+[14:04:17.043] sam_ulb_base_dice:0.576942, unet_ulb_base_dice:0.545335, ulb_base_dice:0.578230
+[14:04:17.043] test unet model
+[14:04:26.955] domain1 epoch 43 : loss : 0.000000
+	val_base_dice: 0.786789, 
+	val_base_dc: 0.786711, 	val_base_jc: 0.713518, 
+	val_base_hd: 22.749974, 	val_base_asd: 10.994872, 
+[14:04:31.584] domain2 epoch 43 : loss : 0.000000
+	val_base_dice: 0.264298, 
+	val_base_dc: 0.264173, 	val_base_jc: 0.211788, 
+	val_base_hd: 77.958303, 	val_base_asd: 59.835854, 
+[14:04:31.586] epoch 43 : loss : 0.000000
+	val_base_dice: 0.525543, 
+	val_base_dc: 0.525442, 	val_base_jc: 0.462653, 
+	val_base_hd: 50.354138, 	val_base_asd: 35.415363, 
+[14:04:31.587] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[14:04:31.587] test sam model
+[14:04:47.162] domain1 epoch 43 : loss : 0.000000
+	val_base_dice: 0.831228, 
+	val_base_dc: 0.831175, 	val_base_jc: 0.747224, 
+	val_base_hd: 20.089218, 	val_base_asd: 8.530858, 
+[14:04:54.606] domain2 epoch 43 : loss : 0.000000
+	val_base_dice: 0.475247, 
+	val_base_dc: 0.475180, 	val_base_jc: 0.384354, 
+	val_base_hd: 53.412871, 	val_base_asd: 24.230304, 
+[14:04:54.608] epoch 43 : loss : 0.000000
+	val_base_dice: 0.653237, 
+	val_base_dc: 0.653177, 	val_base_jc: 0.565789, 
+	val_base_hd: 36.751044, 	val_base_asd: 16.380581, 
+[14:04:54.608] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[14:26:30.999] iteration 22000 : loss : 0.341585, sam_sup_loss : 0.047973, sam_unsup_loss : 0.226087, unet_sup_loss : 0.033275, unet_unsup_loss : 0.129131, cons_w : 0.694544, mask_ratio : 0.991711, sd:0.565106,ud:0.537695,d:0.564833,s_m_r:0.757333,0.710503,0.601680
+[14:26:31.000] sam_ulb_base_dice:0.565106, unet_ulb_base_dice:0.537695, ulb_base_dice:0.564833
+[14:26:31.001] test unet model
+[14:26:40.916] domain1 epoch 44 : loss : 0.000000
+	val_base_dice: 0.781126, 
+	val_base_dc: 0.780994, 	val_base_jc: 0.706158, 
+	val_base_hd: 22.954318, 	val_base_asd: 12.312881, 
+[14:26:45.461] domain2 epoch 44 : loss : 0.000000
+	val_base_dice: 0.244770, 
+	val_base_dc: 0.244644, 	val_base_jc: 0.197456, 
+	val_base_hd: 81.332010, 	val_base_asd: 61.568897, 
+[14:26:45.463] epoch 44 : loss : 0.000000
+	val_base_dice: 0.512948, 
+	val_base_dc: 0.512819, 	val_base_jc: 0.451807, 
+	val_base_hd: 52.143164, 	val_base_asd: 36.940889, 
+[14:26:45.464] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[14:26:45.464] test sam model
+[14:27:00.920] domain1 epoch 44 : loss : 0.000000
+	val_base_dice: 0.819517, 
+	val_base_dc: 0.819458, 	val_base_jc: 0.739691, 
+	val_base_hd: 20.890095, 	val_base_asd: 7.877473, 
+[14:27:08.247] domain2 epoch 44 : loss : 0.000000
+	val_base_dice: 0.406067, 
+	val_base_dc: 0.405985, 	val_base_jc: 0.318821, 
+	val_base_hd: 58.863032, 	val_base_asd: 32.863814, 
+[14:27:08.249] epoch 44 : loss : 0.000000
+	val_base_dice: 0.612792, 
+	val_base_dc: 0.612721, 	val_base_jc: 0.529256, 
+	val_base_hd: 39.876564, 	val_base_asd: 20.370644, 
+[14:27:08.249] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[14:48:46.491] iteration 22500 : loss : 0.186696, sam_sup_loss : 0.067729, sam_unsup_loss : 0.054724, unet_sup_loss : 0.048049, unet_unsup_loss : 0.029972, cons_w : 0.722437, mask_ratio : 0.984230, sd:0.574165,ud:0.549597,d:0.574541,s_m_r:0.790647,0.715176,0.622992
+[14:48:46.491] sam_ulb_base_dice:0.574165, unet_ulb_base_dice:0.549597, ulb_base_dice:0.574541
+[14:48:46.491] test unet model
+[14:48:56.370] domain1 epoch 45 : loss : 0.000000
+	val_base_dice: 0.813335, 
+	val_base_dc: 0.813279, 	val_base_jc: 0.725363, 
+	val_base_hd: 29.003904, 	val_base_asd: 11.484507, 
+[14:49:01.082] domain2 epoch 45 : loss : 0.000000
+	val_base_dice: 0.353956, 
+	val_base_dc: 0.353859, 	val_base_jc: 0.280206, 
+	val_base_hd: 82.530842, 	val_base_asd: 35.065760, 
+[14:49:01.085] epoch 45 : loss : 0.000000
+	val_base_dice: 0.583645, 
+	val_base_dc: 0.583569, 	val_base_jc: 0.502785, 
+	val_base_hd: 55.767373, 	val_base_asd: 23.275134, 
+[14:49:01.085] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[14:49:01.085] test sam model
+[14:49:16.676] domain1 epoch 45 : loss : 0.000000
+	val_base_dice: 0.814567, 
+	val_base_dc: 0.814512, 	val_base_jc: 0.736463, 
+	val_base_hd: 20.009544, 	val_base_asd: 8.794450, 
+[14:49:24.065] domain2 epoch 45 : loss : 0.000000
+	val_base_dice: 0.374929, 
+	val_base_dc: 0.374839, 	val_base_jc: 0.291972, 
+	val_base_hd: 62.205732, 	val_base_asd: 34.457905, 
+[14:49:24.066] epoch 45 : loss : 0.000000
+	val_base_dice: 0.594748, 
+	val_base_dc: 0.594676, 	val_base_jc: 0.514217, 
+	val_base_hd: 41.107638, 	val_base_asd: 21.626177, 
+[14:49:24.067] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[15:11:06.957] iteration 23000 : loss : 0.366114, sam_sup_loss : 0.044220, sam_unsup_loss : 0.153586, unet_sup_loss : 0.054714, unet_unsup_loss : 0.173625, cons_w : 0.758718, mask_ratio : 0.972874, sd:0.565726,ud:0.538529,d:0.563773,s_m_r:0.783024,0.712585,0.618187
+[15:11:06.958] sam_ulb_base_dice:0.565726, unet_ulb_base_dice:0.538529, ulb_base_dice:0.563773
+[15:11:06.958] test unet model
+[15:11:16.818] domain1 epoch 46 : loss : 0.000000
+	val_base_dice: 0.794618, 
+	val_base_dc: 0.794539, 	val_base_jc: 0.714959, 
+	val_base_hd: 22.496723, 	val_base_asd: 10.828106, 
+[15:11:21.456] domain2 epoch 46 : loss : 0.000000
+	val_base_dice: 0.252213, 
+	val_base_dc: 0.252086, 	val_base_jc: 0.201638, 
+	val_base_hd: 80.368263, 	val_base_asd: 51.691384, 
+[15:11:21.458] epoch 46 : loss : 0.000000
+	val_base_dice: 0.523416, 
+	val_base_dc: 0.523313, 	val_base_jc: 0.458299, 
+	val_base_hd: 51.432493, 	val_base_asd: 31.259745, 
+[15:11:21.459] val_base_best_dice: 0.591973 at 15000 iter, val_best_avg_dice: 0.591973 at 15000 iter
+[15:11:21.459] test sam model
+[15:11:37.064] domain1 epoch 46 : loss : 0.000000
+	val_base_dice: 0.833409, 
+	val_base_dc: 0.833358, 	val_base_jc: 0.750359, 
+	val_base_hd: 20.065405, 	val_base_asd: 7.871495, 
+[15:11:44.392] domain2 epoch 46 : loss : 0.000000
+	val_base_dice: 0.460716, 
+	val_base_dc: 0.460651, 	val_base_jc: 0.369477, 
+	val_base_hd: 58.482856, 	val_base_asd: 29.869112, 
+[15:11:44.394] epoch 46 : loss : 0.000000
+	val_base_dice: 0.647062, 
+	val_base_dc: 0.647005, 	val_base_jc: 0.559918, 
+	val_base_hd: 39.274130, 	val_base_asd: 18.870303, 
+[15:11:44.395] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[15:33:21.408] iteration 23500 : loss : 0.184742, sam_sup_loss : 0.021297, sam_unsup_loss : 0.038178, unet_sup_loss : 0.025132, unet_unsup_loss : 0.111481, cons_w : 0.785056, mask_ratio : 0.964073, sd:0.558358,ud:0.536694,d:0.557005,s_m_r:0.792164,0.717221,0.629992
+[15:33:21.408] sam_ulb_base_dice:0.558358, unet_ulb_base_dice:0.536694, ulb_base_dice:0.557005
+[15:33:21.408] test unet model
+[15:33:31.359] domain1 epoch 47 : loss : 0.000000
+	val_base_dice: 0.803005, 
+	val_base_dc: 0.802937, 	val_base_jc: 0.725427, 
+	val_base_hd: 30.011237, 	val_base_asd: 13.426149, 
+[15:33:36.110] domain2 epoch 47 : loss : 0.000000
+	val_base_dice: 0.409274, 
+	val_base_dc: 0.409187, 	val_base_jc: 0.320732, 
+	val_base_hd: 62.528336, 	val_base_asd: 31.381631, 
+[15:33:36.111] epoch 47 : loss : 0.000000
+	val_base_dice: 0.606139, 
+	val_base_dc: 0.606062, 	val_base_jc: 0.523080, 
+	val_base_hd: 46.269787, 	val_base_asd: 22.403890, 
+[15:33:36.112] save cur best avg unet model to ../model/BUSI/train/BUSI_dm1_lb129_paper/unet_avg_dice_best_model.pth
+[15:33:36.717] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[15:33:36.717] test sam model
+[15:33:52.274] domain1 epoch 47 : loss : 0.000000
+	val_base_dice: 0.827032, 
+	val_base_dc: 0.826976, 	val_base_jc: 0.744955, 
+	val_base_hd: 22.431340, 	val_base_asd: 8.752930, 
+[15:33:59.642] domain2 epoch 47 : loss : 0.000000
+	val_base_dice: 0.414332, 
+	val_base_dc: 0.414251, 	val_base_jc: 0.327607, 
+	val_base_hd: 62.853690, 	val_base_asd: 27.722491, 
+[15:33:59.644] epoch 47 : loss : 0.000000
+	val_base_dice: 0.620682, 
+	val_base_dc: 0.620613, 	val_base_jc: 0.536281, 
+	val_base_hd: 42.642515, 	val_base_asd: 18.237711, 
+[15:33:59.644] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[15:55:35.820] iteration 24000 : loss : 0.580364, sam_sup_loss : 0.122561, sam_unsup_loss : 0.095858, unet_sup_loss : 0.213108, unet_unsup_loss : 0.180388, cons_w : 0.810483, mask_ratio : 0.980728, sd:0.554632,ud:0.538092,d:0.555928,s_m_r:0.794858,0.714286,0.625822
+[15:55:35.820] sam_ulb_base_dice:0.554632, unet_ulb_base_dice:0.538092, ulb_base_dice:0.555928
+[15:55:35.820] test unet model
+[15:55:45.682] domain1 epoch 48 : loss : 0.000000
+	val_base_dice: 0.791767, 
+	val_base_dc: 0.791685, 	val_base_jc: 0.712454, 
+	val_base_hd: 25.372742, 	val_base_asd: 10.465595, 
+[15:55:50.169] domain2 epoch 48 : loss : 0.000000
+	val_base_dice: 0.285885, 
+	val_base_dc: 0.285763, 	val_base_jc: 0.231096, 
+	val_base_hd: 80.554236, 	val_base_asd: 55.182479, 
+[15:55:50.171] epoch 48 : loss : 0.000000
+	val_base_dice: 0.538826, 
+	val_base_dc: 0.538724, 	val_base_jc: 0.471775, 
+	val_base_hd: 52.963489, 	val_base_asd: 32.824037, 
+[15:55:50.171] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[15:55:50.172] test sam model
+[15:56:05.538] domain1 epoch 48 : loss : 0.000000
+	val_base_dice: 0.825872, 
+	val_base_dc: 0.825818, 	val_base_jc: 0.747262, 
+	val_base_hd: 19.985310, 	val_base_asd: 7.253130, 
+[15:56:12.809] domain2 epoch 48 : loss : 0.000000
+	val_base_dice: 0.376965, 
+	val_base_dc: 0.376872, 	val_base_jc: 0.299691, 
+	val_base_hd: 66.192609, 	val_base_asd: 32.464448, 
+[15:56:12.811] epoch 48 : loss : 0.000000
+	val_base_dice: 0.601419, 
+	val_base_dc: 0.601345, 	val_base_jc: 0.523476, 
+	val_base_hd: 43.088959, 	val_base_asd: 19.858789, 
+[15:56:12.811] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[16:17:50.399] iteration 24500 : loss : 0.101285, sam_sup_loss : 0.025198, sam_unsup_loss : 0.015124, unet_sup_loss : 0.030396, unet_unsup_loss : 0.016885, cons_w : 0.842716, mask_ratio : 0.941216, sd:0.546383,ud:0.528207,d:0.545774,s_m_r:0.813333,0.717606,0.639996
+[16:17:50.399] sam_ulb_base_dice:0.546383, unet_ulb_base_dice:0.528207, ulb_base_dice:0.545774
+[16:17:50.399] test unet model
+[16:18:00.218] domain1 epoch 49 : loss : 0.000000
+	val_base_dice: 0.791678, 
+	val_base_dc: 0.791595, 	val_base_jc: 0.705216, 
+	val_base_hd: 21.443068, 	val_base_asd: 9.723105, 
+[16:18:04.920] domain2 epoch 49 : loss : 0.000000
+	val_base_dice: 0.261143, 
+	val_base_dc: 0.261017, 	val_base_jc: 0.213237, 
+	val_base_hd: 73.876525, 	val_base_asd: 51.516433, 
+[16:18:04.921] epoch 49 : loss : 0.000000
+	val_base_dice: 0.526410, 
+	val_base_dc: 0.526306, 	val_base_jc: 0.459226, 
+	val_base_hd: 47.659796, 	val_base_asd: 30.619769, 
+[16:18:04.922] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[16:18:04.922] test sam model
+[16:18:20.389] domain1 epoch 49 : loss : 0.000000
+	val_base_dice: 0.812048, 
+	val_base_dc: 0.811991, 	val_base_jc: 0.735890, 
+	val_base_hd: 19.604769, 	val_base_asd: 7.047106, 
+[16:18:27.768] domain2 epoch 49 : loss : 0.000000
+	val_base_dice: 0.323597, 
+	val_base_dc: 0.323490, 	val_base_jc: 0.259807, 
+	val_base_hd: 69.087738, 	val_base_asd: 41.017564, 
+[16:18:27.769] epoch 49 : loss : 0.000000
+	val_base_dice: 0.567823, 
+	val_base_dc: 0.567741, 	val_base_jc: 0.497848, 
+	val_base_hd: 44.346254, 	val_base_asd: 24.032335, 
+[16:18:27.770] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[16:40:03.736] iteration 25000 : loss : 0.300960, sam_sup_loss : 0.020921, sam_unsup_loss : 0.061678, unet_sup_loss : 0.021971, unet_unsup_loss : 0.219945, cons_w : 0.865455, mask_ratio : 0.978592, sd:0.551211,ud:0.541903,d:0.551228,s_m_r:0.785789,0.715475,0.624063
+[16:40:03.737] sam_ulb_base_dice:0.551211, unet_ulb_base_dice:0.541903, ulb_base_dice:0.551228
+[16:40:03.737] test unet model
+[16:40:13.716] domain1 epoch 50 : loss : 0.000000
+	val_base_dice: 0.814390, 
+	val_base_dc: 0.814334, 	val_base_jc: 0.728300, 
+	val_base_hd: 37.695590, 	val_base_asd: 14.555163, 
+[16:40:18.401] domain2 epoch 50 : loss : 0.000000
+	val_base_dice: 0.384524, 
+	val_base_dc: 0.384439, 	val_base_jc: 0.301917, 
+	val_base_hd: 72.782179, 	val_base_asd: 35.241192, 
+[16:40:18.402] epoch 50 : loss : 0.000000
+	val_base_dice: 0.599457, 
+	val_base_dc: 0.599387, 	val_base_jc: 0.515108, 
+	val_base_hd: 55.238884, 	val_base_asd: 24.898177, 
+[16:40:18.403] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[16:40:18.403] test sam model
+[16:40:33.900] domain1 epoch 50 : loss : 0.000000
+	val_base_dice: 0.829998, 
+	val_base_dc: 0.829947, 	val_base_jc: 0.750857, 
+	val_base_hd: 17.888566, 	val_base_asd: 6.956633, 
+[16:40:41.336] domain2 epoch 50 : loss : 0.000000
+	val_base_dice: 0.379463, 
+	val_base_dc: 0.379372, 	val_base_jc: 0.301860, 
+	val_base_hd: 61.015220, 	val_base_asd: 29.749517, 
+[16:40:41.337] epoch 50 : loss : 0.000000
+	val_base_dice: 0.604731, 
+	val_base_dc: 0.604659, 	val_base_jc: 0.526358, 
+	val_base_hd: 39.451893, 	val_base_asd: 18.353075, 
+[16:40:41.338] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[17:02:23.806] iteration 25500 : loss : 0.369555, sam_sup_loss : 0.051778, sam_unsup_loss : 0.169124, unet_sup_loss : 0.065520, unet_unsup_loss : 0.088452, cons_w : 0.886810, mask_ratio : 0.974926, sd:0.567046,ud:0.535680,d:0.566414,s_m_r:0.789624,0.733860,0.638338
+[17:02:23.806] sam_ulb_base_dice:0.567046, unet_ulb_base_dice:0.535680, ulb_base_dice:0.566414
+[17:02:23.807] test unet model
+[17:02:33.718] domain1 epoch 51 : loss : 0.000000
+	val_base_dice: 0.799896, 
+	val_base_dc: 0.799827, 	val_base_jc: 0.722615, 
+	val_base_hd: 22.233459, 	val_base_asd: 9.878143, 
+[17:02:38.394] domain2 epoch 51 : loss : 0.000000
+	val_base_dice: 0.336539, 
+	val_base_dc: 0.336437, 	val_base_jc: 0.266680, 
+	val_base_hd: 72.417019, 	val_base_asd: 39.803748, 
+[17:02:38.395] epoch 51 : loss : 0.000000
+	val_base_dice: 0.568217, 
+	val_base_dc: 0.568132, 	val_base_jc: 0.494648, 
+	val_base_hd: 47.325239, 	val_base_asd: 24.840945, 
+[17:02:38.396] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[17:02:38.396] test sam model
+[17:02:53.993] domain1 epoch 51 : loss : 0.000000
+	val_base_dice: 0.821087, 
+	val_base_dc: 0.821029, 	val_base_jc: 0.740935, 
+	val_base_hd: 20.348517, 	val_base_asd: 8.700345, 
+[17:03:01.317] domain2 epoch 51 : loss : 0.000000
+	val_base_dice: 0.375366, 
+	val_base_dc: 0.375276, 	val_base_jc: 0.293845, 
+	val_base_hd: 62.184007, 	val_base_asd: 32.372760, 
+[17:03:01.319] epoch 51 : loss : 0.000000
+	val_base_dice: 0.598227, 
+	val_base_dc: 0.598152, 	val_base_jc: 0.517390, 
+	val_base_hd: 41.266262, 	val_base_asd: 20.536553, 
+[17:03:01.319] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[17:24:39.413] iteration 26000 : loss : 0.268713, sam_sup_loss : 0.038644, sam_unsup_loss : 0.066081, unet_sup_loss : 0.044727, unet_unsup_loss : 0.114019, cons_w : 0.912904, mask_ratio : 0.973087, sd:0.557506,ud:0.542819,d:0.559863,s_m_r:0.799236,0.735053,0.648399
+[17:24:39.413] sam_ulb_base_dice:0.557506, unet_ulb_base_dice:0.542819, ulb_base_dice:0.559863
+[17:24:39.414] test unet model
+[17:24:48.996] domain1 epoch 52 : loss : 0.000000
+	val_base_dice: 0.786629, 
+	val_base_dc: 0.786517, 	val_base_jc: 0.705876, 
+	val_base_hd: 23.519748, 	val_base_asd: 11.460987, 
+[17:24:53.538] domain2 epoch 52 : loss : 0.000000
+	val_base_dice: 0.272198, 
+	val_base_dc: 0.272076, 	val_base_jc: 0.223157, 
+	val_base_hd: 75.537546, 	val_base_asd: 52.226821, 
+[17:24:53.540] epoch 52 : loss : 0.000000
+	val_base_dice: 0.529414, 
+	val_base_dc: 0.529297, 	val_base_jc: 0.464517, 
+	val_base_hd: 49.528647, 	val_base_asd: 31.843904, 
+[17:24:53.541] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[17:24:53.541] test sam model
+[17:25:09.228] domain1 epoch 52 : loss : 0.000000
+	val_base_dice: 0.817147, 
+	val_base_dc: 0.817090, 	val_base_jc: 0.742039, 
+	val_base_hd: 19.441446, 	val_base_asd: 7.915247, 
+[17:25:16.573] domain2 epoch 52 : loss : 0.000000
+	val_base_dice: 0.360852, 
+	val_base_dc: 0.360753, 	val_base_jc: 0.291507, 
+	val_base_hd: 64.594677, 	val_base_asd: 33.814694, 
+[17:25:16.574] epoch 52 : loss : 0.000000
+	val_base_dice: 0.588999, 
+	val_base_dc: 0.588921, 	val_base_jc: 0.516773, 
+	val_base_hd: 42.018062, 	val_base_asd: 20.864970, 
+[17:25:16.575] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[17:46:52.366] iteration 26500 : loss : 0.193043, sam_sup_loss : 0.018892, sam_unsup_loss : 0.062476, unet_sup_loss : 0.030443, unet_unsup_loss : 0.072407, cons_w : 0.930531, mask_ratio : 0.930653, sd:0.559590,ud:0.544062,d:0.559196,s_m_r:0.809767,0.737949,0.650506
+[17:46:52.366] sam_ulb_base_dice:0.559590, unet_ulb_base_dice:0.544062, ulb_base_dice:0.559196
+[17:46:52.366] test unet model
+[17:47:02.263] domain1 epoch 53 : loss : 0.000000
+	val_base_dice: 0.765353, 
+	val_base_dc: 0.765234, 	val_base_jc: 0.684875, 
+	val_base_hd: 24.056508, 	val_base_asd: 10.874129, 
+[17:47:06.827] domain2 epoch 53 : loss : 0.000000
+	val_base_dice: 0.255742, 
+	val_base_dc: 0.255619, 	val_base_jc: 0.208254, 
+	val_base_hd: 74.524756, 	val_base_asd: 58.262010, 
+[17:47:06.829] epoch 53 : loss : 0.000000
+	val_base_dice: 0.510548, 
+	val_base_dc: 0.510427, 	val_base_jc: 0.446564, 
+	val_base_hd: 49.290632, 	val_base_asd: 34.568070, 
+[17:47:06.830] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[17:47:06.830] test sam model
+[17:47:22.295] domain1 epoch 53 : loss : 0.000000
+	val_base_dice: 0.826277, 
+	val_base_dc: 0.826225, 	val_base_jc: 0.748419, 
+	val_base_hd: 19.099666, 	val_base_asd: 7.635464, 
+[17:47:29.590] domain2 epoch 53 : loss : 0.000000
+	val_base_dice: 0.309079, 
+	val_base_dc: 0.308966, 	val_base_jc: 0.244561, 
+	val_base_hd: 69.284340, 	val_base_asd: 50.082615, 
+[17:47:29.592] epoch 53 : loss : 0.000000
+	val_base_dice: 0.567678, 
+	val_base_dc: 0.567595, 	val_base_jc: 0.496490, 
+	val_base_hd: 44.192003, 	val_base_asd: 28.859040, 
+[17:47:29.593] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[18:09:05.236] iteration 27000 : loss : 0.662891, sam_sup_loss : 0.138690, sam_unsup_loss : 0.316221, unet_sup_loss : 0.036618, unet_unsup_loss : 0.179503, cons_w : 0.946367, mask_ratio : 0.980957, sd:0.556365,ud:0.541723,d:0.557323,s_m_r:0.781925,0.723378,0.632284
+[18:09:05.236] sam_ulb_base_dice:0.556365, unet_ulb_base_dice:0.541723, ulb_base_dice:0.557323
+[18:09:05.236] test unet model
+[18:09:15.172] domain1 epoch 54 : loss : 0.000000
+	val_base_dice: 0.790952, 
+	val_base_dc: 0.790839, 	val_base_jc: 0.715060, 
+	val_base_hd: 23.255581, 	val_base_asd: 11.080675, 
+[18:09:19.615] domain2 epoch 54 : loss : 0.000000
+	val_base_dice: 0.289195, 
+	val_base_dc: 0.289082, 	val_base_jc: 0.234667, 
+	val_base_hd: 76.470461, 	val_base_asd: 56.325279, 
+[18:09:19.616] epoch 54 : loss : 0.000000
+	val_base_dice: 0.540073, 
+	val_base_dc: 0.539960, 	val_base_jc: 0.474864, 
+	val_base_hd: 49.863021, 	val_base_asd: 33.702977, 
+[18:09:19.617] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[18:09:19.617] test sam model
+[18:09:35.046] domain1 epoch 54 : loss : 0.000000
+	val_base_dice: 0.833761, 
+	val_base_dc: 0.833708, 	val_base_jc: 0.752234, 
+	val_base_hd: 18.211060, 	val_base_asd: 7.187646, 
+[18:09:42.412] domain2 epoch 54 : loss : 0.000000
+	val_base_dice: 0.346318, 
+	val_base_dc: 0.346217, 	val_base_jc: 0.275103, 
+	val_base_hd: 65.358571, 	val_base_asd: 35.749653, 
+[18:09:42.415] epoch 54 : loss : 0.000000
+	val_base_dice: 0.590040, 
+	val_base_dc: 0.589962, 	val_base_jc: 0.513668, 
+	val_base_hd: 41.784816, 	val_base_asd: 21.468650, 
+[18:09:42.415] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[18:31:18.499] iteration 27500 : loss : 0.204487, sam_sup_loss : 0.023171, sam_unsup_loss : 0.097360, unet_sup_loss : 0.020698, unet_unsup_loss : 0.045873, cons_w : 0.964520, mask_ratio : 0.975136, sd:0.564725,ud:0.546543,d:0.564366,s_m_r:0.815395,0.728455,0.648829
+[18:31:18.499] sam_ulb_base_dice:0.564725, unet_ulb_base_dice:0.546543, ulb_base_dice:0.564366
+[18:31:18.500] test unet model
+[18:31:28.304] domain1 epoch 55 : loss : 0.000000
+	val_base_dice: 0.789240, 
+	val_base_dc: 0.789122, 	val_base_jc: 0.719615, 
+	val_base_hd: 26.635480, 	val_base_asd: 14.669430, 
+[18:31:32.907] domain2 epoch 55 : loss : 0.000000
+	val_base_dice: 0.304504, 
+	val_base_dc: 0.304390, 	val_base_jc: 0.246843, 
+	val_base_hd: 71.830364, 	val_base_asd: 48.159016, 
+[18:31:32.908] epoch 55 : loss : 0.000000
+	val_base_dice: 0.546872, 
+	val_base_dc: 0.546756, 	val_base_jc: 0.483229, 
+	val_base_hd: 49.232922, 	val_base_asd: 31.414223, 
+[18:31:32.909] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[18:31:32.909] test sam model
+[18:31:48.502] domain1 epoch 55 : loss : 0.000000
+	val_base_dice: 0.834719, 
+	val_base_dc: 0.834668, 	val_base_jc: 0.754665, 
+	val_base_hd: 17.024772, 	val_base_asd: 7.120273, 
+[18:31:55.840] domain2 epoch 55 : loss : 0.000000
+	val_base_dice: 0.420792, 
+	val_base_dc: 0.420709, 	val_base_jc: 0.330563, 
+	val_base_hd: 53.677642, 	val_base_asd: 28.207114, 
+[18:31:55.842] epoch 55 : loss : 0.000000
+	val_base_dice: 0.627756, 
+	val_base_dc: 0.627688, 	val_base_jc: 0.542614, 
+	val_base_hd: 35.351207, 	val_base_asd: 17.663694, 
+[18:31:55.842] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[18:53:32.287] iteration 28000 : loss : 0.403481, sam_sup_loss : 0.127334, sam_unsup_loss : 0.075156, unet_sup_loss : 0.152262, unet_unsup_loss : 0.038991, cons_w : 0.975798, mask_ratio : 0.981468, sd:0.572514,ud:0.540590,d:0.573668,s_m_r:0.789991,0.712052,0.626076
+[18:53:32.287] sam_ulb_base_dice:0.572514, unet_ulb_base_dice:0.540590, ulb_base_dice:0.573668
+[18:53:32.288] test unet model
+[18:53:41.939] domain1 epoch 56 : loss : 0.000000
+	val_base_dice: 0.820595, 
+	val_base_dc: 0.820538, 	val_base_jc: 0.743382, 
+	val_base_hd: 22.852547, 	val_base_asd: 10.574027, 
+[18:53:46.532] domain2 epoch 56 : loss : 0.000000
+	val_base_dice: 0.279059, 
+	val_base_dc: 0.278941, 	val_base_jc: 0.224421, 
+	val_base_hd: 80.770014, 	val_base_asd: 53.308502, 
+[18:53:46.533] epoch 56 : loss : 0.000000
+	val_base_dice: 0.549827, 
+	val_base_dc: 0.549740, 	val_base_jc: 0.483901, 
+	val_base_hd: 51.811280, 	val_base_asd: 31.941264, 
+[18:53:46.534] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[18:53:46.534] test sam model
+[18:54:02.096] domain1 epoch 56 : loss : 0.000000
+	val_base_dice: 0.841141, 
+	val_base_dc: 0.841089, 	val_base_jc: 0.759097, 
+	val_base_hd: 19.534625, 	val_base_asd: 7.369675, 
+[18:54:09.424] domain2 epoch 56 : loss : 0.000000
+	val_base_dice: 0.419052, 
+	val_base_dc: 0.418969, 	val_base_jc: 0.332802, 
+	val_base_hd: 61.562707, 	val_base_asd: 29.587931, 
+[18:54:09.425] epoch 56 : loss : 0.000000
+	val_base_dice: 0.630096, 
+	val_base_dc: 0.630029, 	val_base_jc: 0.545950, 
+	val_base_hd: 40.548666, 	val_base_asd: 18.478803, 
+[18:54:09.426] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[19:15:46.799] iteration 28500 : loss : 0.454808, sam_sup_loss : 0.024590, sam_unsup_loss : 0.257239, unet_sup_loss : 0.034066, unet_unsup_loss : 0.097862, cons_w : 0.984989, mask_ratio : 0.958080, sd:0.561603,ud:0.534083,d:0.560002,s_m_r:0.802625,0.731831,0.642063
+[19:15:46.800] sam_ulb_base_dice:0.561603, unet_ulb_base_dice:0.534083, ulb_base_dice:0.560002
+[19:15:46.800] test unet model
+[19:15:56.771] domain1 epoch 57 : loss : 0.000000
+	val_base_dice: 0.803857, 
+	val_base_dc: 0.803753, 	val_base_jc: 0.727948, 
+	val_base_hd: 21.519793, 	val_base_asd: 10.078656, 
+[19:16:01.152] domain2 epoch 57 : loss : 0.000000
+	val_base_dice: 0.269418, 
+	val_base_dc: 0.269298, 	val_base_jc: 0.219632, 
+	val_base_hd: 72.968312, 	val_base_asd: 58.410622, 
+[19:16:06.278] epoch 57 : loss : 0.000000
+	val_base_dice: 0.536638, 
+	val_base_dc: 0.536526, 	val_base_jc: 0.473790, 
+	val_base_hd: 47.244053, 	val_base_asd: 34.244639, 
+[19:16:06.278] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[19:16:06.278] test sam model
+[19:16:21.205] domain1 epoch 57 : loss : 0.000000
+	val_base_dice: 0.829903, 
+	val_base_dc: 0.829847, 	val_base_jc: 0.749381, 
+	val_base_hd: 18.782447, 	val_base_asd: 7.820304, 
+[19:16:29.284] domain2 epoch 57 : loss : 0.000000
+	val_base_dice: 0.358952, 
+	val_base_dc: 0.358855, 	val_base_jc: 0.284976, 
+	val_base_hd: 65.886970, 	val_base_asd: 32.432266, 
+[19:16:29.285] epoch 57 : loss : 0.000000
+	val_base_dice: 0.594427, 
+	val_base_dc: 0.594351, 	val_base_jc: 0.517178, 
+	val_base_hd: 42.334709, 	val_base_asd: 20.126285, 
+[19:16:29.286] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[19:38:05.566] iteration 29000 : loss : 0.451861, sam_sup_loss : 0.033431, sam_unsup_loss : 0.197602, unet_sup_loss : 0.045292, unet_unsup_loss : 0.152871, cons_w : 0.993894, mask_ratio : 0.955730, sd:0.541971,ud:0.533075,d:0.543246,s_m_r:0.794151,0.732196,0.633780
+[19:38:05.567] sam_ulb_base_dice:0.541971, unet_ulb_base_dice:0.533075, ulb_base_dice:0.543246
+[19:38:05.567] test unet model
+[19:38:15.554] domain1 epoch 58 : loss : 0.000000
+	val_base_dice: 0.802058, 
+	val_base_dc: 0.801950, 	val_base_jc: 0.723293, 
+	val_base_hd: 25.349719, 	val_base_asd: 11.804320, 
+[19:38:20.271] domain2 epoch 58 : loss : 0.000000
+	val_base_dice: 0.351407, 
+	val_base_dc: 0.351310, 	val_base_jc: 0.276001, 
+	val_base_hd: 69.289256, 	val_base_asd: 40.534755, 
+[19:38:20.272] epoch 58 : loss : 0.000000
+	val_base_dice: 0.576732, 
+	val_base_dc: 0.576630, 	val_base_jc: 0.499647, 
+	val_base_hd: 47.319488, 	val_base_asd: 26.169537, 
+[19:38:20.273] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[19:38:20.273] test sam model
+[19:38:35.720] domain1 epoch 58 : loss : 0.000000
+	val_base_dice: 0.826593, 
+	val_base_dc: 0.826537, 	val_base_jc: 0.748452, 
+	val_base_hd: 18.905092, 	val_base_asd: 7.191319, 
+[19:38:42.994] domain2 epoch 58 : loss : 0.000000
+	val_base_dice: 0.349439, 
+	val_base_dc: 0.349339, 	val_base_jc: 0.277914, 
+	val_base_hd: 65.444127, 	val_base_asd: 35.535037, 
+[19:38:42.996] epoch 58 : loss : 0.000000
+	val_base_dice: 0.588016, 
+	val_base_dc: 0.587938, 	val_base_jc: 0.513183, 
+	val_base_hd: 42.174610, 	val_base_asd: 21.363178, 
+[19:38:42.997] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[20:00:20.561] iteration 29500 : loss : 0.406619, sam_sup_loss : 0.038071, sam_unsup_loss : 0.138054, unet_sup_loss : 0.028123, unet_unsup_loss : 0.185565, cons_w : 0.998002, mask_ratio : 0.959751, sd:0.557440,ud:0.544078,d:0.557906,s_m_r:0.806965,0.749074,0.660842
+[20:00:20.562] sam_ulb_base_dice:0.557440, unet_ulb_base_dice:0.544078, ulb_base_dice:0.557906
+[20:00:20.562] test unet model
+[20:00:30.349] domain1 epoch 59 : loss : 0.000000
+	val_base_dice: 0.790898, 
+	val_base_dc: 0.790807, 	val_base_jc: 0.711892, 
+	val_base_hd: 23.517405, 	val_base_asd: 10.025483, 
+[20:00:34.854] domain2 epoch 59 : loss : 0.000000
+	val_base_dice: 0.256032, 
+	val_base_dc: 0.255907, 	val_base_jc: 0.218133, 
+	val_base_hd: 77.737836, 	val_base_asd: 64.223217, 
+[20:00:34.856] epoch 59 : loss : 0.000000
+	val_base_dice: 0.523465, 
+	val_base_dc: 0.523357, 	val_base_jc: 0.465012, 
+	val_base_hd: 50.627620, 	val_base_asd: 37.124350, 
+[20:00:34.856] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[20:00:34.857] test sam model
+[20:00:50.414] domain1 epoch 59 : loss : 0.000000
+	val_base_dice: 0.812668, 
+	val_base_dc: 0.812608, 	val_base_jc: 0.731888, 
+	val_base_hd: 18.751068, 	val_base_asd: 7.207526, 
+[20:00:57.704] domain2 epoch 59 : loss : 0.000000
+	val_base_dice: 0.279670, 
+	val_base_dc: 0.279550, 	val_base_jc: 0.220628, 
+	val_base_hd: 72.607816, 	val_base_asd: 45.029942, 
+[20:00:57.707] epoch 59 : loss : 0.000000
+	val_base_dice: 0.546169, 
+	val_base_dc: 0.546079, 	val_base_jc: 0.476258, 
+	val_base_hd: 45.679442, 	val_base_asd: 26.118734, 
+[20:00:57.707] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
+[20:22:34.420] iteration 30000 : loss : 0.838084, sam_sup_loss : 0.043364, sam_unsup_loss : 0.362119, unet_sup_loss : 0.039580, unet_unsup_loss : 0.377338, cons_w : 0.999875, mask_ratio : 0.992714, sd:0.550725,ud:0.535874,d:0.551891,s_m_r:0.808840,0.740370,0.655558
+[20:22:34.420] sam_ulb_base_dice:0.550725, unet_ulb_base_dice:0.535874, ulb_base_dice:0.551891
+[20:22:34.421] test unet model
+[20:22:44.262] domain1 epoch 60 : loss : 0.000000
+	val_base_dice: 0.800873, 
+	val_base_dc: 0.800808, 	val_base_jc: 0.724216, 
+	val_base_hd: 19.974501, 	val_base_asd: 10.632006, 
+[20:22:48.728] domain2 epoch 60 : loss : 0.000000
+	val_base_dice: 0.179581, 
+	val_base_dc: 0.179436, 	val_base_jc: 0.154234, 
+	val_base_hd: 101.182797, 	val_base_asd: 72.747877, 
+[20:22:48.729] epoch 60 : loss : 0.000000
+	val_base_dice: 0.490227, 
+	val_base_dc: 0.490122, 	val_base_jc: 0.439225, 
+	val_base_hd: 60.578649, 	val_base_asd: 41.689941, 
+[20:22:48.730] val_base_best_dice: 0.606139 at 23500 iter, val_best_avg_dice: 0.606139 at 23500 iter
+[20:22:48.730] test sam model
+[20:23:04.085] domain1 epoch 60 : loss : 0.000000
+	val_base_dice: 0.831791, 
+	val_base_dc: 0.831739, 	val_base_jc: 0.751984, 
+	val_base_hd: 19.136301, 	val_base_asd: 6.435601, 
+[20:23:11.377] domain2 epoch 60 : loss : 0.000000
+	val_base_dice: 0.337229, 
+	val_base_dc: 0.337126, 	val_base_jc: 0.267360, 
+	val_base_hd: 66.893772, 	val_base_asd: 36.598000, 
+[20:23:11.380] epoch 60 : loss : 0.000000
+	val_base_dice: 0.584510, 
+	val_base_dc: 0.584432, 	val_base_jc: 0.509672, 
+	val_base_hd: 43.015036, 	val_base_asd: 21.516800, 
+[20:23:11.381] stu_val_base_best_dice: 0.732751 at 6000 iter, val_best_avg_dice: 0.732751 at 6000 iter
