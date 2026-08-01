@@ -26,6 +26,7 @@ from networks.wrn import build_WideResNet
 from dataloaders.dataloader import FundusSegmentation, ProstateSegmentation, MNMSSegmentation, BUSISegmentation
 import dataloaders.custom_transforms as tr
 from utils import losses, metrics, ramps, util
+from utils.region_smc import blend_region_wise_probabilities
 from torch.cuda.amp import autocast, GradScaler
 import contextlib
 import matplotlib.pyplot as plt 
@@ -528,35 +529,64 @@ def train(args, snapshot_path):
                     sam_output_ulb_x_w = ema_SAM_model(ulb_x_w, multimask_output, args.img_size)
                     sam_logits_ulb_x_w = sam_output_ulb_x_w['low_res_logits']
                     sam_prob_ulb_x_w = torch.softmax(sam_logits_ulb_x_w, dim=1)
-                    sam_prob, sam_pseudo_label = torch.max(sam_prob_ulb_x_w, dim=1)
-                    unet_size_sam_prob_ulb_x_w = F.interpolate(sam_prob_ulb_x_w, size=(patch_size, patch_size), mode='bilinear', align_corners=False)
+                    _, sam_pseudo_label = torch.max(sam_prob_ulb_x_w, dim=1)
+
+                    # Resize continuous MedSAM probabilities to the U-Net grid.
+                    unet_size_sam_prob_ulb_x_w = F.interpolate(
+                        sam_prob_ulb_x_w,
+                        size=(patch_size, patch_size),
+                        mode='bilinear',
+                        align_corners=False,
+                    )
+
                     unet_logits_ulb_x_w = ema_unet_model(ulb_unet_size_x_w)
                     unet_prob_ulb_x_w = torch.softmax(unet_logits_ulb_x_w, dim=1)
-                    unet_prob, unet_pseudo_label = torch.max(unet_prob_ulb_x_w, dim=1)
-                    
-                unet_stu_output_ulb_x_w = unet_model(ulb_unet_size_x_w)
-                unet_stu_prob_ulb_x_w = torch.softmax(unet_stu_output_ulb_x_w, dim=1)
-                unet_stu_prob, unet_stu_pseudo_label = torch.max(unet_stu_prob_ulb_x_w, dim=1)
-                low_res_unet_pseudo_label = F.interpolate(unet_pseudo_label.unsqueeze(0).float(), size=(low_res, low_res), mode='nearest').long().squeeze(0)
-                if args.dataset == 'fundus':
-                    self_conf = dice_calcu[args.dataset](np.asarray(to_2d(unet_stu_pseudo_label).cpu()), to_2d(unet_pseudo_label).cpu(), ret_arr=True)
-                    mutual_conf = dice_calcu[args.dataset](np.asarray(to_2d(low_res_unet_pseudo_label).cpu()), to_2d(sam_pseudo_label).cpu(), ret_arr=True)
-                else:
-                    self_conf = dice_calcu[args.dataset](np.asarray(unet_stu_pseudo_label.clone().cpu()), unet_pseudo_label.clone().cpu(), ret_arr=True)
-                    mutual_conf = dice_calcu[args.dataset](np.asarray(low_res_unet_pseudo_label.clone().cpu()), sam_pseudo_label.clone().cpu(), ret_arr=True)
-                self_conf, mutual_conf = np.mean(self_conf, axis=0), np.mean(mutual_conf, axis=0)
-                
-                self_conf_sta.update(np.mean(self_conf))
-                mutual_conf_sta.update(np.mean(mutual_conf))
-                ratio_sta.update(np.mean(self_conf * mutual_conf))
-                
-                ratio =  torch.tensor(self_conf * mutual_conf).view(len(ulb_x_w),1,1,1).cuda()
-                unet_size_prob_ulb_x_w = (1-ratio)*unet_size_sam_prob_ulb_x_w + ratio*unet_prob_ulb_x_w
-                unet_size_prob, unet_size_pseudo_label = torch.max(unet_size_prob_ulb_x_w, dim=1)
-                unet_size_mask = (unet_size_prob > threshold).unsqueeze(1).float()
-                low_res_prob_ulb_x_w = F.interpolate(unet_size_prob_ulb_x_w, size=(low_res, low_res), mode='bilinear', align_corners=False)
-                low_res_prob, low_res_pseudo_label = torch.max(low_res_prob_ulb_x_w, dim=1)
-                low_res_mask = (low_res_prob > threshold).unsqueeze(1).float()
+                    _, unet_pseudo_label = torch.max(unet_prob_ulb_x_w, dim=1)
+
+                    # This weak student prediction is used only for stability.
+                    unet_stu_output_ulb_x_w = unet_model(ulb_unet_size_x_w)
+                    unet_stu_prob_ulb_x_w = torch.softmax(
+                        unet_stu_output_ulb_x_w, dim=1
+                    )
+
+                    (
+                        unet_size_prob_ulb_x_w,
+                        self_conf,
+                        mutual_conf,
+                        alpha_map,
+                    ) = blend_region_wise_probabilities(
+                        unet_size_sam_prob_ulb_x_w,
+                        unet_prob_ulb_x_w,
+                        unet_stu_prob_ulb_x_w,
+                    )
+
+                    unet_size_prob, unet_size_pseudo_label = torch.max(
+                        unet_size_prob_ulb_x_w, dim=1
+                    )
+                    unet_size_mask = (
+                        unet_size_prob > threshold
+                    ).unsqueeze(1).float()
+
+                    low_res_prob_ulb_x_w = F.interpolate(
+                        unet_size_prob_ulb_x_w,
+                        size=(low_res, low_res),
+                        mode='bilinear',
+                        align_corners=False,
+                    )
+                    low_res_prob, low_res_pseudo_label = torch.max(
+                        low_res_prob_ulb_x_w, dim=1
+                    )
+                    low_res_mask = (
+                        low_res_prob > threshold
+                    ).unsqueeze(1).float()
+
+                    self_conf_mean = self_conf.mean().item()
+                    mutual_conf_mean = mutual_conf.mean().item()
+                    alpha_mean = alpha_map.mean().item()
+
+                self_conf_sta.update(self_conf_mean)
+                mutual_conf_sta.update(mutual_conf_mean)
+                ratio_sta.update(alpha_mean)
                 
                 unet_size_label_box = torch.stack([obtain_cutmix_box(img_size=patch_size, p=1.0) for i in range(len(ulb_x_s))], dim=0)
                 unet_size_img_box = unet_size_label_box.unsqueeze(1)
@@ -651,9 +681,9 @@ def train(args, snapshot_path):
             for n, p in enumerate(part):
                 text = 'train/ensemble_ulb_{}_dice'.format(p)
                 writer.add_scalar(text, ulb_dice[n], iter_num)
-            writer.add_scalar('train/self_conf', np.mean(self_conf), iter_num)
-            writer.add_scalar('train/mutual_conf', np.mean(mutual_conf), iter_num)
-            writer.add_scalar('train/ratio', np.mean(self_conf*mutual_conf), iter_num)
+            writer.add_scalar('train/self_conf', self_conf_mean, iter_num)
+            writer.add_scalar('train/mutual_conf', mutual_conf_mean, iter_num)
+            writer.add_scalar('train/ratio', alpha_mean, iter_num)
             writer.add_scalar('train/mask', unet_size_mask.mean(), iter_num)
             writer.add_scalar('train/loss', loss.item(), iter_num)
             writer.add_scalar('train/sam_sup_loss', sam_sup_loss.item(), iter_num)
@@ -668,17 +698,17 @@ def train(args, snapshot_path):
                 p_bar.set_description('iter %d:L:%.4f,sSL:%.4f,sUL:%.4f,uSL:%.4f,uUL:%.4f,%.4f,%.4f,cons:%.4f,mask:%.4f,sd:%.4f,%.4f,ud:%.4f,%.4f,d:%.4f,%.4f,s_m_r:%.4f,%.4f,%.4f' 
                                         % (iter_num, loss.item(), sam_sup_loss.item(), sam_unsup_loss.item(), unet_sup_loss.item(), unet_unsup_loss.item(), cons_loss.item(), discons_loss.item(), consistency_weight, 
                                            unet_size_mask.mean(), sam_ulb_dice[0], sam_ulb_dice[1], unet_ulb_dice[0], unet_ulb_dice[1], ulb_dice[0], ulb_dice[1], 
-                                           np.mean(self_conf), np.mean(mutual_conf), np.mean(self_conf*mutual_conf)))
+                                           self_conf_mean, mutual_conf_mean, alpha_mean))
             elif args.dataset == 'prostate' or args.dataset == 'BUSI':
                 p_bar.set_description('iter %d: L:%.4f, sSL: %.4f, sUL: %.4f, uSL: %.4f, uUL: %.4f,%.4f,%.4f, cons: %.4f, mask: %.4f, sd: %.4f, ud: %.4f, d: %.4f,s_m_r:%.4f,%.4f,%.4f' 
                                         % (iter_num, loss.item(), sam_sup_loss.item(), sam_unsup_loss.item(), unet_sup_loss.item(), unet_unsup_loss.item(), cons_loss.item(), discons_loss.item(), consistency_weight, 
                                            unet_size_mask.mean(), sam_ulb_dice[0], unet_ulb_dice[0], ulb_dice[0], 
-                                           np.mean(self_conf), np.mean(mutual_conf), np.mean(self_conf*mutual_conf)))
+                                           self_conf_mean, mutual_conf_mean, alpha_mean))
             elif args.dataset == 'MNMS':
                 p_bar.set_description('iter %d:L:%.4f,sSL:%.4f,sUL:%.4f,uSL:%.4f,uUL:%.4f,%.4f,%.4f,cons:%.4f,mask:%.4f,sd:%.4f,%.4f,%.4f,ud:%.4f,%.4f,%.4f,d:%.4f,%.4f,%.4f,s_m_r:%.4f,%.4f,%.4f' 
                                         % (iter_num, loss.item(), sam_sup_loss.item(), sam_unsup_loss.item(), unet_sup_loss.item(), unet_unsup_loss.item(), cons_loss.item(), discons_loss.item(), consistency_weight, 
                                            unet_size_mask.mean(), sam_ulb_dice[0], sam_ulb_dice[1], sam_ulb_dice[2], unet_ulb_dice[0], unet_ulb_dice[1], unet_ulb_dice[2], ulb_dice[0], ulb_dice[1], ulb_dice[2],
-                                           np.mean(self_conf), np.mean(mutual_conf), np.mean(self_conf*mutual_conf)))
+                                           self_conf_mean, mutual_conf_mean, alpha_mean))
             if iter_num % args.num_eval_iter == 0:
                 if args.dataset == 'fundus':
                     logging.info('iteration %d : loss : %f, sam_sup_loss : %f, sam_unsup_loss : %f, unet_sup_loss : %f, unet_unsup_loss : %f, cons_w : %f, mask_ratio : %f, sd:%.6f,%.6f,ud:%.6f,%.6f,d:%.6f,%.6f,s_m_r:%.6f,%.6f,%.6f' 
