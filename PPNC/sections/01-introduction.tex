@@ -1,0 +1,15 @@
+\section{Introduction}
+Semi-supervised medical image segmentation (SSMIS) is an effective way to reduce the burden of manual annotation in medical imaging \cite{tarvainen2017mean,chen2021semi,yu2019uncertainty,grunberg2017annotating}. In practice, however, clinical data rarely follow a single distribution. Scanner settings, hospital protocols, and patient populations can all introduce domain shift, which makes unlabeled samples less reliable to exploit and often leads to unstable pseudo-labeling when the labeled set is small \cite{ma2024constructing}.
+
+A common solution is to train a conventional segmentation model such as U-Net from scratch \cite{ronneberger2015u}. This remains attractive because it adapts well to the target task, but it is also sensitive to noisy pseudo-labels and can overfit the labeled domain when the distribution gap is large. Foundation models offer another option. SAM and MedSAM are able to transfer strong segmentation priors from large-scale pretraining \cite{kirillov2023segment,ma2024segment}, yet those priors are not always beneficial under a new medical target domain. In mixed-domain semi-supervision, they may produce confident predictions that are still wrong, and such errors can accumulate during training \cite{ma2024constructing}.
+
+This motivates our reproduction of SynFoC (Synergistic Training for Foundation and Conventional Models), a framework that trains a foundation model and a conventional model together. In the reproduced setting, MedSAM acts as the foundation branch and U-Net acts as the conventional branch. The conventional model, trained from scratch, helps correct the high-confidence errors made by the foundation model, while the foundation model provides reliable pseudo-labels that guide the conventional model during the early stages of training. The two branches are not treated as fixed teacher and student in a one-way pipeline; instead, they are trained synergistically so that each can compensate for the other at different stages. We follow the released training code and summarize the results from the completed logs rather than proposing a new method \cite{ma2024constructing}.
+
+The framework uses self-mutual confidence (SMC) to determine how pseudo-labels from the two branches should be combined, and consensus-divergence consistency regularization (CDCR) to apply different constraints to agreement and disagreement regions. These mechanisms encourage effective collaboration between the two models and improve training stability under domain shift \cite{ma2024constructing}.
+
+Our contributions are:
+\begin{itemize}
+    \item We reproduce the SynFoC training framework for mixed-domain semi-supervised medical image segmentation.
+    \item We summarize the roles of SMC and CDCR in the released training pipeline using the available logs.
+    \item We report the completed reproduced experiments on four public datasets and compare the logged results with the original paper where the settings are comparable.
+\end{itemize}

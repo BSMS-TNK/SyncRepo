@@ -1,0 +1,133 @@
+\section{Experiments}
+\subsection{Datasets and Metrics}
+This report summarizes the completed training logs found under the reproduced \texttt{SyncRepo/model} directory. The Prostate dataset is a multi-site T2-weighted MRI dataset for prostate segmentation, collected from six sources: RUNMC, BMC, HCRUDB, UCL, BIDMC, and HK \cite{liu2020shape}. Slices are resized to $384\times384$. The Fundus dataset contains images from four centers for optic cup and optic disc segmentation \cite{wang2020dofe}. The region of interest is resized to $256\times256$.
+
+The M\&Ms dataset is a cardiac MRI dataset collected from four scanner vendors \cite{campello2021multi}. We evaluate the left ventricle (LV), myocardium (MYO), and right ventricle (RV) segmentation targets, with each 2D slice resized to $288\times288$. The BUSI dataset contains breast ultrasound images \cite{al2020dataset}. Following the reproduced setting, the normal category is excluded because it has no tumor segmentation target, and the benign and malignant cases are treated as two domains. Images are resized to $256\times256$.
+
+Our comparisons are guided by earlier work on semi-supervised learning, pseudo-labeling, and consistency regularization \cite{tarvainen2017mean,lee2013pseudo,sohn2020fixmatch,chen2021semi}. Mixed-domain settings are also important because they expose the weakness of methods that assume a single data distribution \cite{ma2024constructing}. Foundation-based adaptation further motivates the use of MedSAM as the stronger prior branch in this reproduction study \cite{kirillov2023segment,ma2024segment}.
+
+We evaluate with Dice Similarity Coefficient (DSC), Jaccard Index, 95\% Hausdorff Distance (95HD), and Average Surface Distance (ASD). Higher DSC and Jaccard are better, while lower 95HD and ASD are better. The SynFoC rows are taken from the best average-DSC checkpoints recorded in each \texttt{log.txt} file.
+
+\subsection{Implementation Details}
+The reproduced analysis distinguishes between the original paper setting and the completed logs stored under \texttt{SyncRepo/model}. In the original paper, SynFoC is trained on an NVIDIA GeForce RTX 3090 GPU. U-Net is optimized by stochastic gradient descent with momentum 0.9, weight decay 0.0001, and initial learning rate 0.03. MedSAM uses the ViT-B backbone with input size $512\times512$, AdamW with initial learning rate 0.0001, $\beta_1=0.9$, $\beta_2=0.999$, weight decay 0.1, and LoRA rank 4. The confidence-threshold ablation in the original paper selects $\tau=0.95$ as the best setting. The original label regime uses 20 labeled samples for Prostate and Fundus, 5 for M\&Ms, and 64 or 129 for BUSI. Except for M\&Ms, the batch size is 8 with an even split between labeled and unlabeled samples; the M\&Ms batch size is reduced to 4 because only 5 labeled samples are used. Prostate and M\&Ms are trained for 60,000 iterations, while Fundus and BUSI are trained for 30,000 iterations. In contrast, the completed reproduced runs currently available in \texttt{SyncRepo/model} use domain-1 training logs with 40 labeled samples, \texttt{--AdamW}, \texttt{--warmup}, \texttt{--model MedSAM}, threshold 0.95, LoRA rank 4, input size 512, and an effective labeled/unlabeled batch split of 4/4 in the released logs.
+
+\subsection{Logged Results Across Four Datasets}
+The baseline rows are retained as contextual reference values where they were already available in the previous report. Since the reproduced logs use 40 labeled samples from domain 1, cross-method comparisons should be interpreted as contextual rather than as a strict identical-label setting. This section focuses on the completed runs stored in the repository and on how those runs compare with the originally published numbers when the label regime is close enough to make the comparison meaningful. When the setting is too different for a strict one-to-one comparison, we report the reproduced numbers directly and explain the mismatch instead of forcing a conclusion.
+
+Table~\ref{tab:prostate_results} reports Prostate results from the logged domain-1 run. The reproduced U-Net side obtains the best logged average performance, with 88.73\% DSC, 81.30\% Jaccard, 9.65 95HD, and 4.17 ASD.
+
+\begin{table}[!htbp]
+\centering
+\caption{Comparison on the Prostate dataset using the reproduced domain-1 run.}
+\label{tab:prostate_results}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccccccccc}
+\toprule
+Method & RUNMC & BMC & HCRUDB & UCL & BIDMC & HK & DSC $\uparrow$ & Jaccard $\uparrow$ & 95HD $\downarrow$ & ASD $\downarrow$ \\
+\midrule
+SupOnly & 22.11 & 21.81 & 19.60 & 13.87 & 18.16 & 26.98 & 20.42 & 15.63 & 118.15 & 79.70 \\
+UA-MT \cite{yu2019uncertainty} & 19.09 & 13.66 & 16.07 & 37.30 & 15.23 & 11.22 & 18.76 & 13.44 & 127.59 & 85.76 \\
+FixMatch \cite{sohn2020fixmatch} & 81.69 & 65.27 & 53.70 & 70.40 & 10.20 & 81.22 & 60.41 & 52.53 & 49.47 & 28.83 \\
+BCP \cite{bai2023bidirectional} & 64.79 & 62.46 & 50.49 & 55.08 & 63.31 & 57.64 & 58.96 & 48.74 & 56.81 & 27.77 \\
+ABD \cite{chi2024adaptive} & 53.10 & 62.28 & 9.17 & 59.22 & 51.92 & 22.19 & 42.98 & 32.35 & 75.73 & 47.17 \\
+SymGD \cite{ma2024constructing} & 88.34 & 83.26 & 83.99 & 85.45 & 42.03 & 78.02 & 76.85 & 67.88 & 39.02 & 21.08 \\
+SAMed \cite{zhang2023customized} & 63.67 & 65.62 & 65.25 & 68.65 & 48.83 & 75.31 & 64.56 & 53.49 & 35.85 & 15.83 \\
+SemiSAM \cite{zhang2023semisam} & 78.07 & 67.16 & 76.49 & 69.25 & 65.97 & 69.76 & 71.12 & 59.69 & 28.19 & 12.61 \\
+CPC-SAM \cite{miao2024cross} & 77.23 & 66.46 & 66.98 & 76.79 & 79.71 & 75.42 & 73.77 & 62.85 & 31.08 & 13.16 \\
+SynFoC U-Net & \textbf{88.49} & \textbf{90.26} & 89.37 & \textbf{89.77} & 85.75 & \textbf{88.75} & \textbf{88.73} & \textbf{81.30} & \textbf{9.65} & \textbf{4.17} \\
+SynFoC MedSAM & 86.49 & 89.82 & \textbf{89.81} & 89.61 & \textbf{86.56} & 86.67 & 88.16 & 80.49 & 9.78 & 4.35 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Table~\ref{tab:fundus_results} reports Fundus results. The reproduced MedSAM-side model reaches the best average performance among all compared methods, with 89.73\% DSC and 82.27\% Jaccard. It also reduces the average 95HD to 6.77 and ASD to 3.22.
+
+\begin{table}[!htbp]
+\centering
+\caption{Comparison on the Fundus dataset using the reproduced domain-1 run. Domain columns report optic cup / optic disc DSC.}
+\label{tab:fundus_results}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+Method & Domain 1 & Domain 2 & Domain 3 & Domain 4 & DSC $\uparrow$ & Jaccard $\uparrow$ & 95HD $\downarrow$ & ASD $\downarrow$ \\
+\midrule
+SupOnly & 59.54 / 73.89 & 71.28 / 74.23 & 50.87 / 64.29 & 35.61 / 63.30 & 61.63 & 52.65 & 48.28 & 28.86 \\
+UA-MT \cite{yu2019uncertainty} & 59.35 / 78.46 & 63.08 / 74.45 & 35.24 / 47.73 & 36.18 / 55.43 & 56.24 & 47.00 & 48.64 & 31.35 \\
+FixMatch \cite{sohn2020fixmatch} & 81.18 / 91.29 & 72.04 / 87.60 & 80.41 / 92.95 & 74.58 / 87.07 & 83.39 & 73.48 & 11.77 & 5.60 \\
+BCP \cite{bai2023bidirectional} & 71.65 / 91.10 & 77.19 / 92.00 & 72.63 / 90.77 & 77.67 / 91.42 & 83.05 & 73.66 & 11.05 & 5.80 \\
+ABD \cite{chi2024adaptive} & 73.92 / 79.71 & 65.19 / 90.96 & 77.61 / 86.11 & 74.79 / 86.72 & 79.38 & 69.28 & 13.99 & 8.14 \\
+SymGD \cite{ma2024constructing} & 83.71 / 92.96 & 80.47 / 89.93 & 84.18 / 92.97 & 83.71 / 93.38 & 87.66 & 79.10 & 8.21 & 3.89 \\
+SAMed \cite{zhang2023customized} & 71.00 / 93.53 & 81.77 / 90.04 & 82.07 / 92.25 & 71.62 / 93.14 & 84.47 & 75.69 & 9.83 & 5.25 \\
+SemiSAM \cite{zhang2023semisam} & 83.70 / 93.21 & 72.40 / 87.72 & 81.39 / 92.11 & 79.17 / 91.10 & 85.10 & 75.50 & 9.48 & 4.60 \\
+CPC-SAM \cite{miao2024cross} & 75.99 / 94.34 & 80.10 / 93.08 & 83.19 / 92.81 & 83.43 / 93.20 & 87.02 & 78.65 & 8.50 & 4.24 \\
+SynFoC U-Net & 88.68 / \textbf{97.33} & 78.82 / 90.61 & 86.09 / 92.51 & 86.37 / 91.18 & 88.95 & 81.13 & 6.93 & 3.37 \\
+SynFoC MedSAM & \textbf{89.39} / 96.97 & 79.06 / 92.77 & \textbf{86.60} / 92.79 & \textbf{88.71} / 91.58 & \textbf{89.73} & \textbf{82.27} & \textbf{6.77} & \textbf{3.22} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Table~\ref{tab:mnms_results} reports the M\&Ms run. The U-Net side gives the best logged average DSC at 81.98\%, while the MedSAM side obtains a lower ASD of 3.92. This indicates that the conventional model reaches stronger overlap in the final selected checkpoint, whereas the foundation model still produces compact boundary errors.
+
+\begin{table}[!htbp]
+\centering
+\caption{Logged SynFoC results on the M\&Ms dataset. Vendor columns report LV / MYO / RV DSC.}
+\label{tab:mnms_results}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+Method & Vendor A & Vendor B & Vendor C & Vendor D & DSC $\uparrow$ & Jaccard $\uparrow$ & 95HD $\downarrow$ & ASD $\downarrow$ \\
+\midrule
+SynFoC U-Net & 90.49 / 81.86 / 79.72 & 88.65 / 82.56 / \textbf{83.69} & 86.68 / \textbf{76.23} / \textbf{68.92} & 87.24 / \textbf{79.29} / \textbf{78.44} & \textbf{81.98} & \textbf{72.80} & \textbf{7.82} & 4.42 \\
+SynFoC MedSAM & \textbf{90.60} / 81.46 / 78.85 & 87.93 / 81.33 / 80.35 & \textbf{86.72} / 75.36 / 67.89 & 87.05 / 77.32 / 76.89 & 80.98 & 71.54 & 8.13 & \textbf{3.92} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Table~\ref{tab:busi_results} reports the BUSI run. MedSAM has the best logged average performance, reaching 62.84\% DSC, 53.01\% Jaccard, 42.38 95HD, and 19.38 ASD. The domain-level gap is large: the benign domain is segmented much more accurately than the malignant domain, suggesting that the malignant subset is the harder cross-domain case in this run.
+
+\begin{table}[!htbp]
+\centering
+\caption{Logged SynFoC results on the BUSI dataset.}
+\label{tab:busi_results}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+Method & Benign & Malignant & DSC $\uparrow$ & Jaccard $\uparrow$ & 95HD $\downarrow$ & ASD $\downarrow$ \\
+\midrule
+SynFoC U-Net & 75.67 & 23.55 & 49.61 & 42.66 & 53.41 & 27.69 \\
+SynFoC MedSAM & \textbf{76.86} & \textbf{48.83} & \textbf{62.84} & \textbf{53.01} & \textbf{42.38} & \textbf{19.38} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Fig.~\ref{fig:visuals} provides qualitative examples from Prostate, Fundus, M\&Ms, and BUSI. The visual results support the quantitative trend: the synergistic pipeline produces more complete and stable segmentation masks in cross-domain samples.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.98\columnwidth]{prostate_img.pdf}
+\includegraphics[width=0.98\columnwidth]{fundus_img.pdf}
+\includegraphics[width=0.98\columnwidth]{MNMS_img.pdf}
+\includegraphics[width=0.98\columnwidth]{BUSI_img.pdf}
+\caption{Qualitative visualizations on Prostate, Fundus, M\&Ms, and BUSI datasets.}
+\label{fig:visuals}
+\end{figure}
+
+\subsection{Comparison with the Original Paper}
+Table~\ref{tab:original_vs_reproduced} compares the headline SynFoC averages reported in the original paper tables with the best averages extracted from the completed reproduced logs. The comparison is only approximate because the reproduced logs use 40 labeled samples from domain 1, whereas the original paper reports dataset-specific label regimes.
+
+\begin{table}[!htbp]
+\centering
+\caption{Original paper versus reproduced logged best average DSC. BUSI is not directly comparable because the original paper reports 64-label and 129-label settings, while the reproduced logs use 40 labeled samples from domain 1.}
+\label{tab:original_vs_reproduced}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Dataset & Original paper & Reproduced log & Comment \\
+\midrule
+Prostate & 87.16 (MedSAM) & 88.73 (U-Net) & different winner; reproduced log higher \\
+Fundus & 88.60 (MedSAM) & 89.73 (MedSAM) & same winner; reproduced log higher \\
+M\&Ms & 80.84 (MedSAM) & 81.98 (U-Net) & different winner; reproduced log higher \\
+BUSI & 74.75 (MedSAM, 129 labels) & 62.84 (MedSAM) & different label regime \\
+\bottomrule
+\end{tabular}}
+\end{table}
